@@ -353,86 +353,106 @@
             text-align: center;
         }
 
-        /* Unique Text Section (Styles mostly retained, adjusted headings) */
-        #unique-text-section {
-            background-color: #F8F4F1;
+        /* Product Showcase Section - REVERTED TO ORIGINAL HORIZONTAL LAYOUT */
+        #product-showcase {
+            background-color: #F8F4F1; /* Light, warm background */
             padding: 80px 0;
             text-align: center;
             border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
 
-        #unique-text-section h2 {
-            margin-bottom: 40px;
+        #product-showcase h2 {
+            margin-bottom: 50px;
             color: #8B4513;
         }
 
-        .paragraph-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .paragraph-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .product-ladder-grid {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            flex-direction: column; /* Still keeps items in a single column */
+            align-items: center; /* Centers the column of items */
+            gap: 60px; /* Space between each product item (vertical gap) */
         }
 
-        .paragraph-item:hover {
+        .product-item-ladder {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 800px; /* REVERTED: Back to a wider rectangle */
+            padding: 25px;
+            display: flex; /* REVERTED: Image and content are side-by-side */
+            flex-direction: row; /* REVERTED: Image and content side-by-side by default */
+            align-items: flex-start; /* Aligns content to the top of the item */
+            gap: 25px; /* Space between image and content */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: auto; /* Ensure height adapts to content */
+        }
+
+        .product-item-ladder:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
         }
 
-        .paragraph-item h3 {
-            font-family: 'Playfair Display', serif;
-            color: #A0522D;
+        /* Ladder Effect: Shift left/right */
+        .product-item-ladder:nth-child(odd) {
+            align-self: flex-start;
+            margin-left: 5%;
+        }
+
+        .product-item-ladder:nth-child(even) {
+            align-self: flex-end;
+            margin-right: 5%;
+            flex-direction: row-reverse; /* REVERTED: Swap image and content for even items */
+        }
+
+        .product-image-wrapper {
+            flex-shrink: 0; /* Prevents image from shrinking below its content size */
+            width: 25%; /* REVERTED: Image takes about a quarter of the width */
+            min-width: 150px; /* Ensures image area doesn't get too small */
+            display: flex;
+            justify-content: center; /* Center image within its wrapper */
+            align-items: center; /* Center image vertically */
+            padding: 0; /* No extra padding for the wrapper itself */
+        }
+
+        .product-image-wrapper img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px; /* REVERTED: Limit vertical height of image to visually fit in quarter */
+            border-radius: 5px;
+            object-fit: contain; /* Ensures the whole image is visible */
+        }
+
+        .product-content {
+            flex-grow: 1; /* Content takes remaining space */
+            width: auto; /* Let flex-grow manage width */
+            display: flex;
+            flex-direction: column; /* Stacks h3, p, button vertically */
+            justify-content: space-between; /* Pushes button to bottom if height allows */
+            height: 100%; /* Important for justify-content: space-between to work */
+            text-align: left; /* REVERTED: Align content to the left */
+        }
+
+        .product-content h3 {
             margin-top: 0;
-            margin-bottom: 15px;
-            text-align: left;
+            margin-bottom: 10px;
+            text-align: left; /* REVERTED: Align header left */
+            color: #A0522D;
+            font-size: 1.8em;
         }
 
-        .paragraph-item p {
-            font-size: 0.95em;
+        .product-content p {
+            font-size: 1.05em;
             color: #555;
             line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1; /* Allows paragraph to grow and push button down */
+            text-align: left; /* REVERTED: Align paragraph left */
         }
 
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 30px 0;
-            text-align: center;
-            font-size: 0.9em;
-        }
-
-        footer .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        .social-links a {
-            color: #fff;
-            margin-left: 15px;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #A0522D;
+        .product-content .button-small {
+            align-self: flex-start; /* REVERTED: Align button to the left */
         }
 
         /* Responsiveness */
@@ -449,6 +469,17 @@
             h1 { font-size: 2.4em; }
             h2 { font-size: 1.8em; }
             h3 { font-size: 1.4em; }
+
+            .product-item-ladder {
+                padding: 20px;
+                gap: 15px;
+            }
+            .product-content h3 {
+                font-size: 1.6em;
+            }
+            .product-content p {
+                font-size: 1em;
+            }
         }
 
         @media (max-width: 768px) {
@@ -522,6 +553,7 @@
                 text-align: center;
             }
 
+
             #featured-look .look-container {
                 flex-direction: column;
                 gap: 30px;
@@ -544,6 +576,42 @@
 
             .product-grid, .paragraph-grid {
                 grid-template-columns: 1fr;
+            }
+
+            /* Product Ladder Mobile Adjustments - REVERTED */
+            .product-item-ladder {
+                flex-direction: column !important; /* Stack vertically on mobile */
+                align-self: center !important; /* Center all items */
+                margin: 0 auto 40px auto !important; /* Center and add consistent margin */
+                width: 95%;
+                max-width: 400px; /* Revert to wider mobile layout */
+                padding: 15px;
+                gap: 15px; /* Gap between image and content when stacked */
+                height: auto; /* Ensure height adapts on mobile */
+            }
+            .product-image-wrapper {
+                width: 80%; /* Image takes most of the width on mobile when stacked */
+                max-width: 250px; /* Keep consistent with larger design */
+                height: auto;
+                min-width: unset; /* Allow shrinking */
+                padding: 0;
+            }
+            .product-image-wrapper img {
+                max-height: 180px; /* Adjusted max-height for mobile */
+                width: auto;
+                margin: 0 auto;
+            }
+            .product-content {
+                padding-left: 0;
+                text-align: center; /* Center content when stacked on mobile */
+                align-items: center; /* Center items within content flexbox */
+                height: auto; /* Remove fixed height for mobile */
+            }
+            .product-content h3,
+            .product-content p,
+            .product-content .button-small {
+                text-align: center; /* Center align for mobile */
+                align-self: center; /* Center align for mobile */
             }
 
             footer .container {
@@ -608,29 +676,60 @@
             </div>
         </section>
 
-        <section id="unique-text-section" class="section-padding">
+        ---
+
+        <section id="product-showcase">
             <div class="container">
-                <h2>Our Philosophy: Beauty, Naturally</h2>
-                <div class="paragraph-grid">
-                    <div class="paragraph-item">
-                        <h3>Pure Ingredients, Pure Results</h3>
-                        <p>We believe true beauty begins with nature. Our products are formulated with meticulously selected, high-quality natural extracts and minerals, ensuring gentle care and visible results without harsh chemicals.</p>
+                <h2>Discover Our Collections</h2>
+                <div class="product-ladder-grid">
+                    <div class="product-item-ladder">
+                        <div class="product-image-wrapper">
+                            <img src="imgs/oil3.png" alt="Hydrating Facial Oil">
+                        </div>
+                        <div class="product-content">
+                            <h3>Luminous Hydration Elixir</h3>
+                            <p>Infused with rare botanical extracts, this lightweight facial oil deeply nourishes, leaving your skin supple and glowing. Perfect for an overnight repair or a radiant base.</p>
+                            <a href="product-detail-1.html" class="button-small">Buy Now</a>
+                        </div>
                     </div>
-                    <div class="paragraph-item">
-                        <h3>Ethical Sourcing & Sustainability</h3>
-                        <p>From farm to face, our commitment to sustainability guides every decision. We partner with ethical suppliers and strive for eco-friendly packaging, minimizing our footprint and protecting our planet.</p>
+
+                    <div class="product-item-ladder">
+                        <div class="product-image-wrapper">
+                            <img src="imgs/lipstick.png" alt="Velvet Matte Lipstick">
+                        </div>
+                        <div class="product-content">
+                            <h3>Velvet Kiss Matte Lipstick</h3>
+                            <p>Experience the perfect blend of rich pigment and comfortable wear. Our matte lipstick delivers a smooth, long-lasting finish without drying your lips.</p>
+                            <a href="product-detail-2.html" class="button-small">Buy Now</a>
+                        </div>
                     </div>
-                    <div class="paragraph-item">
-                        <h3>Crafted for Every Skin</h3>
-                        <p>Understanding that every skin type is unique, we develop inclusive formulas designed to nourish, protect, and enhance diverse complexions. Find your perfect match and embrace your natural glow.</p>
+
+                    <div class="product-item-ladder">
+                        <div class="product-image-wrapper">
+                            <img src="imgs/roller.png" alt="Rose Quartz Roller">
+                        </div>
+                        <div class="product-content">
+                            <h3>Revitalizing Rose Quartz Roller</h3>
+                            <p>Enhance your skincare routine with this exquisite rose quartz roller. It promotes circulation, reduces puffiness, and helps absorb serums for a truly revitalized complexion.</p>
+                            <a href="product-detail-3.html" class="button-small">Buy Now</a>
+                        </div>
                     </div>
-                    <div class="paragraph-item">
-                        <h3>Innovation Meets Tradition</h3>
-                        <p>Combining ancient beauty wisdom with modern scientific advancements, we create innovative products that respect time-honored practices while delivering cutting-edge performance and efficacy.</p>
+
+                    <div class="product-item-ladder">
+                        <div class="product-image-wrapper">
+                            <img src="imgs/lotion.png" alt="Radiant Body Lotion">
+                        </div>
+                        <div class="product-content">
+                            <h3>Silken Touch Body Lotion</h3>
+                            <p>Indulge your skin with our deeply moisturizing body lotion, enriched with natural shea butter and vitamin E. Leaves skin soft, smooth, and delicately fragranced.</p>
+                            <a href="product-detail-4.html" class="button-small">Buy Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        ---
 
         <section id="featured-products" class="section-padding">
             <div class="container">
