@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Brand Name - Elegant Cosmetics</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Typography */
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif; /* Changed body font */
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif; /* Changed heading font */
+            color: #555;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.6em; }
+
+        a {
+            text-decoration: none;
+            color: #A0522D; /* A soft brown/terracotta */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 12px 0; /* Adjusted: Reduced top/bottom padding */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo and Slogan Container */
+        .logo {
+            display: flex;
+            flex-direction: column; /* Stack logo and slogan vertically */
+            align-items: flex-start; /* Align text to the left */
+        }
+
+        /* Brand Name Styling - Mixed Brown Wave Effect */
+        .logo a {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #8B4513, #A0522D, #CD853F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            margin-bottom: 0; /* Adjusted: Removed margin-bottom to tighten space */
+            line-height: 1.2; /* Adjusted: Tighter line height */
+        }
+
+        .logo a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Slogan Styling */
+        .slogan {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85em;
+            color: #8B4513;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-align: left;
+            margin-top: 0; /* Adjusted: Removed margin-top */
+            line-height: 1.2; /* Adjusted: Tighter line height */
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            font-weight: 400;
+            color: #666;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        nav ul li a:hover {
+            color: #A0522D;
+            text-decoration: none;
+        }
+
+        /* Dropdown Icon */
+        .dropdown-icon {
+            margin-left: 5px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .dropdown-content a {
+            color: #555 !important;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            text-transform: none;
+            letter-spacing: normal;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+            color: #A0522D !important;
+            text-decoration: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Hamburger Menu Toggle - Hidden on desktop */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #A0522D;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Featured Look Section */
+        #featured-look {
+            background-color: #FDF9F6;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        #featured-look .look-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        #featured-look .look-image {
+            width: 470px;
+            height: auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.4s ease-out;
+        }
+
+        #featured-look .look-image:hover {
+            transform: scale(1.02);
+        }
+
+        #featured-look .look-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #featured-look .look-details {
+            flex: 1;
+            min-width: 300px;
+            max-width: 550px;
+            text-align: left;
+            padding: 20px;
+        }
+
+        #featured-look .look-details h2 {
+            text-align: left;
+            color: #8B4513;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #featured-look .look-details p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        /* Enriched Buttons */
+        .button {
+            display: inline-block;
+            background: linear-gradient(to right, #A0522D, #CD853F);
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: none;
+        }
+
+        .button:hover {
+            background: linear-gradient(to right, #8B4513, #A0522D);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        .button-small {
+            display: inline-block;
+            background-color: #CD853F;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            border: none;
+        }
+
+        .button-small:hover {
+            background-color: #A0522D;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        /* Section Padding (retained for consistency) */
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        /* Featured Products (Styles mostly retained) */
+        #featured-products {
+            background-color: #fefefe;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-item {
+            background-color: #fff;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .product-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #A0522D;
+            text-align: center;
+        }
+
+        .product-item p {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Unique Text Section (Styles mostly retained, adjusted headings) */
+        #unique-text-section {
+            background-color: #F8F4F1;
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        #unique-text-section h2 {
+            margin-bottom: 40px;
+            color: #8B4513;
+        }
+
+        .paragraph-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .paragraph-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .paragraph-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        .paragraph-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: #A0522D;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .paragraph-item p {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .social-links a {
+            color: #fff;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #A0522D;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            nav ul li {
+                margin-left: 15px;
+            }
+            .logo a {
+                font-size: 1.8em;
+            }
+            .slogan {
+                font-size: 0.75em;
+            }
+            h1 { font-size: 2.4em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
+                overflow: hidden;
+                max-height: 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+            }
+
+            nav.active {
+                max-height: 400px;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            /* Adjust dropdown for mobile menu */
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding-left: 20px;
+                min-width: unset;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                max-height: 0;
+                transition: max-height 0.3s ease-in-out;
+            }
+            .dropdown:hover .dropdown-content,
+            .dropdown.active .dropdown-content {
+                max-height: 200px;
+            }
+
+            /* Rotate dropdown icon in mobile when active */
+            .dropdown.active .dropdown-icon {
+                transform: rotate(180deg);
+            }
+
+            /* Adjust logo and slogan for small screens */
+            .logo {
+                align-items: center;
+            }
+            .logo a {
+                font-size: 1.6em;
+            }
+            .slogan {
+                font-size: 0.7em;
+                text-align: center;
+            }
+
+            #featured-look .look-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            #featured-look .look-image {
+                width: 100%;
+                max-width: 470px;
+            }
+
+            #featured-look .look-details {
+                text-align: center;
+                padding: 0;
+            }
+
+            #featured-look .look-details h2 {
+                text-align: center;
+                font-size: 2em;
+            }
+
+            .product-grid, .paragraph-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer .container {
+                flex-direction: column;
+            }
+
+            .social-links {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Lunera Beauty</a>
+                <span class="slogan">Elegance in Every Shade.</span>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html" class="dropbtn">Shop <span class="dropdown-icon">&#9660;</span></a>
+                        <div class="dropdown-content">
+                            <a href="skincare.html">Skincare</a>
+                            <a href="makeup.html">Makeup</a>
+                            <a href="fragrance.html">Fragrance</a>
+                            <a href="body-hair.html">Body & Hair Care</a>
+                            <a href="accessories.html">Accessories</a>
+                        </div>
+                    </li>
+                    <li><a href="new-arrivals.html">New Arrivals</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="featured-look">
+            <div class="container">
+                <div class="look-container">
+                    <div class="look-image">
+                        <img src="imgs/model1.png" alt="Model using cosmetic product">
+                    </div>
+                    <div class="look-details">
+                        <h2>Embrace Your Inner Radiance</h2>
+                        <p>Discover our latest collection, designed to enhance your natural beauty. Our [Specific Product Name, e.g., Luminous Glow Serum] provides a flawless finish, leaving your skin feeling hydrated and looking vibrant all day long.</p>
+                        <p>Perfect for achieving that fresh, illuminated look, whether for a casual day out or a special evening. Experience the difference of quality ingredients and ethical craftsmanship.</p>
+                        <a href="product-detail-page.html" class="button">Shop This Look</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="unique-text-section" class="section-padding">
+            <div class="container">
+                <h2>Our Philosophy: Beauty, Naturally</h2>
+                <div class="paragraph-grid">
+                    <div class="paragraph-item">
+                        <h3>Pure Ingredients, Pure Results</h3>
+                        <p>We believe true beauty begins with nature. Our products are formulated with meticulously selected, high-quality natural extracts and minerals, ensuring gentle care and visible results without harsh chemicals.</p>
+                    </div>
+                    <div class="paragraph-item">
+                        <h3>Ethical Sourcing & Sustainability</h3>
+                        <p>From farm to face, our commitment to sustainability guides every decision. We partner with ethical suppliers and strive for eco-friendly packaging, minimizing our footprint and protecting our planet.</p>
+                    </div>
+                    <div class="paragraph-item">
+                        <h3>Crafted for Every Skin</h3>
+                        <p>Understanding that every skin type is unique, we develop inclusive formulas designed to nourish, protect, and enhance diverse complexions. Find your perfect match and embrace your natural glow.</p>
+                    </div>
+                    <div class="paragraph-item">
+                        <h3>Innovation Meets Tradition</h3>
+                        <p>Combining ancient beauty wisdom with modern scientific advancements, we create innovative products that respect time-honored practices while delivering cutting-edge performance and efficacy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured-products" class="section-padding">
+            <div class="container">
+                <h2>Our Bestsellers</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="product1.jpg" alt="Revitalizing Serum">
+                        <h3>Revitalizing Serum</h3>
+                        <p>A concentrated serum for deep hydration and youthful radiance. Ideal for all skin types.</p>
+                        <a href="product1-detail.html" class="button-small">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="product2.jpg" alt="Luminous Foundation">
+                        <h3>Luminous Foundation</h3>
+                        <p>Achieve a flawless, natural finish with our breathable, long-lasting liquid foundation.</p>
+                        <a href="product2-detail.html" class="button-small">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="product3.jpg" alt="Botanical Cleanser">
+                        <h3>Botanical Cleanser</h3>
+                        <p>Gently purify and refresh your skin with this invigorating, plant-based facial cleanser.</p>
+                        <a href="product3-detail.html" class="button-small">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Brand Name. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://facebook.com/yourbrand" target="_blank">Facebook</a>
+                <a href="https://instagram.com/yourbrand" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    // Close any open dropdowns when the main menu is toggled
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                });
+            }
+
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(event) {
+                    // Only toggle on mobile (when mainNav is active or menuToggle is displayed)
+                    if (window.innerWidth <= 768) {
+                        // Check if the clicked element is the dropdown link itself, not a child
+                        if (event.target.classList.contains('dropbtn') || event.target.closest('.dropbtn')) {
+                            event.preventDefault(); // Prevent navigating to products.html immediately
+                            this.classList.toggle('active');
+                        }
+                    }
+                });
+            });
+
+            // Close mobile menu or dropdowns if clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    const isClickInsideNav = mainNav.contains(event.target);
+                    const isClickInsideToggle = menuToggle.contains(event.target);
+
+                    if (!isClickInsideNav && !isClickInsideToggle) {
+                        mainNav.classList.remove('active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
