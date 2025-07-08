@@ -7,7 +7,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Google Fonts - Playfair Display for headings, Lato for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for social media icons and general icons -->
+    <!-- Font Awesome for social media icons and general icons (still useful for footer/menu) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Basic Reset & Typography */
@@ -403,20 +403,24 @@
         .new-arrival-item:nth-child(5) { transition-delay: 0.4s; }
         .new-arrival-item:nth-child(6) { transition-delay: 0.5s; }
 
-        /* New styles for new arrival icons */
-        .new-arrival-icon-wrapper {
+        /* Styles for image containers in new arrivals */
+        .new-arrival-image-wrapper {
             width: 100%;
-            height: 250px; /* Match old image height */
+            height: 250px; /* Fixed height for consistency */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #FDF9F6; /* Light background for the icon area */
+            background-color: #FDF9F6; /* Light background behind the image */
             border-bottom: 1px solid #eee;
+            overflow: hidden; /* Ensure image doesn't overflow its container */
         }
 
-        .new-arrival-icon-wrapper i {
-            font-size: 5em; /* Large icon size */
-            color: #A0522D; /* Brand accent color for icons */
+        .new-arrival-image-wrapper img {
+            width: 100%; /* Make image fill the width of its wrapper */
+            height: 100%; /* Make image fill the height of its wrapper */
+            object-fit: cover; /* Crop image to cover the area without distortion */
+            display: block; /* Remove extra space below image */
+            border-radius: 0; /* No border radius here, it's on the item */
         }
 
         .new-arrival-content {
@@ -519,6 +523,18 @@
             text-align: left;
         }
 
+        /* Style for image inside modal body */
+        .modal-body img {
+            max-width: 80%; /* Make the image smaller relative to the modal width */
+            max-height: 300px; /* Set a maximum height for the image */
+            height: auto;
+            display: block; /* Ensures image takes full width and is centered if needed */
+            margin: 20px auto; /* Add some margin above/below image and center it */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for the image */
+            object-fit: contain; /* Ensures the entire image is visible within its bounds */
+        }
+
 
         /* Responsiveness */
         @media (max-width: 992px) {
@@ -563,6 +579,10 @@
             }
             .modal-close-button {
                 font-size: 1.5em;
+            }
+            .modal-body img {
+                max-width: 90%; /* Allow image to be slightly larger on smaller screens */
+                max-height: 250px; /* Adjust max height for smaller screens */
             }
         }
 
@@ -646,6 +666,12 @@
                 gap: 30px;
             }
         }
+        .a{
+            width: 100%;
+            height: 30%;
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            display: block; /* Removes extra space below the image */
+        }
     </style>
 </head>
 <body>
@@ -696,8 +722,8 @@
                 <h2>Our Latest Discoveries</h2>
                 <div class="new-arrival-grid">
                     <div class="new-arrival-item">
-                        <div class="new-arrival-icon-wrapper">
-                            <i class="fas fa-mask"></i> <!-- Icon for Mask -->
+                        <div class="new-arrival-image-wrapper">
+                            <img src="imgs/a11.png" alt="Hydra-Boost Overnight Mask">
                         </div>
                         <div class="new-arrival-content">
                             <h3>Hydra-Boost Overnight Mask</h3>
@@ -708,8 +734,8 @@
                     </div>
 
                     <div class="new-arrival-item">
-                        <div class="new-arrival-icon-wrapper">
-                            <i class="fas fa-blender"></i> <!-- Icon for Liquid Blush -->
+                        <div class="new-arrival-image-wrapper">
+                            <img class="a" src="imgs/a22.png" alt="Cloud-Kissed Liquid Blush">
                         </div>
                         <div class="new-arrival-content">
                             <h3>Cloud-Kissed Liquid Blush</h3>
@@ -720,8 +746,8 @@
                     </div>
 
                     <div class="new-arrival-item">
-                        <div class="new-arrival-icon-wrapper">
-                            <i class="fas fa-flask"></i> <!-- Icon for Hair Oil (representing liquid/formula) -->
+                        <div class="new-arrival-image-wrapper">
+                            <img src="imgs/a3.png" alt="Argan Elixir Hair Oil">
                         </div>
                         <div class="new-arrival-content">
                             <h3>Argan Elixir Hair Oil</h3>
@@ -732,8 +758,8 @@
                     </div>
 
                     <div class="new-arrival-item">
-                        <div class="new-arrival-icon-wrapper">
-                            <i class="fas fa-eye"></i> <!-- Icon for Eye Cream -->
+                        <div class="new-arrival-image-wrapper">
+                            <img src="imgs/a4.png" alt="Revitalizing Eye Cream">
                         </div>
                         <div class="new-arrival-content">
                             <h3>Revitalizing Eye Cream</h3>
@@ -744,8 +770,8 @@
                     </div>
 
                     <div class="new-arrival-item">
-                        <div class="new-arrival-icon-wrapper">
-                            <i class="fas fa-tint"></i> <!-- Corrected Icon for Lip Mask (representing moisture/liquid) -->
+                        <div class="new-arrival-image-wrapper">
+                            <img src="imgs/a5.png" alt="Overnight Lip Mask">
                         </div>
                         <div class="new-arrival-content">
                             <h3>Overnight Lip Mask</h3>
@@ -756,8 +782,8 @@
                     </div>
 
                     <div class="new-arrival-item">
-                        <div class="new-arrival-icon-wrapper">
-                            <i class="fas fa-shower"></i> <!-- Icon for Body Scrub -->
+                        <div class="new-arrival-image-wrapper">
+                            <img src="imgs/a6.png" alt="Exfoliating Body Scrub">
                         </div>
                         <div class="new-arrival-content">
                             <h3>Exfoliating Body Scrub</h3>
@@ -876,7 +902,8 @@
                             <li>Non-greasy, comfortable overnight wear.</li>
                         </ul>
                         <p><strong>How to Use:</strong> After cleansing and applying serums, apply a generous, even layer to your face and neck, avoiding the eye area. Leave on overnight and rinse thoroughly in the morning. For an extra boost, apply a thicker layer to particularly dry areas.</p>
-                    `
+                    `,
+                    imageUrl: 'imgs/mask.png' // Add image URL
                 },
                 'liquid-blush': {
                     title: 'Cloud-Kissed Liquid Blush: A Natural Flush of Color',
@@ -892,7 +919,8 @@
                             <li>Infused with skin-loving ingredients for comfortable wear.</li>
                         </ul>
                         <p><strong>How to Use:</strong> Dot 1-2 small dots onto the apples of your cheeks. Gently blend with your fingertips, a brush, or a damp beauty sponge. For a more intense look, layer as desired. Can also be used on eyelids or lips for a monochromatic effect.</p>
-                    `
+                    `,
+                    imageUrl: 'imgs/blush.png' // Add image URL
                 },
                 'argan-hair-oil': {
                     title: 'Argan Elixir Hair Oil: Liquid Gold for Your Locks',
@@ -908,7 +936,8 @@
                             <li>Improves manageability and reduces breakage.</li>
                         </ul>
                         <p><strong>How to Use:</strong> Apply 1-2 pumps to damp or dry hair, focusing on mid-lengths to ends. Style as usual. For an intensive treatment, apply a generous amount to dry hair, leave on for 30 minutes (or overnight), then shampoo and condition as normal.</p>
-                    `
+                    `,
+                    imageUrl: 'imgs/hair-oil.png' // Add image URL
                 },
                 'eye-cream': {
                     title: 'Revitalizing Eye Cream: Brighten & Renew Your Gaze',
@@ -924,7 +953,8 @@
                             <li>Brightens and awakens tired-looking eyes.</li>
                         </ul>
                         <p><strong>How to Use:</strong> Gently dab a pea-sized amount around the orbital bone using your ring finger, morning and evening. Avoid direct contact with eyes. For best results, use consistently as part of your daily skincare routine.</p>
-                    `
+                    `,
+                    imageUrl: 'imgs/eye-cream.png' // Add image URL
                 },
                 'lip-mask': {
                     title: 'Overnight Lip Mask: Deep Repair for Supple Lips',
@@ -939,7 +969,8 @@
                             <li><strong>Hyaluronic Acid:</strong> Attracts and holds moisture for plump-looking lips.</li>
                         </ul>
                         <p><strong>How to Use:</strong> Apply a generous layer to clean, dry lips before bed. Leave on overnight. Wipe off any excess in the morning, or simply let it absorb. Use nightly for best results, or as needed for intense hydration.</p>
-                    `
+                    `,
+                    imageUrl: 'imgs/lip-mask.png' // Add image URL
                 },
                 'body-scrub': {
                     title: 'Exfoliating Body Scrub: Silky Smooth Skin from Head to Toe',
@@ -955,7 +986,8 @@
                             <li>Prepares skin for better absorption of lotions and creams.</li>
                         </ul>
                         <p><strong>How to Use:</strong> In the shower or bath, apply a generous amount to damp skin. Massage gently in circular motions, focusing on rough areas like elbows, knees, and heels. Rinse thoroughly. For best results, use 2-3 times a week and follow with your favorite Lunera Beauty body lotion.</p>
-                    `
+                    `,
+                    imageUrl: 'imgs/body-scrub.png' // Add image URL
                 }
             };
 
@@ -965,6 +997,26 @@
             const arrivalModalTitle = document.getElementById('arrivalModalTitle');
             const arrivalModalBody = document.getElementById('arrivalModalBody');
 
+            // Function to open the modal with content
+            function openArrivalModal(arrival) {
+                arrivalModalTitle.innerHTML = arrival.title;
+                // Clear previous content
+                arrivalModalBody.innerHTML = '';
+
+                // Add image if available
+                if (arrival.imageUrl) {
+                    const img = document.createElement('img');
+                    img.src = arrival.imageUrl;
+                    img.alt = arrival.title;
+                    arrivalModalBody.appendChild(img);
+                }
+                // Add description
+                arrivalModalBody.innerHTML += arrival.fullDescription;
+
+                newArrivalModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
             viewArrivalButtons.forEach(button => {
                 button.addEventListener('click', function(event) {
                     event.preventDefault(); // Prevent default link behavior
@@ -972,10 +1024,7 @@
                     const arrival = newArrivalsData[arrivalId];
 
                     if (arrival) {
-                        arrivalModalTitle.innerHTML = arrival.title;
-                        arrivalModalBody.innerHTML = arrival.fullDescription;
-                        newArrivalModal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                        openArrivalModal(arrival);
                     }
                 });
             });
