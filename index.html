@@ -353,7 +353,7 @@
             text-align: center;
         }
 
-        /* Product Showcase Section - REVERTED TO ORIGINAL HORIZONTAL LAYOUT */
+        /* Product Showcase Section */
         #product-showcase {
             background-color: #F8F4F1; /* Light, warm background */
             padding: 80px 0;
@@ -379,14 +379,25 @@
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             width: 90%;
-            max-width: 800px; /* REVERTED: Back to a wider rectangle */
+            max-width: 800px; /* Wider rectangle */
             padding: 25px;
-            display: flex; /* REVERTED: Image and content are side-by-side */
-            flex-direction: row; /* REVERTED: Image and content side-by-side by default */
+            display: flex; /* Image and content are side-by-side */
+            flex-direction: row; /* Image and content side-by-side by default */
             align-items: flex-start; /* Aligns content to the top of the item */
             gap: 25px; /* Space between image and content */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: auto; /* Ensure height adapts to content */
+
+            /* Animation Initial State */
+            opacity: 0; /* Initially hidden */
+            transform: translateY(30px); /* Slightly below its final position */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition properties */
+        }
+
+        /* Class to trigger animation when in view */
+        .product-item-ladder.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .product-item-ladder:hover {
@@ -403,12 +414,12 @@
         .product-item-ladder:nth-child(even) {
             align-self: flex-end;
             margin-right: 5%;
-            flex-direction: row-reverse; /* REVERTED: Swap image and content for even items */
+            flex-direction: row-reverse; /* Swap image and content for even items */
         }
 
         .product-image-wrapper {
             flex-shrink: 0; /* Prevents image from shrinking below its content size */
-            width: 25%; /* REVERTED: Image takes about a quarter of the width */
+            width: 25%; /* Image takes about a quarter of the width */
             min-width: 150px; /* Ensures image area doesn't get too small */
             display: flex;
             justify-content: center; /* Center image within its wrapper */
@@ -419,7 +430,7 @@
         .product-image-wrapper img {
             max-width: 100%;
             height: auto;
-            max-height: 200px; /* REVERTED: Limit vertical height of image to visually fit in quarter */
+            max-height: 200px; /* Limit vertical height of image to visually fit in quarter */
             border-radius: 5px;
             object-fit: contain; /* Ensures the whole image is visible */
         }
@@ -431,13 +442,13 @@
             flex-direction: column; /* Stacks h3, p, button vertically */
             justify-content: space-between; /* Pushes button to bottom if height allows */
             height: 100%; /* Important for justify-content: space-between to work */
-            text-align: left; /* REVERTED: Align content to the left */
+            text-align: left; /* Align content to the left */
         }
 
         .product-content h3 {
             margin-top: 0;
             margin-bottom: 10px;
-            text-align: left; /* REVERTED: Align header left */
+            text-align: left; /* Align header left */
             color: #A0522D;
             font-size: 1.8em;
         }
@@ -448,11 +459,11 @@
             line-height: 1.7;
             margin-bottom: 20px;
             flex-grow: 1; /* Allows paragraph to grow and push button down */
-            text-align: left; /* REVERTED: Align paragraph left */
+            text-align: left; /* Align paragraph left */
         }
 
         .product-content .button-small {
-            align-self: flex-start; /* REVERTED: Align button to the left */
+            align-self: flex-start; /* Align button to the left */
         }
 
         /* Responsiveness */
@@ -578,7 +589,7 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Product Ladder Mobile Adjustments - REVERTED */
+            /* Product Ladder Mobile Adjustments */
             .product-item-ladder {
                 flex-direction: column !important; /* Stack vertically on mobile */
                 align-self: center !important; /* Center all items */
@@ -676,7 +687,6 @@
             </div>
         </section>
 
-        ---
 
         <section id="product-showcase">
             <div class="container">
@@ -729,26 +739,25 @@
             </div>
         </section>
 
-        ---
 
         <section id="featured-products" class="section-padding">
             <div class="container">
                 <h2>Our Bestsellers</h2>
                 <div class="product-grid">
                     <div class="product-item">
-                        <img src="product1.jpg" alt="Revitalizing Serum">
+                        <img src="imgs/serum2.png" alt="Revitalizing Serum">
                         <h3>Revitalizing Serum</h3>
                         <p>A concentrated serum for deep hydration and youthful radiance. Ideal for all skin types.</p>
                         <a href="product1-detail.html" class="button-small">View Details</a>
                     </div>
                     <div class="product-item">
-                        <img src="product2.jpg" alt="Luminous Foundation">
+                        <img src="imgs/foundation2.png" alt="Luminous Foundation">
                         <h3>Luminous Foundation</h3>
                         <p>Achieve a flawless, natural finish with our breathable, long-lasting liquid foundation.</p>
                         <a href="product2-detail.html" class="button-small">View Details</a>
                     </div>
                     <div class="product-item">
-                        <img src="product3.jpg" alt="Botanical Cleanser">
+                        <img src="imgs/cleanser.png" alt="Botanical Cleanser">
                         <h3>Botanical Cleanser</h3>
                         <p>Gently purify and refresh your skin with this invigorating, plant-based facial cleanser.</p>
                         <a href="product3-detail.html" class="button-small">View Details</a>
@@ -810,6 +819,31 @@
                         });
                     }
                 }
+            });
+
+            // New: Intersection Observer for product fade-in animation
+            const productItems = document.querySelectorAll('.product-item-ladder');
+
+            const observerOptions = {
+                root: null, // relative to the viewport
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the item is visible
+            };
+
+            const productObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add the class to make it visible and trigger transition
+                        entry.target.classList.add('is-visible');
+                        // Stop observing once animated (optional, keeps it from re-animating on scroll back)
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe each product item
+            productItems.forEach(item => {
+                productObserver.observe(item);
             });
         });
     </script>
