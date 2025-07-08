@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunera Beauty - Contact Us</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts - Playfair Display for headings, Lato for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Basic Reset & Typography */
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.6em; }
+
+        a {
+            text-decoration: none;
+            color: #A0522D;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 12px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo and Slogan Container */
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Brand Name Styling - Mixed Brown Wave Effect */
+        .logo a {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #8B4513, #A0522D, #CD853F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        .logo a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Slogan Styling */
+        .slogan {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85em;
+            color: #8B4513;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-align: left;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            font-weight: 400;
+            color: #666;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        nav ul li a:hover {
+            color: #A0522D;
+            text-decoration: none;
+        }
+
+        /* Dropdown Icon */
+        .dropdown-icon {
+            margin-left: 5px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .dropdown-content a {
+            color: #555 !important;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            text-transform: none;
+            letter-spacing: normal;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+            color: #A0522D !important;
+            text-decoration: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Hamburger Menu Toggle - Hidden on desktop */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #A0522D;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Enriched Buttons */
+        .button {
+            display: inline-block;
+            background: linear-gradient(to right, #A0522D, #CD853F);
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: none;
+        }
+
+        .button:hover {
+            background: linear-gradient(to right, #8B4513, #A0522D);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        .button-small {
+            display: inline-block;
+            background-color: #CD853F;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            border: none;
+        }
+
+        .button-small:hover {
+            background-color: #A0522D;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        /* Section Padding (retained for consistency) */
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #f9f9f9;
+            padding: 40px 0;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        /* Footer Logo Styling */
+        .footer-logo a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #CD853F;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-logo a:hover {
+            color: #A0522D;
+            text-decoration: none;
+        }
+
+        .footer-rights {
+            font-size: 0.9em;
+            color: #ccc;
+            margin: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #f9f9f9;
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #CD853F;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+
+        /* Contact Page Specific Styles */
+        #contact-hero {
+            background-color: #FDF9F6;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        #contact-hero h1 {
+            color: #8B4513;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        #contact-hero p {
+            font-size: 1.1em;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        #contact-details {
+            background-color: #fefefe;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-info-item {
+            background-color: #fff;
+            border: 1px solid #eee;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .contact-info-item i {
+            font-size: 2.5em;
+            color: #A0522D;
+            margin-bottom: 15px;
+        }
+
+        .contact-info-item h3 {
+            font-size: 1.4em;
+            color: #A0522D;
+            margin-bottom: 10px;
+        }
+
+        .contact-info-item p {
+            font-size: 1em;
+            color: #666;
+            margin: 0;
+        }
+
+        #contact-form-section {
+            background-color: #F8F4F1;
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+        }
+
+        #contact-form-section h2 {
+            margin-bottom: 30px;
+            color: #8B4513;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #555;
+            text-align: left;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+            color: #333;
+            box-sizing: border-box; /* Include padding in width */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus {
+            border-color: #CD853F;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(205, 133, 63, 0.2); /* Soft focus ring */
+        }
+
+        .form-group textarea {
+            resize: vertical; /* Allow vertical resizing */
+            min-height: 120px;
+        }
+
+        .contact-form button[type="submit"] {
+            width: auto; /* Allow button to size to content */
+            padding: 12px 30px;
+            font-size: 1.05em;
+            cursor: pointer;
+            display: block; /* Make it a block element to center with margin auto */
+            margin: 0 auto; /* Center the button */
+        }
+
+        #map-section {
+            padding: 60px 0;
+            background-color: #fefefe;
+            border-top: 1px solid #eee;
+        }
+
+        #map-section h2 {
+            margin-bottom: 30px;
+            color: #8B4513;
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 900px;
+            height: 450px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden; /* Ensures iframe corners are rounded */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            nav ul li {
+                margin-left: 15px;
+            }
+            .logo a {
+                font-size: 1.8em;
+            }
+            .slogan {
+                font-size: 0.75em;
+            }
+            h1 { font-size: 2.4em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+
+            .footer-logo a {
+                font-size: 1.6em;
+            }
+            .social-icons a {
+                font-size: 1.3em;
+            }
+
+            #contact-hero h1 {
+                font-size: 2.5em;
+            }
+            #contact-hero p {
+                font-size: 1em;
+            }
+            .contact-form {
+                padding: 30px;
+            }
+            .map-container {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
+                overflow: hidden;
+                max-height: 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+            }
+
+            nav.active {
+                max-height: 400px;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            /* Adjust dropdown for mobile menu */
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding-left: 20px;
+                min-width: unset;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                max-height: 0;
+                transition: max-height 0.3s ease-in-out;
+            }
+            .dropdown:hover .dropdown-content,
+            .dropdown.active .dropdown-content {
+                max-height: 200px;
+            }
+
+            /* Rotate dropdown icon in mobile when active */
+            .dropdown.active .dropdown-icon {
+                transform: rotate(180deg);
+            }
+
+            /* Adjust logo and slogan for small screens */
+            .logo {
+                align-items: center;
+            }
+            .logo a {
+                font-size: 1.6em;
+            }
+            .slogan {
+                font-size: 0.7em;
+                text-align: center;
+            }
+
+            footer .container {
+                gap: 15px;
+            }
+            .map-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Lunera Beauty</a>
+                <span class="slogan">Elegance in Every Shade.</span>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html" class="dropbtn">Shop <span class="dropdown-icon">&#9660;</span></a>
+                        <div class="dropdown-content">
+                            <a href="skincare.html">Skincare</a>
+                            <a href="makeup.html">Makeup</a>
+                            <a href="fragrance.html">Fragrance</a>
+                            <a href="body-hair.html">Body & Hair Care</a>
+                            <a href="accessories.html">Accessories</a>
+                        </div>
+                    </li>
+                    <li><a href="new-arrivals.html">New Arrivals</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="contact-hero">
+            <div class="container">
+                <h1>Get in Touch with Lunera Beauty</h1>
+                <p>We'd love to hear from you! Whether you have a question about our products, need assistance with an order, or just want to share your beauty journey, our team is here to help.</p>
+            </div>
+        </section>
+
+        <section id="contact-details" class="section-padding">
+            <div class="container">
+                <h2>Our Contact Information</h2>
+                <div class="contact-info-grid">
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>info@lunerabeauty.com</p>
+                        <p>support@lunerabeauty.com</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Call Us</h3>
+                        <p>+1 (555) 123-4567</p>
+                        <p>Mon-Fri: 9 AM - 6 PM (EST)</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Visit Our Office</h3>
+                        <p>123 Beauty Lane</p>
+                        <p>Glamour City, GC 90210, USA</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-form-section" class="section-padding">
+            <div class="container">
+                <h2>Send Us a Message</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="button">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="map-section" class="section-padding">
+            <div class="container">
+                <h2>Find Us on the Map</h2>
+                <div class="map-container">
+                    <!-- Replace with your actual Google Maps embed code -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.298905391263!2d144.9630576156545!3d-37.81627997975199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642b109592233%3A0x5045675218d2950!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">Lunera Beauty</a>
+            </div>
+            <p class="footer-rights">&copy; 2025 Lunera Beauty. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://facebook.com/lunerabeauty" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/lunerabeauty" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                });
+            }
+
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(event) {
+                    if (window.innerWidth <= 768) {
+                        if (event.target.classList.contains('dropbtn') || event.target.closest('.dropbtn')) {
+                            event.preventDefault();
+                            this.classList.toggle('active');
+                        }
+                    }
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    const isClickInsideNav = mainNav.contains(event.target);
+                    const isClickInsideToggle = menuToggle.contains(event.target);
+
+                    if (!isClickInsideNav && !isClickInsideToggle) {
+                        mainNav.classList.remove('active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

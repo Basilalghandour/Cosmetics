@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunera Beauty - Blog</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts - Playfair Display for headings, Lato for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social media icons and general icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Basic Reset & Typography */
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.6em; }
+
+        a {
+            text-decoration: none;
+            color: #A0522D;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 12px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo and Slogan Container */
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Brand Name Styling - Mixed Brown Wave Effect */
+        .logo a {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #8B4513, #A0522D, #CD853F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        .logo a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Slogan Styling */
+        .slogan {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85em;
+            color: #8B4513;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-align: left;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            font-weight: 400;
+            color: #666;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        nav ul li a:hover {
+            color: #A0522D;
+            text-decoration: none;
+        }
+
+        /* Dropdown Icon */
+        .dropdown-icon {
+            margin-left: 5px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .dropdown-content a {
+            color: #555 !important;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            text-transform: none;
+            letter-spacing: normal;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+            color: #A0522D !important;
+            text-decoration: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Hamburger Menu Toggle - Hidden on desktop */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #A0522D;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Enriched Buttons */
+        .button {
+            display: inline-block;
+            background: linear-gradient(to right, #A0522D, #CD853F);
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: none;
+        }
+
+        .button:hover {
+            background: linear-gradient(to right, #8B4513, #A0522D);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        .button-small {
+            display: inline-block;
+            background-color: #CD853F;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            border: none;
+        }
+
+        .button-small:hover {
+            background-color: #A0522D;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        /* Section Padding (retained for consistency) */
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #f9f9f9;
+            padding: 40px 0;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        /* Footer Logo Styling */
+        .footer-logo a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #CD853F;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-logo a:hover {
+            color: #A0522D;
+            text-decoration: none;
+        }
+
+        .footer-rights {
+            font-size: 0.9em;
+            color: #ccc;
+            margin: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #f9f9f9;
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #CD853F;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+
+        /* General H2 styling for sections (like "Latest Articles") */
+        .section-padding h2 {
+            text-align: center;
+            color: #8B4513;
+            font-size: 2.5em;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .section-padding h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #A0522D, #CD853F);
+            border-radius: 2px;
+        }
+
+
+        /* Blog Page Specific Styles */
+        #blog-hero {
+            background-color: #FDF9F6;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        #blog-hero h1 {
+            color: #8B4513;
+            font-size: 3em;
+            margin-bottom: 20px;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        #blog-hero p {
+            font-size: 1.1em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s; /* Slight delay */
+        }
+
+        /* When visible, animate */
+        #blog-hero.is-visible h1,
+        #blog-hero.is-visible p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #blog-posts {
+            background-color: #fefefe;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .blog-post-item {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            overflow: hidden; /* Ensures image corners are rounded with parent */
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .blog-post-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        /* Animation for blog post items when visible */
+        .blog-post-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Staggered animation delays */
+        .blog-post-item:nth-child(1) { transition-delay: 0s; }
+        .blog-post-item:nth-child(2) { transition-delay: 0.1s; }
+        .blog-post-item:nth-child(3) { transition-delay: 0.2s; }
+        .blog-post-item:nth-child(4) { transition-delay: 0.3s; }
+        .blog-post-item:nth-child(5) { transition-delay: 0.4s; }
+        .blog-post-item:nth-child(6) { transition-delay: 0.5s; }
+
+
+        /* New styles for blog post icons */
+        .blog-icon-wrapper {
+            width: 100%;
+            height: 220px; /* Match old image height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FDF9F6; /* Light background for the icon area */
+            border-bottom: 1px solid #eee;
+        }
+
+        .blog-icon-wrapper i {
+            font-size: 5em; /* Large icon size */
+            color: #A0522D; /* Brand accent color for icons */
+        }
+
+
+        .blog-post-content {
+            padding: 25px;
+        }
+
+        .blog-post-content h3 {
+            font-size: 1.6em;
+            color: #A0522D;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .blog-post-content p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .blog-meta {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .blog-meta span {
+            margin-right: 15px;
+        }
+
+        .blog-meta i {
+            margin-right: 5px;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh; /* Limit height to prevent overflow */
+            overflow-y: auto; /* Enable scrolling for long content */
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-button:hover {
+            color: #A0522D;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #8B4513;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-body {
+            font-size: 1em;
+            color: #444;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            nav ul li {
+                margin-left: 15px;
+            }
+            .logo a {
+                font-size: 1.8em;
+            }
+            .slogan {
+                font-size: 0.75em;
+            }
+            h1 { font-size: 2.4em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+
+            .footer-logo a {
+                font-size: 1.6em;
+            }
+            .social-icons a {
+                font-size: 1.3em;
+            }
+
+            #blog-hero h1 {
+                font-size: 2.5em;
+            }
+            #blog-hero p {
+                font-size: 1em;
+            }
+            .section-padding h2 {
+                font-size: 2em; /* Adjust general h2 for smaller screens */
+            }
+            .section-padding h2::after {
+                width: 60px; /* Adjust underline width */
+            }
+
+            .modal-content {
+                padding: 20px;
+                max-width: 95%; /* Wider on smaller screens */
+            }
+            .modal-title {
+                font-size: 1.8em;
+            }
+            .modal-close-button {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
+                overflow: hidden;
+                max-height: 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+            }
+
+            nav.active {
+                max-height: 400px;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            /* Adjust dropdown for mobile menu */
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding-left: 20px;
+                min-width: unset;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                max-height: 0;
+                transition: max-height 0.3s ease-in-out;
+            }
+            .dropdown:hover .dropdown-content,
+            .dropdown.active .dropdown-content {
+                max-height: 200px;
+            }
+
+            /* Rotate dropdown icon in mobile when active */
+            .dropdown.active .dropdown-icon {
+                transform: rotate(180deg);
+            }
+
+            /* Adjust logo and slogan for small screens */
+            .logo {
+                align-items: center;
+            }
+            .logo a {
+                font-size: 1.6em;
+            }
+            .slogan {
+                font-size: 0.7em;
+                text-align: center;
+            }
+
+            footer .container {
+                gap: 15px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Lunera Beauty</a>
+                <span class="slogan">Elegance in Every Shade.</span>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="products.html" class="dropbtn">Shop <span class="dropdown-icon">&#9660;</span></a>
+                        <div class="dropdown-content">
+                            <a href="skincare.html">Skincare</a>
+                            <a href="makeup.html">Makeup</a>
+                            <a href="fragrance.html">Fragrance</a>
+                            <a href="body-hair.html">Body & Hair Care</a>
+                            <a href="accessories.html">Accessories</a>
+                        </div>
+                    </li>
+                    <li><a href="new-arrivals.html">New Arrivals</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="blog-hero">
+            <div class="container">
+                <h1>Lunera Beauty Blog</h1>
+                <p>Dive into the world of beauty with our latest articles, tips, and insights. From skincare routines to makeup trends, discover everything you need to enhance your glow.</p>
+            </div>
+        </section>
+
+        <section id="blog-posts" class="section-padding">
+            <div class="container">
+                <h2>Latest Articles</h2>
+                <div class="blog-grid">
+                    <div class="blog-post-item">
+                        <div class="blog-icon-wrapper">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <div class="blog-post-content">
+                            <h3>The Ultimate Guide to Your Daily Skincare Routine</h3>
+                            <p>Unlock radiant skin with our comprehensive guide to building an effective daily skincare regimen tailored to your needs.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar-alt"></i> July 8, 2025</span>
+                                <span><i class="fas fa-user"></i> Lunera Team</span>
+                            </div>
+                            <a href="#" class="button-small read-more-btn" data-post-id="skincare-routine">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-item">
+                        <div class="blog-icon-wrapper">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="blog-post-content">
+                            <h3>Summer Glow: Top Makeup Trends for a Luminous Look</h3>
+                            <p>Discover the hottest makeup trends for summer that will give you a fresh, luminous, and effortlessly beautiful glow.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar-alt"></i> July 1, 2025</span>
+                                <span><i class="fas fa-user"></i> Beauty Expert</span>
+                            </div>
+                            <a href="#" class="button-small read-more-btn" data-post-id="summer-glow">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-item">
+                        <div class="blog-icon-wrapper">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="blog-post-content">
+                            <h3>The Power of Nature: Key Ingredients in Clean Beauty</h3>
+                            <p>Explore the potent natural ingredients that form the heart of our clean beauty philosophy and their benefits for your skin.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar-alt"></i> June 25, 2025</span>
+                                <span><i class="fas fa-user"></i> Product Dev</span>
+                            </div>
+                            <a href="#" class="button-small read-more-btn" data-post-id="natural-ingredients">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-item">
+                        <div class="blog-icon-wrapper">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="blog-post-content">
+                            <h3>Choosing Your Signature Scent: A Guide to Fragrances</h3>
+                            <p>Find the perfect perfume that reflects your personality and leaves a lasting impression with our expert fragrance tips.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar-alt"></i> June 18, 2025</span>
+                                <span><i class="fas fa-user"></i> Scent Master</span>
+                            </div>
+                            <a href="#" class="button-small read-more-btn" data-post-id="signature-scent">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-item">
+                        <div class="blog-icon-wrapper">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="blog-post-content">
+                            <h3>Beyond Skincare: Incorporating Self-Care into Your Routine</h3>
+                            <p>Discover how holistic self-care practices can enhance your beauty from within, promoting well-being and inner glow.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar-alt"></i> June 10, 2025</span>
+                                <span><i class="fas fa-user"></i> Wellness Guru</span>
+                            </div>
+                            <a href="#" class="button-small read-more-btn" data-post-id="self-care">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post-item">
+                        <div class="blog-icon-wrapper">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="blog-post-content">
+                            <h3>The Future of Beauty: Innovations Shaping the Industry</h3>
+                            <p>Stay ahead of the curve with a look into the exciting innovations and technological advancements transforming the beauty world.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar-alt"></i> June 3, 2025</span>
+                                <span><i class="fas fa-user"></i> Trend Analyst</span>
+                            </div>
+                            <a href="#" class="button-small read-more-btn" data-post-id="beauty-innovation">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">Lunera Beauty</a>
+            </div>
+            <p class="footer-rights">&copy; 2025 Lunera Beauty. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://facebook.com/lunerabeauty" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/lunerabeauty" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div class="modal-overlay" id="blogPostModal">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeModalBtn">&times;</button>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                });
+            }
+
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(event) {
+                    if (window.innerWidth <= 768) {
+                        if (event.target.classList.contains('dropbtn') || event.target.closest('.dropbtn')) {
+                            event.preventDefault();
+                            this.classList.toggle('active');
+                        }
+                    }
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    const isClickInsideNav = mainNav.contains(event.target);
+                    const isClickInsideToggle = menuToggle.contains(event.target);
+
+                    if (!isClickInsideNav && !isClickInsideToggle) {
+                        mainNav.classList.remove('active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+
+            // Intersection Observer for animations
+            const observeElements = (selector, className) => {
+                const elements = document.querySelectorAll(selector);
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1 // Trigger when 10% of the element is visible
+                };
+
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add(className);
+                            obs.unobserve(entry.target); // Stop observing once animated
+                        }
+                    });
+                }, observerOptions);
+
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            };
+
+            // Apply animations to specific sections/elements
+            observeElements('#blog-hero', 'is-visible');
+            observeElements('.blog-post-item', 'is-visible');
+
+
+            // Modal Functionality
+            const blogPostData = {
+                'skincare-routine': {
+                    title: 'The Ultimate Guide to Your Daily Skincare Routine',
+                    fullDescription: `
+                        <p>Establishing a consistent skincare routine is the cornerstone of healthy, glowing skin. This comprehensive guide breaks down the essential steps for your morning and evening regimen, helping you achieve your best complexion yet.</p>
+                        <p><strong>Morning Routine:</strong> Start your day by gently cleansing your face to remove impurities accumulated overnight. Follow with a toner to balance pH levels and prepare your skin for subsequent products. Next, apply a potent serum targeting specific concerns like hydration or anti-aging. Don't forget a lightweight eye cream to brighten and de-puff. Finish with a broad-spectrum SPF moisturizer, crucial for protecting your skin from harmful UV rays.</p>
+                        <p><strong>Evening Routine:</strong> The evening is prime time for repair and regeneration. Begin with a double cleanse to thoroughly remove makeup, sunscreen, and daily grime. Apply a treatment serum, such as one with retinoids or alpha hydroxy acids, to address deeper concerns. Hydrate generously with a rich night cream or facial oil to lock in moisture and support skin barrier function. Remember to apply a nourishing lip balm before bed.</p>
+                        <p>Consistency is key. Stick to your routine daily, and you'll soon see remarkable improvements in your skin's health and appearance. Adjust products based on your skin's changing needs and seasonal variations.</p>
+                    `
+                },
+                'summer-glow': {
+                    title: 'Summer Glow: Top Makeup Trends for a Luminous Look',
+                    fullDescription: `
+                        <p>Embrace the warmth of summer with makeup trends that focus on natural radiance and effortless beauty. This season, it's all about achieving a luminous, sun-kissed glow without heavy layers.</p>
+                        <p><strong>Dewy Skin Finish:</strong> Swap matte foundations for hydrating tints or tinted moisturizers. Use liquid highlighters on your cheekbones, brow bones, and cupid's bow for a lit-from-within glow. A setting spray with a dewy finish will seal your look and enhance luminosity.</p>
+                        <p><strong>Subtle Shimmer Eyes:</strong> Opt for cream eyeshadows in warm bronze, gold, or champagne tones. A touch of shimmer on the inner corners of your eyes will make them pop. Keep eyeliner minimal or use a soft brown pencil for a natural definition.</p>
+                        <p><strong>Stained Lips:</strong> Forget heavy lipsticks. Tinted balms, lip stains, or sheer glosses in berry, coral, or nude shades are perfect for a low-maintenance, fresh look that lasts through summer activities.</p>
+                        <p><strong>Flushed Cheeks:</strong> Cream blushes in peach or rose tones blend seamlessly into dewy skin, giving you a natural, healthy flush. Apply to the apples of your cheeks and blend upwards towards your temples.</p>
+                        <p>Remember to use waterproof formulas for mascara and eyeliner to prevent smudging in the heat and humidity. Enjoy your radiant summer glow!</p>
+                    `
+                },
+                'natural-ingredients': {
+                    title: 'The Power of Nature: Key Ingredients in Clean Beauty',
+                    fullDescription: `
+                        <p>Clean beauty is more than just a trend; it's a commitment to using ingredients that are safe, non-toxic, and beneficial for your skin and the environment. At Lunera Beauty, we harness the power of nature to create effective and luxurious formulations.</p>
+                        <p><strong>Hyaluronic Acid (Plant-Derived):</strong> A hydration powerhouse, plant-derived hyaluronic acid can hold up to 1,000 times its weight in water, plumping the skin and reducing the appearance of fine lines. It's essential for all skin types, especially dry or dehydrated skin.</p>
+                        <p><strong>Vitamin C (Ascorbic Acid & Derivatives):</strong> A potent antioxidant, Vitamin C brightens the complexion, evens skin tone, and protects against environmental damage. Look for stable forms like Magnesium Ascorbyl Phosphate or Tetrahexyldecyl Ascorbate for maximum efficacy.</p>
+                        <p><strong>Niacinamide (Vitamin B3):</strong> This versatile ingredient addresses multiple skin concerns. It helps minimize pores, improve uneven skin tone, soften fine lines, and strengthen the skin barrier. It's well-tolerated by most skin types, including sensitive and acne-prone.</p>
+                        <p><strong>Botanical Oils (Jojoba, Argan, Rosehip):</strong> These natural oils mimic the skin's sebum, providing deep nourishment without clogging pores. Jojoba is balancing, Argan is rich in antioxidants, and Rosehip is excellent for regeneration and scar healing.</p>
+                        <p><strong>Aloe Vera:</strong> Known for its soothing and healing properties, Aloe Vera is rich in vitamins, minerals, and amino acids. It calms irritated skin, reduces redness, and provides lightweight hydration.</p>
+                        <p>By focusing on these and other carefully selected natural ingredients, Lunera Beauty ensures that your skin receives the purest and most effective care.</p>
+                    `
+                },
+                'signature-scent': {
+                    title: 'Choosing Your Signature Scent: A Guide to Fragrances',
+                    fullDescription: `
+                        <p>A signature scent is more than just a fragrance; it's an extension of your personality, a memory, and an invisible accessory. Finding "the one" can be a delightful journey. Here’s how to navigate the world of fragrances to discover your perfect match.</p>
+                        <p><strong>Understand Fragrance Families:</strong> Fragrances are typically categorized into families: Floral (romantic, powdery), Oriental (warm, spicy, vanilla), Woody (earthy, sophisticated, sandalwood, cedar), Fresh (citrus, green, aquatic), and Fougere (herbal, mossy, masculine but also in many unisex scents). Understanding these can help narrow down your preferences.</p>
+                        <p><strong>Consider Your Lifestyle:</strong> Do you need a scent for daily wear, special occasions, or both? Lighter, fresher scents are often better for daytime and warmer climates, while richer, heavier scents suit evenings and colder weather.</p>
+                        <p><strong>Test on Your Skin:</strong> Perfumes react uniquely with individual body chemistry. Always test a scent on your pulse points (wrists, neck) and wear it for a few hours. The "dry down" (the scent after the top notes evaporate) is crucial to how it will truly smell on you.</p>
+                        <p><strong>Don't Rush:</strong> Your nose can get fatigued. Limit yourself to testing 2-3 fragrances at a time. Take a break, perhaps by smelling coffee beans (often provided in perfume stores), before trying more.</p>
+                        <p><strong>Trust Your Instincts:</strong> Ultimately, your signature scent should make you feel confident, comfortable, and truly yourself. Don't be swayed by trends; choose what genuinely resonates with you.</p>
+                        <p>A well-chosen fragrance can leave a lasting impression, becoming a part of your personal brand. Enjoy the discovery!</p>
+                    `
+                },
+                'self-care': {
+                    title: 'Beyond Skincare: Incorporating Self-Care into Your Routine',
+                    fullDescription: `
+                        <p>True beauty radiates from within, and a holistic approach to self-care is just as vital as your external skincare routine. Integrating mindful practices into your daily life can significantly enhance your well-being and, by extension, your glow.</p>
+                        <p><strong>Mindful Moments:</strong> Start your day with a few minutes of meditation or deep breathing. This can reduce stress, improve focus, and set a positive tone for your day. Even 5-10 minutes can make a difference.</p>
+                        <p><strong>Nourish from Within:</strong> Pay attention to your diet. Incorporate plenty of fruits, vegetables, healthy fats, and lean proteins. Hydration is also key – drink ample water throughout the day to support skin health and overall bodily functions.</p>
+                        <p><strong>Quality Sleep:</strong> Prioritize 7-9 hours of quality sleep each night. Sleep is when your body repairs and regenerates, including your skin cells. A consistent sleep schedule can dramatically improve your complexion and energy levels.</p>
+                        <p><strong>Movement and Exercise:</strong> Regular physical activity boosts circulation, which delivers oxygen and nutrients to your skin. It also helps reduce stress and promotes detoxification. Find an activity you enjoy, whether it's yoga, walking, or dancing.</p>
+                        <p><strong>Digital Detox:</strong> Take regular breaks from screens. Excessive screen time can contribute to eye strain and mental fatigue. Designate tech-free times or zones in your home to truly unwind.</p>
+                        <p>By nurturing your mind, body, and spirit, you'll find that your outer beauty naturally flourishes, reflecting a deeper sense of peace and vitality.</p>
+                    `
+                },
+                'beauty-innovation': {
+                    title: 'The Future of Beauty: Innovations Shaping the Industry',
+                    fullDescription: `
+                        <p>The beauty industry is constantly evolving, driven by groundbreaking innovations that promise more personalized, effective, and sustainable solutions. Here’s a glimpse into the exciting future of beauty.</p>
+                        <p><strong>Personalized Skincare:</strong> AI and data analytics are enabling hyper-personalized skincare. Brands are now offering custom-blended serums and moisturizers based on individual skin analysis, DNA, and environmental factors, ensuring products are perfectly matched to your unique needs.</p>
+                        <p><strong>Biotechnology and Fermented Ingredients:</strong> Advanced biotechnology is leading to the development of highly potent, bio-engineered ingredients. Fermented ingredients, for example, offer enhanced absorption and efficacy, delivering powerful benefits to the skin.</p>
+                        <p><strong>Sustainable and Ethical Practices:</strong> The demand for eco-conscious beauty is growing. Innovations include waterless formulations, refillable packaging, upcycled ingredients, and carbon-neutral production processes. Brands are increasingly focusing on their environmental footprint.</p>
+                        <p><strong>Wearable Tech for Beauty:</strong> Smart devices are emerging that can analyze skin conditions in real-time, recommend products, and even apply makeup with precision. These technologies offer unprecedented insights and convenience for beauty enthusiasts.</p>
+                        <p><strong>Microbiome-Friendly Products:</strong> Research into the skin's microbiome is leading to products that support a healthy balance of bacteria on the skin, crucial for barrier function and overall skin health. This new frontier promises solutions for sensitive and problematic skin conditions.</p>
+                        <p>The future of beauty is intelligent, sustainable, and deeply connected to individual well-being, promising a more effective and responsible approach to self-care.</p>
+                    `
+                }
+            };
+
+            const readMoreButtons = document.querySelectorAll('.read-more-btn');
+            const modalOverlay = document.getElementById('blogPostModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const postId = this.dataset.postId;
+                    const post = blogPostData[postId];
+
+                    if (post) {
+                        modalTitle.innerHTML = post.title;
+                        modalBody.innerHTML = post.fullDescription;
+                        modalOverlay.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    }
+                });
+            });
+
+            closeModalBtn.addEventListener('click', function() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = ''; // Restore background scrolling
+            });
+
+            // Close modal when clicking outside the content
+            modalOverlay.addEventListener('click', function(event) {
+                if (event.target === modalOverlay) {
+                    modalOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

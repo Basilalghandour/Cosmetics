@@ -304,6 +304,28 @@
             padding: 60px 0;
         }
 
+        /* General H2 styling for sections */
+        .section-padding h2 {
+            text-align: center;
+            color: #8B4513;
+            font-size: 2.5em;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .section-padding h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #A0522D, #CD853F);
+            border-radius: 2px;
+        }
+
         /* Featured Products (Styles mostly retained) */
         #featured-products {
             background-color: #fefefe;
@@ -542,9 +564,95 @@
         }
 
         .social-icons a:hover {
-            color: #CD853F; /* Warm brown on hover */
+            color: #CD853F;
             transform: scale(1.1);
             text-decoration: none; /* Keep no underline on hover */
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh; /* Limit height to prevent overflow */
+            overflow-y: auto; /* Enable scrolling for long content */
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-button:hover {
+            color: #A0522D;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #8B4513;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-body {
+            font-size: 1em;
+            color: #444;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        /* Style for image inside modal body - ADJUSTED FOR SMALLER SIZE */
+        .modal-body img {
+            max-width: 80%; /* Make the image smaller relative to the modal width */
+            max-height: 300px; /* Set a maximum height for the image */
+            height: auto;
+            display: block; /* Ensures image takes full width and is centered if needed */
+            margin: 20px auto; /* Add some margin above/below image and center it */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for the image */
+            object-fit: contain; /* Ensures the entire image is visible within its bounds */
         }
 
 
@@ -579,6 +687,40 @@
             }
             .social-icons a {
                 font-size: 1.3em; /* Adjust icon size for smaller screens */
+            }
+
+            #hero h1 {
+                font-size: 3em;
+            }
+            #hero p {
+                font-size: 1.1em;
+            }
+            #cta h2 {
+                font-size: 2.5em;
+            }
+            #cta p {
+                font-size: 1.1em;
+            }
+            .section-padding h2 {
+                font-size: 2em;
+            }
+            .section-padding h2::after {
+                width: 60px;
+            }
+            .modal-content {
+                padding: 20px;
+                max-width: 95%;
+            }
+            .modal-title {
+                font-size: 1.8em;
+            }
+            .modal-close-button {
+                font-size: 1.5em;
+            }
+            /* Adjust image size in modal for smaller screens if needed */
+            .modal-body img {
+                max-width: 90%; /* Allow image to be slightly larger on smaller screens */
+                max-height: 250px; /* Adjust max height for smaller screens */
             }
         }
 
@@ -771,7 +913,8 @@
                         <h2>Embrace Your Inner Radiance</h2>
                         <p>Discover our latest collection, designed to enhance your natural beauty. Our  Luminous Lip Gloss provides a flawless finish, leaving your lips feeling hydrated and looking vibrant all day long.</p>
                         <p>Perfect for achieving that fresh, illuminated look, whether for a casual day out or a special evening. Experience the difference of quality ingredients and ethical craftsmanship.</p>
-                        <a href="product-detail-page.html" class="button">Shop This Look</a>
+                        <!-- Changed href to # and added data-product-id for modal -->
+                        <a href="#" class="button" id="viewFeaturedLookBtn" data-product-id="featured-look">Shop This Look</a>
                     </div>
                 </div>
             </div>
@@ -839,19 +982,19 @@
                         <img src="imgs/serum2.png" alt="Revitalizing Serum">
                         <h3>Revitalizing Serum</h3>
                         <p>A concentrated serum for deep hydration and youthful radiance. Ideal for all skin types.</p>
-                        <a href="product1-detail.html" class="button-small">View Details</a>
+                        <a href="#" class="button-small view-details-btn" data-product-id="revitalizing-serum">View Details</a>
                     </div>
                     <div class="product-item">
                         <img src="imgs/foundation2.png" alt="Luminous Foundation">
                         <h3>Luminous Foundation</h3>
                         <p>Achieve a flawless, natural finish with our breathable, long-lasting liquid foundation.</p>
-                        <a href="product2-detail.html" class="button-small">View Details</a>
+                        <a href="#" class="button-small view-details-btn" data-product-id="luminous-foundation">View Details</a>
                     </div>
                     <div class="product-item">
                         <img src="imgs/cleanser.png" alt="Botanical Cleanser">
                         <h3>Botanical Cleanser</h3>
                         <p>Gently purify and refresh your skin with this invigorating, plant-based facial cleanser.</p>
-                        <a href="product3-detail.html" class="button-small">View Details</a>
+                        <a href="#" class="button-small view-details-btn" data-product-id="botanical-cleanser">View Details</a>
                     </div>
                 </div>
             </div>
@@ -870,6 +1013,15 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal Structure for Product Details (reused for featured look) -->
+    <div class="modal-overlay" id="productDetailModal">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeProductModalBtn">&times;</button>
+            <h3 class="modal-title" id="productModalTitle"></h3>
+            <div class="modal-body" id="productModalBody"></div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -913,6 +1065,7 @@
 
             // Intersection Observer for product fade-in animation
             const productItems = document.querySelectorAll('.product-item-ladder');
+            const bestSellerItems = document.querySelectorAll('#featured-products .product-item'); // Select bestsellers
 
             const observerOptions = {
                 root: null,
@@ -931,6 +1084,139 @@
 
             productItems.forEach(item => {
                 productObserver.observe(item);
+            });
+
+            bestSellerItems.forEach(item => {
+                productObserver.observe(item); // Observe bestsellers too
+            });
+
+
+            // Product Data for Modals (including the new 'featured-look')
+            const productData = {
+                'featured-look': {
+                    title: 'The Luminous Look: Enhance Your Natural Radiance',
+                    fullDescription: `
+                        <p>Achieve a fresh, illuminated look with our curated "Embrace Your Inner Radiance" collection. This look focuses on enhancing your natural features with subtle glow and hydrating finishes.</p>
+                        <p>It features products like our Luminous Lip Gloss for a vibrant, hydrated pout, and a lightweight foundation that provides a flawless, breathable finish. Perfect for both casual day wear and elegant evenings.</p>
+                        <p><strong>Key Products in This Look:</strong></p>
+                        <ul>
+                            <li>Luminous Lip Gloss (Shade: Rose Petal)</li>
+                            <li>Sheer Tinted Moisturizer (for an even, dewy base)</li>
+                            <li>Liquid Highlighter (for a subtle glow on high points)</li>
+                        </ul>
+                        <p>Experience the blend of quality ingredients and ethical craftsmanship that defines Lunera Beauty.</p>
+                    `,
+                    imageUrl: 'imgs/model1.png' // Image for this specific modal
+                },
+                'revitalizing-serum': {
+                    title: 'Revitalizing Serum: Youthful Radiance in Every Drop',
+                    fullDescription: `
+                        <p>Our Revitalizing Serum is a concentrated powerhouse designed to deeply hydrate and restore youthful radiance. Formulated with a potent blend of antioxidants, peptides, and nourishing botanical extracts, this serum targets fine lines, dullness, and uneven texture.</p>
+                        <p>It absorbs quickly, delivering essential nutrients to the skin, promoting a smoother, firmer, and more luminous complexion. Ideal for all skin types seeking an age-defying boost.</p>
+                        <p><strong>Key Benefits:</strong></p>
+                        <ul>
+                            <li>Reduces the appearance of fine lines and wrinkles.</li>
+                            <li>Boosts skin's natural collagen production.</li>
+                            <li>Provides intense, long-lasting hydration.</li>
+                            <li>Enhances skin elasticity and firmness.</li>
+                            <li>Leaves skin feeling soft, supple, and revitalized.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Apply 2-3 drops to clean, dry skin morning and evening. Gently pat onto your face and neck until fully absorbed. Follow with your preferred moisturizer.</p>
+                    `
+                },
+                'luminous-foundation': {
+                    title: 'Luminous Foundation: Your Flawless, Natural Canvas',
+                    fullDescription: `
+                        <p>Achieve a flawless yet natural finish with our Luminous Foundation. This breathable, long-wearing liquid foundation blends seamlessly into the skin, providing buildable coverage that perfects your complexion without feeling heavy or cakey.</p>
+                        <p>Infused with light-reflecting pigments and hydrating ingredients, it imparts a beautiful, luminous glow, blurring imperfections and evening out skin tone for a radiant, healthy-looking finish.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Buildable, natural-looking coverage.</li>
+                            <li>Long-lasting and comfortable wear.</li>
+                            <li>Hydrating formula for a dewy glow.</li>
+                            <li>Blurs imperfections and evens skin tone.</li>
+                            <li>Available in a wide range of shades to match every complexion.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Apply with a foundation brush, sponge, or your fingertips, starting from the center of your face and blending outwards. Build coverage as desired. For a truly luminous finish, pair with our Radiant Glow Serum.</p>
+                    `
+                },
+                'botanical-cleanser': {
+                    title: 'Botanical Cleanser: Gentle Purification, Naturally',
+                    fullDescription: `
+                        <p>Gently purify and refresh your skin with our invigorating Botanical Cleanser. This plant-based facial cleanser effectively removes dirt, oil, and impurities without stripping your skin of its essential moisture. Its mild, pH-balanced formula is enriched with soothing botanical extracts that leave your skin feeling clean, soft, and balanced.</p>
+                        <p>Perfect for daily use, this cleanser prepares your skin for the next steps in your skincare routine, ensuring maximum absorption of serums and moisturizers.</p>
+                        <p><strong>Key Ingredients:</strong></p>
+                        <ul>
+                            <li><strong>Aloe Vera:</strong> Soothes and calms irritated skin.</li>
+                            <li><strong>Green Tea Extract:</strong> Provides antioxidant protection and helps reduce inflammation.</li>
+                            <li><strong>Chamomile Extract:</strong> Gently purifies and contributes to a healthy skin barrier.</li>
+                            <li><strong>Glycerin:</strong> Attracts and retains moisture, preventing dryness.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Dispense a small amount into damp hands and work into a gentle lather. Massage onto wet face and neck in circular motions. Rinse thoroughly with warm water. Use morning and evening as the first step in your skincare regimen.</p>
+                    `
+                }
+            };
+
+            const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+            const productDetailModal = document.getElementById('productDetailModal');
+            const closeProductModalBtn = document.getElementById('closeProductModalBtn');
+            const productModalTitle = document.getElementById('productModalTitle');
+            const productModalBody = document.getElementById('productModalBody');
+
+            // Function to open the modal with content
+            function openProductModal(product) {
+                productModalTitle.innerHTML = product.title;
+                // Clear previous content
+                productModalBody.innerHTML = '';
+
+                // Add image if available
+                if (product.imageUrl) {
+                    const img = document.createElement('img');
+                    img.src = product.imageUrl;
+                    img.alt = product.title;
+                    productModalBody.appendChild(img);
+                }
+                // Add description
+                productModalBody.innerHTML += product.fullDescription;
+
+                productDetailModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            viewDetailsButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const productId = this.dataset.productId;
+                    const product = productData[productId];
+                    if (product) {
+                        openProductModal(product);
+                    }
+                });
+            });
+
+            // Event listener for the "Shop This Look" button
+            const viewFeaturedLookBtn = document.getElementById('viewFeaturedLookBtn');
+            if (viewFeaturedLookBtn) {
+                viewFeaturedLookBtn.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const featuredLook = productData['featured-look'];
+                    if (featuredLook) {
+                        openProductModal(featuredLook);
+                    }
+                });
+            }
+
+            closeProductModalBtn.addEventListener('click', function() {
+                productDetailModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore background scrolling
+            });
+
+            // Close modal when clicking outside the content
+            productDetailModal.addEventListener('click', function(event) {
+                if (event.target === productDetailModal) {
+                    productDetailModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             });
         });
     </script>
