@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunera Beauty - Collections</title>
+    <title>Lunera Beauty - Skincare</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Google Fonts - Playfair Display for headings, Lato for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -325,15 +325,15 @@
             text-decoration: none;
         }
 
-        /* Collections Page Specific Styles */
-        #collections-hero {
+        /* Skincare Page Specific Styles */
+        #skincare-hero {
             background-color: #FDF9F6;
             padding: 80px 0;
             text-align: center;
             border-bottom: 1px solid #eee;
         }
 
-        #collections-hero h1 {
+        #skincare-hero h1 {
             color: #8B4513;
             font-size: 3em;
             margin-bottom: 20px;
@@ -342,7 +342,7 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        #collections-hero p {
+        #skincare-hero p {
             font-size: 1.1em;
             color: #555;
             max-width: 800px;
@@ -353,26 +353,26 @@
         }
 
         /* When visible, animate */
-        #collections-hero.is-visible h1,
-        #collections-hero.is-visible p {
+        #skincare-hero.is-visible h1,
+        #skincare-hero.is-visible p {
             opacity: 1;
             transform: translateY(0);
         }
 
-        #collection-grid-section {
+        #skincare-products {
             background-color: #fefefe;
             padding: 60px 0;
             text-align: center;
         }
 
-        .collection-grid {
+        .skincare-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
             margin-top: 40px;
         }
 
-        .collection-item {
+        .skincare-item {
             background-color: #fff;
             border: 1px solid #eee;
             border-radius: 10px;
@@ -385,45 +385,47 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .collection-item:hover {
+        .skincare-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.12);
         }
 
-        /* Animation for collection items when visible */
-        .collection-item.is-visible {
+        /* Animation for skincare items when visible */
+        .skincare-item.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
         /* Staggered animation delays */
-        .collection-item:nth-child(1) { transition-delay: 0s; }
-        .collection-item:nth-child(2) { transition-delay: 0.1s; }
-        .collection-item:nth-child(3) { transition-delay: 0.2s; }
-        .collection-item:nth-child(4) { transition-delay: 0.3s; }
-        .collection-item:nth-child(5) { transition-delay: 0.4s; }
-        .collection-item:nth-child(6) { transition-delay: 0.5s; }
+        .skincare-item:nth-child(1) { transition-delay: 0s; }
+        .skincare-item:nth-child(2) { transition-delay: 0.1s; }
+        .skincare-item:nth-child(3) { transition-delay: 0.2s; }
+        /* Removed delays for non-existent items */
 
-        /* New styles for collection icons */
-        .collection-icon-wrapper {
+        /* Styles for image containers in skincare products */
+        .skincare-image-wrapper {
             width: 100%;
-            height: 220px; /* Match old image height */
+            height: 250px; /* Fixed height for consistency */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #FDF9F6; /* Light background for the icon area */
+            background-color: #FDF9F6; /* Light background behind the image */
             border-bottom: 1px solid #eee;
+            overflow: hidden; /* Ensure image doesn't overflow its container */
         }
 
-        .collection-icon-wrapper i {
-            font-size: 5em; /* Large icon size */
-            color: #A0522D; /* Brand accent color for icons */
+        .skincare-image-wrapper img {
+            width: 100%; /* Make image fill the width of its wrapper */
+            height: 100%; /* Make image fill the height of its wrapper */
+            object-fit: cover; /* Crop image to cover the area without distortion */
+            display: block; /* Remove extra space below image */
+            border-radius: 0; /* No border radius here, it's on the item */
         }
 
-        .collection-content {
+        .skincare-content {
             padding: 25px;
         }
 
-        .collection-content h3 {
+        .skincare-content h3 {
             font-size: 1.6em;
             color: #A0522D;
             margin-top: 0;
@@ -431,7 +433,14 @@
             text-align: center;
         }
 
-        .collection-content p {
+        .skincare-content .price {
+            font-size: 1.3em;
+            color: #8B4513;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .skincare-content p {
             font-size: 0.95em;
             color: #666;
             margin-bottom: 20px;
@@ -512,6 +521,18 @@
             text-align: left;
         }
 
+        /* Style for image inside modal body */
+        .modal-body img {
+            max-width: 80%; /* Make the image smaller relative to the modal width */
+            max-height: 300px; /* Set a maximum height for the image */
+            height: auto;
+            display: block; /* Ensures image takes full width and is centered if needed */
+            margin: 20px auto; /* Add some margin above/below image and center it */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for the image */
+            object-fit: contain; /* Ensures the entire image is visible within its bounds */
+        }
+
 
         /* Responsiveness */
         @media (max-width: 992px) {
@@ -535,10 +556,10 @@
                 font-size: 1.3em;
             }
 
-            #collections-hero h1 {
+            #skincare-hero h1 {
                 font-size: 2.5em;
             }
-            #collections-hero p {
+            #skincare-hero p {
                 font-size: 1em;
             }
             .section-padding h2 {
@@ -556,6 +577,10 @@
             }
             .modal-close-button {
                 font-size: 1.5em;
+            }
+            .modal-body img {
+                max-width: 90%; /* Allow image to be slightly larger on smaller screens */
+                max-height: 250px; /* Adjust max height for smaller screens */
             }
         }
 
@@ -634,7 +659,7 @@
                 gap: 15px;
             }
 
-            .collection-grid {
+            .skincare-grid {
                 grid-template-columns: 1fr; /* Single column on mobile */
                 gap: 30px;
             }
@@ -659,7 +684,7 @@
                     <li class="dropdown">
                         <a href="makeup.html" class="dropbtn">Shop <span class="dropdown-icon">&#9660;</span></a>
                         <div class="dropdown-content">
-                            <a href="skincare.html">Skincare</a>
+                            <a href="skincare.html" class="active">Skincare</a>
                             <a href="makeup.html">Makeup</a>
                             <a href="fragrance.html">Fragrance</a>
                             <a href="body-hair.html">Body & Hair Care</a>
@@ -667,7 +692,7 @@
                         </div>
                     </li>
                     <li><a href="new-arrivals.html">New Arrivals</a></li>
-                    <li class="active"><a href="collections.html">Collections</a></li>
+                    <li><a href="collections.html">Collections</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -677,80 +702,50 @@
     </header>
 
     <main>
-        <section id="collections-hero">
+        <section id="skincare-hero">
             <div class="container">
-                <h1>Our Curated Collections</h1>
-                <p>Explore Lunera Beauty's exclusive collections, thoughtfully designed to address specific needs and enhance every aspect of your beauty ritual. Discover the perfect synergy of products for your unique glow.</p>
+                <h1>Nourish Your Skin: The Art of Skincare</h1>
+                <p>Discover Lunera Beauty's comprehensive skincare collection, designed to nurture and revitalize your complexion. From gentle cleansers to potent serums, find everything you need for a healthy, glowing skin.</p>
             </div>
         </section>
 
-        <section id="collection-grid-section" class="section-padding">
+        <section id="skincare-products" class="section-padding">
             <div class="container">
-                <h2>Explore by Theme</h2>
-                <div class="collection-grid">
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-sun"></i> <!-- Icon for Radiance -->
+                <h2>Our Skincare Essentials</h2>
+                <div class="skincare-grid">
+                    <div class="skincare-item">
+                        <div class="skincare-image-wrapper">
+                            <img src="imgs/s1.png" alt="Hydrating Gel Cleanser">
                         </div>
-                        <div class="collection-content">
-                            <h3>The Radiance Collection</h3>
-                            <p>Unlock your skin's natural luminosity with our brightening and revitalizing skincare essentials.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="radiance-collection">View Collection</a>
-                        </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-hourglass-half"></i> <!-- Icon for Timeless Beauty -->
-                        </div>
-                        <div class="collection-content">
-                            <h3>Timeless Beauty Collection</h3>
-                            <p>Embrace age-defying elegance with luxurious formulas designed to nourish and firm.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="timeless-beauty">View Collection</a>
+                        <div class="skincare-content">
+                            <h3>Hydrating Gel Cleanser</h3>
+                            <p class="price">$25.00</p>
+                            <p>A gentle, soap-free cleanser that purifies and hydrates without stripping moisture.</p>
+                            <a href="#" class="button-small view-skincare-btn" data-skincare-id="hydrating-cleanser">View Details</a>
                         </div>
                     </div>
 
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-seedling"></i> <!-- Icon for Pure Botanicals -->
+                    <div class="skincare-item">
+                        <div class="skincare-image-wrapper">
+                            <img src="imgs/s2.png" alt="Radiant Vitamin C Serum">
                         </div>
-                        <div class="collection-content">
-                            <h3>Pure Botanicals Collection</h3>
-                            <p>Experience the gentle power of nature with our ethically sourced, plant-based formulations.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="pure-botanicals">View Collection</a>
-                        </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-box-open"></i> <!-- Icon for Everyday Essentials -->
-                        </div>
-                        <div class="collection-content">
-                            <h3>Everyday Essentials Collection</h3>
-                            <p>Your go-to products for a simple yet effective daily beauty routine.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="everyday-essentials">View Collection</a>
+                        <div class="skincare-content">
+                            <h3>Radiant Vitamin C Serum</h3>
+                            <p class="price">$45.00</p>
+                            <p>Boost brightness and reduce dark spots with this powerful antioxidant serum.</p>
+                            <a href="#" class="button-small view-skincare-btn" data-skincare-id="vitamin-c-serum">View Details</a>
                         </div>
                     </div>
 
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-cloud-sun"></i> <!-- Icon for Seasonal Glow -->
+                    <div class="skincare-item">
+                        <div class="skincare-image-wrapper">
+                            <img src="imgs/s3.png" alt="Deep Hydration Moisturizer">
                         </div>
-                        <div class="collection-content">
-                            <h3>Seasonal Glow Collection</h3>
-                            <p>Curated selections to adapt your beauty routine to changing seasons and climates.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="seasonal-glow">View Collection</a>
-                        </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-spray-can"></i> <!-- Icon for Signature Scents -->
-                        </div>
-                        <div class="collection-content">
-                            <h3>Signature Scents Collection</h3>
-                            <p>Discover captivating fragrances that define your unique personality and leave a lasting impression.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="signature-scents">View Collection</a>
+                        <div class="skincare-content">
+                            <h3>Deep Hydration Moisturizer</h3>
+                            <p class="price">$38.00</p>
+                            <p>Infused with hyaluronic acid for intense, long-lasting moisture and plump skin.</p>
+                            <a href="#" class="button-small view-skincare-btn" data-skincare-id="hydration-moisturizer">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -771,12 +766,12 @@
         </div>
     </footer>
 
-    <!-- Modal Structure for Collection Details -->
-    <div class="modal-overlay" id="collectionDetailModal">
+    <!-- Modal Structure for Skincare Product Details -->
+    <div class="modal-overlay" id="skincareProductModal">
         <div class="modal-content">
-            <button class="modal-close-button" id="closeCollectionModalBtn">&times;</button>
-            <h3 class="modal-title" id="collectionModalTitle"></h3>
-            <div class="modal-body" id="collectionModalBody"></div>
+            <button class="modal-close-button" id="closeSkincareModalBtn">&times;</button>
+            <h3 class="modal-title" id="skincareModalTitle"></h3>
+            <div class="modal-body" id="skincareModalBody"></div>
         </div>
     </div>
 
@@ -844,133 +839,111 @@
             };
 
             // Apply animations to specific sections/elements
-            observeElements('#collections-hero', 'is-visible');
-            observeElements('.collection-item', 'is-visible');
+            observeElements('#skincare-hero', 'is-visible');
+            observeElements('.skincare-item', 'is-visible');
 
-            // Modal Functionality for Collection Details
-            const collectionData = {
-                'radiance-collection': {
-                    title: 'The Radiance Collection: Illuminate Your Skin',
+            // Modal Functionality for Skincare Products
+            const skincareProductsData = {
+                'hydrating-cleanser': {
+                    title: 'Hydrating Gel Cleanser: Gentle Purity for All Skin Types',
                     fullDescription: `
-                        <p>Discover the secret to a luminous complexion with our Radiance Collection. This curated set of skincare essentials is formulated to brighten, even skin tone, and enhance your natural glow.</p>
-                        <p>Featuring powerful antioxidants like Vitamin C and gentle exfoliants, these products work in harmony to reveal smoother, more vibrant skin. Say goodbye to dullness and hello to a radiant, healthy-looking complexion.</p>
-                        <p><strong>Includes:</strong></p>
+                        <p>Our Hydrating Gel Cleanser is a gentle, soap-free formula that effectively purifies your skin without stripping its natural moisture. It washes away dirt, oil, and impurities, leaving your complexion feeling clean, refreshed, and incredibly soft.</p>
+                        <p>Infused with soothing botanical extracts, this pH-balanced cleanser is perfect for daily use, even on sensitive skin. It prepares your skin for optimal absorption of subsequent skincare products.</p>
+                        <p><strong>Key Benefits:</strong></p>
                         <ul>
-                            <li>Brightening Cleansing Foam</li>
-                            <li>Vitamin C Serum</li>
-                            <li>Luminous Day Cream with SPF</li>
-                            <li>Overnight Renewal Mask</li>
+                            <li>Gently cleanses without drying.</li>
+                            <li>Removes impurities and makeup.</li>
+                            <li>Maintains skin's natural moisture barrier.</li>
+                            <li>Leaves skin soft, smooth, and refreshed.</li>
+                            <li>Suitable for all skin types, including sensitive.</li>
                         </ul>
-                        <p>Perfect for those seeking to revitalize tired skin and achieve an undeniable glow.</p>
-                    `
+                        <p><strong>How to Use:</strong> Dispense a small amount onto damp hands and work into a light lather. Massage gently onto wet face and neck in circular motions. Rinse thoroughly with lukewarm water. Use morning and evening.</p>
+                    `,
+                    imageUrl: 'imgs/s1.png' // Placeholder
                 },
-                'timeless-beauty': {
-                    title: 'Timeless Beauty Collection: Age-Defying Elegance',
+                'vitamin-c-serum': {
+                    title: 'Radiant Vitamin C Serum: Unlock Your Skin\'s Glow',
                     fullDescription: `
-                        <p>Embrace the art of graceful aging with our Timeless Beauty Collection. This luxurious line is dedicated to nourishing, firming, and restoring your skin's youthful vitality.</p>
-                        <p>Infused with potent peptides, hyaluronic acid, and rare botanical extracts, these formulas work to reduce the appearance of fine lines and wrinkles, improve elasticity, and provide deep hydration. Experience a visibly smoother, more supple, and rejuvenated complexion.</p>
-                        <p><strong>Includes:</strong></p>
+                        <p>Boost your skin's luminosity and fight environmental damage with our potent Radiant Vitamin C Serum. This concentrated formula is packed with a stable form of Vitamin C, a powerful antioxidant that brightens skin tone, reduces the appearance of dark spots, and promotes a more even complexion.</p>
+                        <p>It also helps to stimulate collagen production, improving skin's firmness and elasticity for a youthful, radiant glow.</p>
+                        <p><strong>Key Benefits:</strong></p>
                         <ul>
-                            <li>Age-Defying Cleansing Balm</li>
-                            <li>Peptide Renewal Serum</li>
-                            <li>Firming Eye Cream</li>
-                            <li>Rich Restorative Night Cream</li>
+                            <li>Visibly brightens and evens skin tone.</li>
+                            <li>Reduces the appearance of dark spots and hyperpigmentation.</li>
+                            <li>Provides powerful antioxidant protection.</li>
+                            <li>Boosts collagen production for firmer skin.</li>
+                            <li>Enhances overall skin radiance.</li>
                         </ul>
-                        <p>Designed for all skin types, especially those concerned with signs of aging.</p>
-                    `
+                        <p><strong>How to Use:</strong> After cleansing and toning, apply 2-3 drops to your face and neck. Gently pat until fully absorbed. Use every morning before your moisturizer and SPF.</p>
+                    `,
+                    imageUrl: 'imgs/s2.png' // Placeholder
                 },
-                'pure-botanicals': {
-                    title: 'Pure Botanicals Collection: Nature\'s Gentle Touch',
+                'hydration-moisturizer': {
+                    title: 'Deep Hydration Moisturizer: Intense Moisture for Plump Skin',
                     fullDescription: `
-                        <p>Experience the gentle yet effective power of nature with our Pure Botanicals Collection. This range is crafted with ethically sourced, plant-based ingredients, free from harsh chemicals and artificial fragrances.</p>
-                        <p>Each product harnesses the natural goodness of herbs, flowers, and plant oils to soothe, balance, and nourish your skin. Ideal for sensitive skin or anyone seeking a clean, natural approach to beauty.</p>
-                        <p><strong>Includes:</strong></p>
+                        <p>Experience unparalleled hydration with our Deep Hydration Moisturizer. Infused with multiple forms of hyaluronic acid, this rich yet non-greasy cream delivers intense, long-lasting moisture to every layer of your skin.</p>
+                        <p>It helps to plump up fine lines, improve skin elasticity, and create a smooth, supple complexion. Ideal for dry, dehydrated, or normal skin types seeking a boost of hydration and comfort.</p>
+                        <p><strong>Key Benefits:</strong></p>
                         <ul>
-                            <li>Gentle Herbal Cleanser</li>
-                            <li>Calming Rosewater Toner</li>
-                            <li>Balancing Jojoba Facial Oil</li>
-                            <li>Soothing Aloe Vera Moisturizer</li>
+                            <li>Provides deep and sustained hydration.</li>
+                            <li>Visibly plumps fine lines and wrinkles.</li>
+                            <li>Improves skin elasticity and suppleness.</li>
+                            <li>Strengthens skin's moisture barrier.</li>
+                            <li>Leaves skin soft, smooth, and comfortable.</li>
                         </ul>
-                        <p>Embrace the purity of nature for a healthy, harmonious glow.</p>
-                    `
-                },
-                'everyday-essentials': {
-                    title: 'Everyday Essentials Collection: Your Daily Beauty Foundation',
-                    fullDescription: `
-                        <p>Simplify your beauty routine without compromising on quality with our Everyday Essentials Collection. This collection features fundamental products designed for a simple yet highly effective daily regimen.</p>
-                        <p>From cleansing to moisturizing, these versatile products provide the core elements for healthy, balanced skin, ensuring you look and feel your best every day.</p>
-                        <p><strong>Includes:</strong></p>
-                        <ul>
-                            <li>Daily Hydrating Cleanser</li>
-                            <li>Lightweight Moisturizer</li>
-                            <li>Broad-Spectrum SPF 30</li>
-                            <li>Nourishing Lip Balm</li>
-                        </ul>
-                        <p>The perfect starting point for anyone building their skincare routine or seeking reliable daily staples.</p>
-                    `
-                },
-                'seasonal-glow': {
-                    title: 'Seasonal Glow Collection: Adapt Your Beauty to the Seasons',
-                    fullDescription: `
-                        <p>Just as seasons change, so do your skin's needs. Our Seasonal Glow Collection offers curated selections to help you adapt your beauty routine to changing climates and environmental factors.</p>
-                        <p>From hydrating winter saviors to lightweight summer protectors, this collection ensures your skin remains balanced, protected, and radiant year-round. Discover the perfect products to transition your glow through every season.</p>
-                        <p><strong>Includes (example for Summer):</strong></p>
-                        <ul>
-                            <li>Refreshing Gel Cleanser</li>
-                            <li>Oil-Free Hydrating Serum</li>
-                            <li>Tinted Mineral SPF 50</li>
-                            <li>After-Sun Soothing Mist</li>
-                        </ul>
-                        <p>Check back seasonally for updated product selections!</p>
-                    `
-                },
-                'signature-scents': {
-                    title: 'Signature Scents Collection: Define Your Essence',
-                    fullDescription: `
-                        <p>Discover a world of captivating aromas with our Signature Scents Collection. Each fragrance is meticulously crafted to evoke a unique mood and define your personal essence, leaving a lasting impression wherever you go.</p>
-                        <p>From fresh and invigorating notes to warm and mysterious accords, find the perfect scent that resonates with your personality and complements your style.</p>
-                        <p><strong>Includes:</strong></p>
-                        <ul>
-                            <li>"Lunar Bloom" Eau de Parfum (Floral & Fresh)</li>
-                            <li>"Golden Hour" Eau de Parfum (Warm & Spicy)</li>
-                            <li>"Forest Whisper" Eau de Parfum (Earthy & Woody)</li>
-                            <li>"Ocean Breeze" Eau de Toilette (Aquatic & Clean)</li>
-                        </ul>
-                        <p>Explore the collection and find the fragrance that truly speaks to you.</p>
-                    `
+                        <p><strong>How to Use:</strong> Apply a generous amount to face and neck after cleansing and applying serums. Gently massage into skin until fully absorbed. Use morning and evening.</p>
+                    `,
+                    imageUrl: 'imgs/s3.png' // Placeholder
                 }
             };
 
-            const viewCollectionButtons = document.querySelectorAll('.view-collection-btn');
-            const collectionDetailModal = document.getElementById('collectionDetailModal');
-            const closeCollectionModalBtn = document.getElementById('closeCollectionModalBtn');
-            const collectionModalTitle = document.getElementById('collectionModalTitle');
-            const collectionModalBody = document.getElementById('collectionModalBody');
+            const viewSkincareButtons = document.querySelectorAll('.view-skincare-btn');
+            const skincareProductModal = document.getElementById('skincareProductModal');
+            const closeSkincareModalBtn = document.getElementById('closeSkincareModalBtn');
+            const skincareModalTitle = document.getElementById('skincareModalTitle');
+            const skincareModalBody = document.getElementById('skincareModalBody');
 
-            viewCollectionButtons.forEach(button => {
+            // Function to open the modal with content
+            function openSkincareModal(product) {
+                skincareModalTitle.innerHTML = product.title;
+                // Clear previous content
+                skincareModalBody.innerHTML = '';
+
+                // Add image if available
+                if (product.imageUrl) {
+                    const img = document.createElement('img');
+                    img.src = product.imageUrl;
+                    img.alt = product.title;
+                    skincareModalBody.appendChild(img);
+                }
+                // Add description
+                skincareModalBody.innerHTML += product.fullDescription;
+
+                skincareProductModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            viewSkincareButtons.forEach(button => {
                 button.addEventListener('click', function(event) {
                     event.preventDefault(); // Prevent default link behavior
-                    const collectionId = this.dataset.collectionId;
-                    const collection = collectionData[collectionId];
+                    const skincareId = this.dataset.skincareId;
+                    const product = skincareProductsData[skincareId];
 
-                    if (collection) {
-                        collectionModalTitle.innerHTML = collection.title;
-                        collectionModalBody.innerHTML = collection.fullDescription;
-                        collectionDetailModal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    if (product) {
+                        openSkincareModal(product);
                     }
                 });
             });
 
-            closeCollectionModalBtn.addEventListener('click', function() {
-                collectionDetailModal.classList.remove('active');
+            closeSkincareModalBtn.addEventListener('click', function() {
+                skincareProductModal.classList.remove('active');
                 document.body.style.overflow = ''; // Restore background scrolling
             });
 
             // Close modal when clicking outside the content
-            collectionDetailModal.addEventListener('click', function(event) {
-                if (event.target === collectionDetailModal) {
-                    collectionDetailModal.classList.remove('active');
+            skincareProductModal.addEventListener('click', function(event) {
+                if (event.target === skincareProductModal) {
+                    skincareProductModal.classList.remove('active');
                     document.body.style.overflow = '';
                 }
             });

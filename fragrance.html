@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunera Beauty - About Us</title>
+    <title>Lunera Beauty - Fragrance</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Google Fonts - Playfair Display for headings, Lato for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for social media icons and general icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Basic Reset & Typography */
         body {
@@ -243,9 +243,31 @@
             text-decoration: none;
         }
 
-        /* Section Padding (retained for consistency) */
+        /* Section Padding */
         .section-padding {
             padding: 60px 0;
+        }
+
+        /* General H2 styling for sections */
+        .section-padding h2 {
+            text-align: center;
+            color: #8B4513;
+            font-size: 2.5em;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .section-padding h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #A0522D, #CD853F);
+            border-radius: 2px;
         }
 
         /* Footer Styles */
@@ -303,15 +325,15 @@
             text-decoration: none;
         }
 
-        /* About Us Page Specific Styles */
-        #about-hero {
+        /* Fragrance Page Specific Styles */
+        #fragrance-hero {
             background-color: #FDF9F6;
             padding: 80px 0;
             text-align: center;
             border-bottom: 1px solid #eee;
         }
 
-        #about-hero h1 {
+        #fragrance-hero h1 {
             color: #8B4513;
             font-size: 3em;
             margin-bottom: 20px;
@@ -320,7 +342,7 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        #about-hero p {
+        #fragrance-hero p {
             font-size: 1.1em;
             color: #555;
             max-width: 800px;
@@ -331,154 +353,184 @@
         }
 
         /* When visible, animate */
-        #about-hero.is-visible h1,
-        #about-hero.is-visible p {
+        #fragrance-hero.is-visible h1,
+        #fragrance-hero.is-visible p {
             opacity: 1;
             transform: translateY(0);
         }
 
-        #our-story {
+        #fragrance-products {
             background-color: #fefefe;
             padding: 60px 0;
             text-align: center;
-            border-bottom: 1px solid #eee;
         }
 
-        #our-story .story-content {
-            display: flex;
-            flex-wrap: wrap; /* Allows wrapping on smaller screens */
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-        }
-
-        #our-story .story-image-wrapper {
-            flex-shrink: 0;
-            width: 45%; /* Adjust width for image */
-            max-width: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            opacity: 0; /* Initial state for animation */
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        #our-story .story-image-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        #our-story .story-text {
-            flex-grow: 1;
-            width: 45%; /* Adjust width for text */
-            max-width: 600px;
-            text-align: left;
-            opacity: 0; /* Initial state for animation */
-            transform: translateX(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        /* Styling for H2 within sections like Our Story and Our Values */
-        #our-story .story-text h2,
-        #our-values h2 {
-            text-align: center; /* Center the heading */
-            color: #8B4513; /* Use brand color */
-            font-size: 2.5em; /* Make it prominent */
-            position: relative; /* For pseudo-element positioning */
-            padding-bottom: 20px; /* Space for the underline */
-            margin-bottom: 30px; /* Space below the heading and underline */
-        }
-
-        #our-story .story-text h2::after,
-        #our-values h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%; /* Center the underline */
-            transform: translateX(-50%); /* Adjust for centering */
-            width: 80px; /* Width of the underline */
-            height: 3px; /* Thickness of the underline */
-            background: linear-gradient(to right, #A0522D, #CD853F); /* Gradient color */
-            border-radius: 2px; /* Slightly rounded ends */
-        }
-
-        #our-story .story-text p {
-            font-size: 1em;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        /* Animation for story section when visible */
-        #our-story.is-visible .story-image-wrapper {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        #our-story.is-visible .story-text {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        #our-values {
-            background-color: #F8F4F1;
-            padding: 60px 0;
-            text-align: center;
-            border-top: 1px solid #eee;
-        }
-
-        /* H2 styling moved above for consistency */
-        /* #our-values h2 {
-            margin-bottom: 40px;
-            color: #8B4513;
-        } */
-
-        .values-grid {
+        .fragrance-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 40px;
             margin-top: 40px;
         }
 
-        .value-item {
+        .fragrance-item {
             background-color: #fff;
             border: 1px solid #eee;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             opacity: 0; /* Initial state for animation */
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .value-item i {
-            font-size: 3em;
-            color: #A0522D;
-            margin-bottom: 20px;
+        .fragrance-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
         }
 
-        .value-item h3 {
-            font-size: 1.5em;
-            color: #A0522D;
-            margin-bottom: 10px;
-        }
-
-        .value-item p {
-            font-size: 0.95em;
-            color: #666;
-        }
-
-        /* Animation for value items when visible */
-        .value-item.is-visible {
+        /* Animation for fragrance items when visible */
+        .fragrance-item.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        /* Add staggered animation delay for value items */
-        .value-item:nth-child(1) { transition-delay: 0s; }
-        .value-item:nth-child(2) { transition-delay: 0.1s; }
-        .value-item:nth-child(3) { transition-delay: 0.2s; }
+        /* Staggered animation delays */
+        .fragrance-item:nth-child(1) { transition-delay: 0s; }
+        .fragrance-item:nth-child(2) { transition-delay: 0.1s; }
+        .fragrance-item:nth-child(3) { transition-delay: 0.2s; }
+
+        /* Styles for image containers in fragrance products */
+        .fragrance-image-wrapper {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FDF9F6; /* Light background behind the image */
+            border-bottom: 1px solid #eee;
+            overflow: hidden; /* Ensure image doesn't overflow its container */
+        }
+
+        .fragrance-image-wrapper img {
+            width: 100%; /* Make image fill the width of its wrapper */
+            height: 100%; /* Make image fill the height of its wrapper */
+            object-fit: cover; /* Crop image to cover the area without distortion */
+            display: block; /* Remove extra space below image */
+            border-radius: 0; /* No border radius here, it's on the item */
+        }
+
+        .fragrance-content {
+            padding: 25px;
+        }
+
+        .fragrance-content h3 {
+            font-size: 1.6em;
+            color: #A0522D;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .fragrance-content .price {
+            font-size: 1.3em;
+            color: #8B4513;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .fragrance-content p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Modal Styles (copied for consistency across pages) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh; /* Limit height to prevent overflow */
+            overflow-y: auto; /* Enable scrolling for long content */
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-button:hover {
+            color: #A0522D;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #8B4513;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-body {
+            font-size: 1em;
+            color: #444;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        /* Style for image inside modal body */
+        .modal-body img {
+            max-width: 80%; /* Make the image smaller relative to the modal width */
+            max-height: 300px; /* Set a maximum height for the image */
+            height: auto;
+            display: block; /* Ensures image takes full width and is centered if needed */
+            margin: 20px auto; /* Add some margin above/below image and center it */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for the image */
+            object-fit: contain; /* Ensures the entire image is visible within its bounds */
+        }
 
 
         /* Responsiveness */
@@ -503,23 +555,31 @@
                 font-size: 1.3em;
             }
 
-            #about-hero h1 {
+            #fragrance-hero h1 {
                 font-size: 2.5em;
             }
-            #about-hero p {
+            #fragrance-hero p {
                 font-size: 1em;
             }
-            #our-story .story-image-wrapper,
-            #our-story .story-text {
-                width: 90%; /* Take more width on smaller screens */
-                max-width: 500px; /* Limit max width */
+            .section-padding h2 {
+                font-size: 2em; /* Adjust general h2 for smaller screens */
             }
-            #our-story .story-content {
-                gap: 30px;
+            .section-padding h2::after {
+                width: 60px; /* Adjust underline width */
             }
-            #our-story .story-text h2::after,
-            #our-values h2::after {
-                width: 60px; /* Adjust underline width for smaller screens */
+            .modal-content {
+                padding: 20px;
+                max-width: 95%; /* Wider on smaller screens */
+            }
+            .modal-title {
+                font-size: 1.8em;
+            }
+            .modal-close-button {
+                font-size: 1.5em;
+            }
+            .modal-body img {
+                max-width: 90%; /* Allow image to be slightly larger on smaller screens */
+                max-height: 250px; /* Adjust max height for smaller screens */
             }
         }
 
@@ -597,6 +657,11 @@
             footer .container {
                 gap: 15px;
             }
+
+            .fragrance-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+                gap: 30px;
+            }
         }
     </style>
 </head>
@@ -620,7 +685,7 @@
                         <div class="dropdown-content">
                             <a href="skincare.html">Skincare</a>
                             <a href="makeup.html">Makeup</a>
-                            <a href="fragrance.html">Fragrance</a>
+                            <a href="fragrance.html" class="active">Fragrance</a>
                             <a href="body-hair.html">Body & Hair Care</a>
                             <a href="accessories.html">Accessories</a>
                         </div>
@@ -636,49 +701,52 @@
     </header>
 
     <main>
-        <section id="about-hero">
+        <section id="fragrance-hero">
             <div class="container">
-                <h1>Discover the Essence of Lunera Beauty</h1>
-                <p>At Lunera Beauty, we believe in empowering individuals through the art of self-expression. Our journey began with a passion for creating high-quality, ethically sourced cosmetics that celebrate diversity and enhance natural radiance.</p>
+                <h1>Discover Your Signature Scent</h1>
+                <p>Immerse yourself in the captivating world of Lunera Beauty fragrances. Our exquisite perfumes and body mists are crafted to evoke emotions, tell stories, and leave a lasting impression.</p>
             </div>
         </section>
 
-        <section id="our-story" class="section-padding">
+        <section id="fragrance-products" class="section-padding">
             <div class="container">
-                <div class="story-content">
-                    <div class="story-image-wrapper">
-                        <!-- Placeholder image for your brand's story. Replace with a relevant image. -->
-                        <img src="imgs/model1.png" alt="Lunera Beauty Story">
+                <h2>Our Fragrance Collection</h2>
+                <div class="fragrance-grid">
+                    <div class="fragrance-item">
+                        <div class="fragrance-image-wrapper">
+                            <img src="imgs/p1.png" alt="Floral Eau de Parfum">
+                        </div>
+                        <div class="fragrance-content">
+                            <h3>Lunar Bloom Eau de Parfum</h3>
+                            <p class="price">$75.00</p>
+                            <p>A delicate floral scent with notes of jasmine, rose, and a hint of vanilla.</p>
+                            <a href="#" class="button-small view-fragrance-btn" data-fragrance-id="lunar-bloom">View Details</a>
+                        </div>
                     </div>
-                    <div class="story-text">
-                        <h2>Our Journey to Elegance</h2>
-                        <p>Lunera Beauty was born from a singular vision: to redefine beauty through conscious craftsmanship and unwavering dedication to natural radiance. Our journey began in 20XX, rooted in a deep appreciation for the earth's finest botanicals and a commitment to ethical practices.</p>
-                        <p>We meticulously blend time-honored traditions with cutting-edge science, creating luxurious formulations that not only enhance your natural beauty but also nourish your skin and soul. Every product is a testament to our belief that true elegance lies in harmony with nature, empowering you to glow with confidence, inside and out.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section id="our-values" class="section-padding">
-            <div class="container">
-                <h2>Our Core Values</h2>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <i class="fas fa-gem"></i>
-                        <h3>Quality Craftsmanship</h3>
-                        <p>We use only premium, ethically sourced ingredients to create products that meet the highest standards of excellence.</p>
+                    <div class="fragrance-item">
+                        <div class="fragrance-image-wrapper">
+                            <img src="imgs/p2.png" alt="Citrus Zest Body Mist">
+                        </div>
+                        <div class="fragrance-content">
+                            <h3>Golden Hour Body Mist</h3>
+                            <p class="price">$30.00</p>
+                            <p>A refreshing body mist with invigorating notes of citrus, bergamot, and amber.</p>
+                            <a href="#" class="button-small view-fragrance-btn" data-fragrance-id="golden-hour">View Details</a>
+                        </div>
                     </div>
-                    <div class="value-item">
-                        <i class="fas fa-leaf"></i>
-                        <h3>Natural & Sustainable</h3>
-                        <p>Committed to eco-friendly practices, we prioritize natural formulations and sustainable packaging.</p>
+
+                    <div class="fragrance-item">
+                        <div class="fragrance-image-wrapper">
+                            <img src="imgs/p3.png" alt="Woody Eau de Toilette">
+                        </div>
+                        <div class="fragrance-content">
+                            <h3>Forest Whisper Eau de Toilette</h3>
+                            <p class="price">$60.00</p>
+                            <p>An earthy and mysterious blend of sandalwood, cedarwood, and patchouli.</p>
+                            <a href="#" class="button-small view-fragrance-btn" data-fragrance-id="forest-whisper">View Details</a>
+                        </div>
                     </div>
-                    <div class="value-item">
-                        <i class="fas fa-heart"></i>
-                        <h3>Empowering Beauty</h3>
-                        <p>Our mission is to empower every individual to embrace their unique beauty and express themselves confidently.</p>
-                    </div>
-                    <!-- Removed the fourth value item as requested -->
                 </div>
             </div>
         </section>
@@ -691,11 +759,20 @@
             </div>
             <p class="footer-rights">&copy; 2025 Lunera Beauty. All rights reserved.</p>
             <div class="social-icons">
-                <a href="https://facebook.com/lunerabeauty" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com/lunerabeauty" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/yourbrand" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/yourbrand" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
+
+    <!-- Modal Structure for Fragrance Product Details -->
+    <div class="modal-overlay" id="fragranceProductModal">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeFragranceModalBtn">&times;</button>
+            <h3 class="modal-title" id="fragranceModalTitle"></h3>
+            <div class="modal-body" id="fragranceModalBody"></div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -761,9 +838,108 @@
             };
 
             // Apply animations to specific sections/elements
-            observeElements('#about-hero', 'is-visible');
-            observeElements('#our-story', 'is-visible');
-            observeElements('.value-item', 'is-visible');
+            observeElements('#fragrance-hero', 'is-visible');
+            observeElements('.fragrance-item', 'is-visible');
+
+            // Modal Functionality for Fragrance Products
+            const fragranceProductsData = {
+                'lunar-bloom': {
+                    title: 'Lunar Bloom Eau de Parfum: A Floral Dream',
+                    fullDescription: `
+                        <p>Immerse yourself in the enchanting aroma of Lunar Bloom Eau de Parfum. This exquisite fragrance captures the essence of a moonlit garden, blending delicate floral notes with a subtle, creamy warmth.</p>
+                        <p>Top notes of fresh bergamot and dewy green leaves lead to a heart of blooming jasmine and elegant rose, while a base of soft musk and vanilla adds a touch of sophisticated sweetness. Perfect for evening wear or special occasions.</p>
+                        <p><strong>Fragrance Notes:</strong></p>
+                        <ul>
+                            <li><strong>Top:</strong> Bergamot, Green Leaves</li>
+                            <li><strong>Heart:</strong> Jasmine, Rose, Tuberose</li>
+                            <li><strong>Base:</strong> Vanilla, Sandalwood, Musk</li>
+                        </ul>
+                        <p><strong>Volume:</strong> 50ml / 1.7 fl oz</p>
+                    `,
+                    imageUrl: 'imgs/p1.png' // Placeholder
+                },
+                'golden-hour': {
+                    title: 'Golden Hour Body Mist: Radiant & Invigorating',
+                    fullDescription: `
+                        <p>Capture the warmth and vibrancy of a golden hour sunset with our refreshing Body Mist. This invigorating mist is a burst of bright citrus and sparkling bergamot, softened by a hint of warm amber.</p>
+                        <p>Lightweight and uplifting, it's perfect for a quick refresh throughout the day or for layering over your favorite lotion. Leaves your skin delicately scented and revitalized.</p>
+                        <p><strong>Fragrance Notes:</strong></p>
+                        <ul>
+                            <li><strong>Top:</strong> Orange Zest, Bergamot</li>
+                            <li><strong>Heart:</strong> Neroli, White Tea</li>
+                            <li><strong>Base:</strong> Amber, Light Woods</li>
+                        </ul>
+                        <p><strong>Volume:</strong> 150ml / 5.0 fl oz</p>
+                    `,
+                    imageUrl: 'imgs/p2.png' // Placeholder
+                },
+                'forest-whisper': {
+                    title: 'Forest Whisper Eau de Toilette: Earthy & Mysterious',
+                    fullDescription: `
+                        <p>Unleash your adventurous spirit with Forest Whisper Eau de Toilette. This captivating fragrance evokes the serene mystery of a hidden forest, blending deep woody notes with a touch of exotic spice.</p>
+                        <p>Opening with crisp pine and fresh cedar, it evolves into a heart of smoky vetiver and warm patchouli, grounded by a rich base of sandalwood and earthy moss. Ideal for those who appreciate a sophisticated, natural, and intriguing scent.</p>
+                        <p><strong>Fragrance Notes:</strong></p>
+                        <ul>
+                            <li><strong>Top:</strong> Pine Needle, Cedarwood</li>
+                            <li><strong>Heart:</strong> Vetiver, Patchouli, Black Pepper</li>
+                            <li><strong>Base:</strong> Sandalwood, Oakmoss, Amber</li>
+                        </ul>
+                        <p><strong>Volume:</strong> 100ml / 3.4 fl oz</p>
+                    `,
+                    imageUrl: 'imgs/p3.png' // Placeholder
+                }
+            };
+
+            const viewFragranceButtons = document.querySelectorAll('.view-fragrance-btn');
+            const fragranceProductModal = document.getElementById('fragranceProductModal');
+            const closeFragranceModalBtn = document.getElementById('closeFragranceModalBtn');
+            const fragranceModalTitle = document.getElementById('fragranceModalTitle');
+            const fragranceModalBody = document.getElementById('fragranceModalBody');
+
+            // Function to open the modal with content
+            function openFragranceModal(product) {
+                fragranceModalTitle.innerHTML = product.title;
+                // Clear previous content
+                fragranceModalBody.innerHTML = '';
+
+                // Add image if available
+                if (product.imageUrl) {
+                    const img = document.createElement('img');
+                    img.src = product.imageUrl;
+                    img.alt = product.title;
+                    fragranceModalBody.appendChild(img);
+                }
+                // Add description
+                fragranceModalBody.innerHTML += product.fullDescription;
+
+                fragranceProductModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            viewFragranceButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const fragranceId = this.dataset.fragranceId;
+                    const product = fragranceProductsData[fragranceId];
+
+                    if (product) {
+                        openFragranceModal(product);
+                    }
+                });
+            });
+
+            closeFragranceModalBtn.addEventListener('click', function() {
+                fragranceProductModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore background scrolling
+            });
+
+            // Close modal when clicking outside the content
+            fragranceProductModal.addEventListener('click', function(event) {
+                if (event.target === fragranceProductModal) {
+                    fragranceProductModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
         });
     </script>
 </body>

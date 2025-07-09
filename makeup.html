@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunera Beauty - Blog</title>
+    <title>Lunera Beauty - Makeup</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Google Fonts - Playfair Display for headings, Lato for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for social media icons and general icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Basic Reset & Typography */
         body {
@@ -243,9 +243,31 @@
             text-decoration: none;
         }
 
-        /* Section Padding (retained for consistency) */
+        /* Section Padding */
         .section-padding {
             padding: 60px 0;
+        }
+
+        /* General H2 styling for sections */
+        .section-padding h2 {
+            text-align: center;
+            color: #8B4513;
+            font-size: 2.5em;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .section-padding h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #A0522D, #CD853F);
+            border-radius: 2px;
         }
 
         /* Footer Styles */
@@ -303,38 +325,15 @@
             text-decoration: none;
         }
 
-        /* General H2 styling for sections (like "Latest Articles") */
-        .section-padding h2 {
-            text-align: center;
-            color: #8B4513;
-            font-size: 2.5em;
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-
-        .section-padding h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, #A0522D, #CD853F);
-            border-radius: 2px;
-        }
-
-
-        /* Blog Page Specific Styles */
-        #blog-hero {
+        /* Makeup Page Specific Styles */
+        #makeup-hero {
             background-color: #FDF9F6;
             padding: 80px 0;
             text-align: center;
             border-bottom: 1px solid #eee;
         }
 
-        #blog-hero h1 {
+        #makeup-hero h1 {
             color: #8B4513;
             font-size: 3em;
             margin-bottom: 20px;
@@ -343,7 +342,7 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        #blog-hero p {
+        #makeup-hero p {
             font-size: 1.1em;
             color: #555;
             max-width: 800px;
@@ -354,109 +353,103 @@
         }
 
         /* When visible, animate */
-        #blog-hero.is-visible h1,
-        #blog-hero.is-visible p {
+        #makeup-hero.is-visible h1,
+        #makeup-hero.is-visible p {
             opacity: 1;
             transform: translateY(0);
         }
 
-        #blog-posts {
+        #makeup-products {
             background-color: #fefefe;
             padding: 60px 0;
             text-align: center;
         }
 
-        .blog-grid {
+        .makeup-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
             margin-top: 40px;
         }
 
-        .blog-post-item {
+        .makeup-item {
             background-color: #fff;
             border: 1px solid #eee;
             border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            overflow: hidden; /* Ensures image corners are rounded with parent */
-            text-align: left;
+            overflow: hidden;
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             opacity: 0; /* Initial state for animation */
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .blog-post-item:hover {
+        .makeup-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.12);
         }
 
-        /* Animation for blog post items when visible */
-        .blog-post-item.is-visible {
+        /* Animation for makeup items when visible */
+        .makeup-item.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
         /* Staggered animation delays */
-        .blog-post-item:nth-child(1) { transition-delay: 0s; }
-        .blog-post-item:nth-child(2) { transition-delay: 0.1s; }
-        .blog-post-item:nth-child(3) { transition-delay: 0.2s; }
-        .blog-post-item:nth-child(4) { transition-delay: 0.3s; }
-        .blog-post-item:nth-child(5) { transition-delay: 0.4s; }
-        .blog-post-item:nth-child(6) { transition-delay: 0.5s; }
+        .makeup-item:nth-child(1) { transition-delay: 0s; }
+        .makeup-item:nth-child(2) { transition-delay: 0.1s; }
+        .makeup-item:nth-child(3) { transition-delay: 0.2s; }
+        .makeup-item:nth-child(4) { transition-delay: 0.3s; }
+        .makeup-item:nth-child(5) { transition-delay: 0.4s; }
+        .makeup-item:nth-child(6) { transition-delay: 0.5s; }
 
-
-        /* New styles for blog post icons */
-        .blog-icon-wrapper {
+        /* Styles for image containers in makeup products */
+        .makeup-image-wrapper {
             width: 100%;
-            height: 220px; /* Match old image height */
+            height: 250px; /* Fixed height for consistency */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #FDF9F6; /* Light background for the icon area */
+            background-color: #FDF9F6; /* Light background behind the image */
             border-bottom: 1px solid #eee;
+            overflow: hidden; /* Ensure image doesn't overflow its container */
         }
 
-        .blog-icon-wrapper i {
-            font-size: 5em; /* Large icon size */
-            color: #A0522D; /* Brand accent color for icons */
+        .makeup-image-wrapper img {
+            width: 100%; /* Make image fill the width of its wrapper */
+            height: 100%; /* Make image fill the height of its wrapper */
+            object-fit: cover; /* Crop image to cover the area without distortion */
+            display: block; /* Remove extra space below image */
+            border-radius: 0; /* No border radius here, it's on the item */
         }
 
-
-        .blog-post-content {
+        .makeup-content {
             padding: 25px;
         }
 
-        .blog-post-content h3 {
+        .makeup-content h3 {
             font-size: 1.6em;
             color: #A0522D;
             margin-top: 0;
             margin-bottom: 10px;
-            text-align: left;
+            text-align: center;
         }
 
-        .blog-post-content p {
+        .makeup-content .price {
+            font-size: 1.3em;
+            color: #8B4513;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .makeup-content p {
             font-size: 0.95em;
             color: #666;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .blog-meta {
-            font-size: 0.85em;
-            color: #999;
             margin-bottom: 20px;
-            text-align: left;
+            text-align: center;
         }
 
-        .blog-meta span {
-            margin-right: 15px;
-        }
-
-        .blog-meta i {
-            margin-right: 5px;
-        }
-
-        /* Modal Styles */
+        /* Modal Styles (copied for consistency across pages) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -530,6 +523,18 @@
             text-align: left;
         }
 
+        /* Style for image inside modal body */
+        .modal-body img {
+            max-width: 80%; /* Make the image smaller relative to the modal width */
+            max-height: 300px; /* Set a maximum height for the image */
+            height: auto;
+            display: block; /* Ensures image takes full width and is centered if needed */
+            margin: 20px auto; /* Add some margin above/below image and center it */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for the image */
+            object-fit: contain; /* Ensures the entire image is visible within its bounds */
+        }
+
 
         /* Responsiveness */
         @media (max-width: 992px) {
@@ -553,10 +558,10 @@
                 font-size: 1.3em;
             }
 
-            #blog-hero h1 {
+            #makeup-hero h1 {
                 font-size: 2.5em;
             }
-            #blog-hero p {
+            #makeup-hero p {
                 font-size: 1em;
             }
             .section-padding h2 {
@@ -565,7 +570,6 @@
             .section-padding h2::after {
                 width: 60px; /* Adjust underline width */
             }
-
             .modal-content {
                 padding: 20px;
                 max-width: 95%; /* Wider on smaller screens */
@@ -575,6 +579,10 @@
             }
             .modal-close-button {
                 font-size: 1.5em;
+            }
+            .modal-body img {
+                max-width: 90%; /* Allow image to be slightly larger on smaller screens */
+                max-height: 250px; /* Adjust max height for smaller screens */
             }
         }
 
@@ -653,7 +661,7 @@
                 gap: 15px;
             }
 
-            .blog-grid {
+            .makeup-grid {
                 grid-template-columns: 1fr; /* Single column on mobile */
                 gap: 30px;
             }
@@ -679,7 +687,7 @@
                         <a href="makeup.html" class="dropbtn">Shop <span class="dropdown-icon">&#9660;</span></a>
                         <div class="dropdown-content">
                             <a href="skincare.html">Skincare</a>
-                            <a href="makeup.html">Makeup</a>
+                            <a href="makeup.html" class="active">Makeup</a>
                             <a href="fragrance.html">Fragrance</a>
                             <a href="body-hair.html">Body & Hair Care</a>
                             <a href="accessories.html">Accessories</a>
@@ -696,104 +704,86 @@
     </header>
 
     <main>
-        <section id="blog-hero">
+        <section id="makeup-hero">
             <div class="container">
-                <h1>Lunera Beauty Blog</h1>
-                <p>Dive into the world of beauty with our latest articles, tips, and insights. From skincare routines to makeup trends, discover everything you need to enhance your glow.</p>
+                <h1>Elevate Your Look with Our Makeup Collection</h1>
+                <p>Unleash your creativity with Lunera Beauty's exquisite makeup range. From flawless foundations to vibrant lip colors, discover high-performance products designed to enhance your natural beauty and express your unique style.</p>
             </div>
         </section>
 
-        <section id="blog-posts" class="section-padding">
+        <section id="makeup-products" class="section-padding">
             <div class="container">
-                <h2>Latest Articles</h2>
-                <div class="blog-grid">
-                    <div class="blog-post-item">
-                        <div class="blog-icon-wrapper">
-                            <i class="fas fa-spa"></i>
+                <h2>Our Makeup Essentials</h2>
+                <div class="makeup-grid">
+                    <div class="makeup-item">
+                        <div class="makeup-image-wrapper">
+                            <img src="imgs/m11.png" alt="Flawless Finish Liquid Foundation">
                         </div>
-                        <div class="blog-post-content">
-                            <h3>The Ultimate Guide to Your Daily Skincare Routine</h3>
-                            <p>Unlock radiant skin with our comprehensive guide to building an effective daily skincare regimen tailored to your needs.</p>
-                            <div class="blog-meta">
-                                <span><i class="far fa-calendar-alt"></i> July 8, 2025</span>
-                                <span><i class="fas fa-user"></i> Lunera Team</span>
-                            </div>
-                            <a href="#" class="button-small read-more-btn" data-post-id="skincare-routine">Read More</a>
+                        <div class="makeup-content">
+                            <h3>Flawless Finish Liquid Foundation</h3>
+                            <p class="price">$35.00</p>
+                            <p>Achieve a smooth, even complexion with our buildable, long-wearing liquid foundation.</p>
+                            <a href="#" class="button-small view-makeup-btn" data-makeup-id="liquid-foundation">View Details</a>
                         </div>
                     </div>
 
-                    <div class="blog-post-item">
-                        <div class="blog-icon-wrapper">
-                            <i class="fas fa-palette"></i>
+                    <div class="makeup-item">
+                        <div class="makeup-image-wrapper">
+                            <img style="height: 250px !important;" src="imgs/m22.png" alt="Volumizing Lash Mascara">
                         </div>
-                        <div class="blog-post-content">
-                            <h3>Summer Glow: Top Makeup Trends for a Luminous Look</h3>
-                            <p>Discover the hottest makeup trends for summer that will give you a fresh, luminous, and effortlessly beautiful glow.</p>
-                            <div class="blog-meta">
-                                <span><i class="far fa-calendar-alt"></i> July 1, 2025</span>
-                                <span><i class="fas fa-user"></i> Beauty Expert</span>
-                            </div>
-                            <a href="#" class="button-small read-more-btn" data-post-id="summer-glow">Read More</a>
+                        <div class="makeup-content">
+                            <h3>Volumizing Lash Mascara</h3>
+                            <p class="price">$22.00</p>
+                            <p>Intensify your lashes with dramatic volume and length, without clumping.</p>
+                            <a href="#" class="button-small view-makeup-btn" data-makeup-id="lash-mascara">View Details</a>
                         </div>
                     </div>
 
-                    <div class="blog-post-item">
-                        <div class="blog-icon-wrapper">
-                            <i class="fas fa-leaf"></i>
+                    <div class="makeup-item">
+                        <div class="makeup-image-wrapper">
+                            <img src="imgs/m3.png" alt="Nude Harmony Eyeshadow Palette">
                         </div>
-                        <div class="blog-post-content">
-                            <h3>The Power of Nature: Key Ingredients in Clean Beauty</h3>
-                            <p>Explore the potent natural ingredients that form the heart of our clean beauty philosophy and their benefits for your skin.</p>
-                            <div class="blog-meta">
-                                <span><i class="far fa-calendar-alt"></i> June 25, 2025</span>
-                                <span><i class="fas fa-user"></i> Product Dev</span>
-                            </div>
-                            <a href="#" class="button-small read-more-btn" data-post-id="natural-ingredients">Read More</a>
+                        <div class="makeup-content">
+                            <h3>Nude Harmony Eyeshadow Palette</h3>
+                            <p class="price">$48.00</p>
+                            <p>A versatile palette with 12 highly pigmented, blendable nude and neutral shades.</p>
+                            <a href="#" class="button-small view-makeup-btn" data-makeup-id="eyeshadow-palette">View Details</a>
                         </div>
                     </div>
 
-                    <div class="blog-post-item">
-                        <div class="blog-icon-wrapper">
-                            <i class="fas fa-flask"></i>
+                    <div class="makeup-item">
+                        <div class="makeup-image-wrapper">
+                            <img src="imgs/m4.png" alt="Satin Glide Lipstick">
                         </div>
-                        <div class="blog-post-content">
-                            <h3>Choosing Your Signature Scent: A Guide to Fragrances</h3>
-                            <p>Find the perfect perfume that reflects your personality and leaves a lasting impression with our expert fragrance tips.</p>
-                            <div class="blog-meta">
-                                <span><i class="far fa-calendar-alt"></i> June 18, 2025</span>
-                                <span><i class="fas fa-user"></i> Scent Master</span>
-                            </div>
-                            <a href="#" class="button-small read-more-btn" data-post-id="signature-scent">Read More</a>
+                        <div class="makeup-content">
+                            <h3>Satin Glide Lipstick</h3>
+                            <p class="price">$28.00</p>
+                            <p>Rich, creamy lipstick that glides on smoothly, delivering vibrant color and comfort.</p>
+                            <a href="#" class="button-small view-makeup-btn" data-makeup-id="satin-lipstick">View Details</a>
                         </div>
                     </div>
 
-                    <div class="blog-post-item">
-                        <div class="blog-icon-wrapper">
-                            <i class="fas fa-hand-holding-heart"></i>
+                    <div class="makeup-item">
+                        <div class="makeup-image-wrapper">
+                            <img src="imgs/m5.png" alt="Radiant Concealer">
                         </div>
-                        <div class="blog-post-content">
-                            <h3>Beyond Skincare: Incorporating Self-Care into Your Routine</h3>
-                            <p>Discover how holistic self-care practices can enhance your beauty from within, promoting well-being and inner glow.</p>
-                            <div class="blog-meta">
-                                <span><i class="far fa-calendar-alt"></i> June 10, 2025</span>
-                                <span><i class="fas fa-user"></i> Wellness Guru</span>
-                            </div>
-                            <a href="#" class="button-small read-more-btn" data-post-id="self-care">Read More</a>
+                        <div class="makeup-content">
+                            <h3>Radiant Concealer</h3>
+                            <p class="price">$26.00</p>
+                            <p>Brighten and perfect your under-eye area and conceal imperfections effortlessly.</p>
+                            <a href="#" class="button-small view-makeup-btn" data-makeup-id="radiant-concealer">View Details</a>
                         </div>
                     </div>
 
-                    <div class="blog-post-item">
-                        <div class="blog-icon-wrapper">
-                            <i class="fas fa-lightbulb"></i>
+                    <div class="makeup-item">
+                        <div class="makeup-image-wrapper">
+                            <img src="imgs/m6.png" alt="Long-Lasting Setting Spray">
                         </div>
-                        <div class="blog-post-content">
-                            <h3>The Future of Beauty: Innovations Shaping the Industry</h3>
-                            <p>Stay ahead of the curve with a look into the exciting innovations and technological advancements transforming the beauty world.</p>
-                            <div class="blog-meta">
-                                <span><i class="far fa-calendar-alt"></i> June 3, 2025</span>
-                                <span><i class="fas fa-user"></i> Trend Analyst</span>
-                            </div>
-                            <a href="#" class="button-small read-more-btn" data-post-id="beauty-innovation">Read More</a>
+                        <div class="makeup-content">
+                            <h3>Long-Lasting Setting Spray</h3>
+                            <p class="price">$20.00</p>
+                            <p>Lock in your makeup for hours with this lightweight, refreshing setting spray.</p>
+                            <a href="#" class="button-small view-makeup-btn" data-makeup-id="setting-spray">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -808,18 +798,18 @@
             </div>
             <p class="footer-rights">&copy; 2025 Lunera Beauty. All rights reserved.</p>
             <div class="social-icons">
-                <a href="https://facebook.com/lunerabeauty" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com/lunerabeauty" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/yourbrand" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/yourbrand" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- Modal Structure -->
-    <div class="modal-overlay" id="blogPostModal">
+    <!-- Modal Structure for Makeup Product Details -->
+    <div class="modal-overlay" id="makeupProductModal">
         <div class="modal-content">
-            <button class="modal-close-button" id="closeModalBtn">&times;</button>
-            <h3 class="modal-title" id="modalTitle"></h3>
-            <div class="modal-body" id="modalBody"></div>
+            <button class="modal-close-button" id="closeMakeupModalBtn">&times;</button>
+            <h3 class="modal-title" id="makeupModalTitle"></h3>
+            <div class="modal-body" id="makeupModalBody"></div>
         </div>
     </div>
 
@@ -887,112 +877,161 @@
             };
 
             // Apply animations to specific sections/elements
-            observeElements('#blog-hero', 'is-visible');
-            observeElements('.blog-post-item', 'is-visible');
+            observeElements('#makeup-hero', 'is-visible');
+            observeElements('.makeup-item', 'is-visible');
 
-
-            // Modal Functionality
-            const blogPostData = {
-                'skincare-routine': {
-                    title: 'The Ultimate Guide to Your Daily Skincare Routine',
+            // Modal Functionality for Makeup Products
+            const makeupProductsData = {
+                'liquid-foundation': {
+                    title: 'Flawless Finish Liquid Foundation: Your Perfect Base',
                     fullDescription: `
-                        <p>Establishing a consistent skincare routine is the cornerstone of healthy, glowing skin. This comprehensive guide breaks down the essential steps for your morning and evening regimen, helping you achieve your best complexion yet.</p>
-                        <p><strong>Morning Routine:</strong> Start your day by gently cleansing your face to remove impurities accumulated overnight. Follow with a toner to balance pH levels and prepare your skin for subsequent products. Next, apply a potent serum targeting specific concerns like hydration or anti-aging. Don't forget a lightweight eye cream to brighten and de-puff. Finish with a broad-spectrum SPF moisturizer, crucial for protecting your skin from harmful UV rays.</p>
-                        <p><strong>Evening Routine:</strong> The evening is prime time for repair and regeneration. Begin with a double cleanse to thoroughly remove makeup, sunscreen, and daily grime. Apply a treatment serum, such as one with retinoids or alpha hydroxy acids, to address deeper concerns. Hydrate generously with a rich night cream or facial oil to lock in moisture and support skin barrier function. Remember to apply a nourishing lip balm before bed.</p>
-                        <p>Consistency is key. Stick to your routine daily, and you'll soon see remarkable improvements in your skin's health and appearance. Adjust products based on your skin's changing needs and seasonal variations.</p>
-                    `
+                        <p>Achieve a smooth, even complexion with our Flawless Finish Liquid Foundation. This buildable, long-wearing formula provides natural-looking coverage that lasts all day without caking or creasing.</p>
+                        <p>Infused with hydrating ingredients, it leaves your skin feeling comfortable and looking radiant. Available in a wide range of shades to perfectly match your skin tone.</p>
+                        <p><strong>Key Benefits:</strong></p>
+                        <ul>
+                            <li>Medium to full buildable coverage.</li>
+                            <li>Natural, radiant finish.</li>
+                            <li>Long-wearing and transfer-resistant.</li>
+                            <li>Hydrating and non-comedogenic.</li>
+                            <li>Blurs imperfections and evens skin tone.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Apply with a foundation brush, sponge, or your fingertips, starting from the center of your face and blending outwards. Build coverage as desired.</p>
+                    `,
+                    imageUrl: 'imgs/m11.png'
                 },
-                'summer-glow': {
-                    title: 'Summer Glow: Top Makeup Trends for a Luminous Look',
+                'lash-mascara': {
+                    title: 'Volumizing Lash Mascara: Dramatic Lashes, No Clumps',
                     fullDescription: `
-                        <p>Embrace the warmth of summer with makeup trends that focus on natural radiance and effortless beauty. This season, it's all about achieving a luminous, sun-kissed glow without heavy layers.</p>
-                        <p><strong>Dewy Skin Finish:</strong> Swap matte foundations for hydrating tints or tinted moisturizers. Use liquid highlighters on your cheekbones, brow bones, and cupid's bow for a lit-from-within glow. A setting spray with a dewy finish will seal your look and enhance luminosity.</p>
-                        <p><strong>Subtle Shimmer Eyes:</strong> Opt for cream eyeshadows in warm bronze, gold, or champagne tones. A touch of shimmer on the inner corners of your eyes will make them pop. Keep eyeliner minimal or use a soft brown pencil for a natural definition.</p>
-                        <p><strong>Stained Lips:</strong> Forget heavy lipsticks. Tinted balms, lip stains, or sheer glosses in berry, coral, or nude shades are perfect for a low-maintenance, fresh look that lasts through summer activities.</p>
-                        <p><strong>Flushed Cheeks:</strong> Cream blushes in peach or rose tones blend seamlessly into dewy skin, giving you a natural, healthy flush. Apply to the apples of your cheeks and blend upwards towards your temples.</p>
-                        <p>Remember to use waterproof formulas for mascara and eyeliner to prevent smudging in the heat and humidity. Enjoy your radiant summer glow!</p>
-                    `
+                        <p>Intensify your lashes with our Volumizing Lash Mascara. The unique brush and rich, black formula work together to deliver dramatic volume, impressive length, and a beautiful curl, all without clumping or flaking.</p>
+                        <p>Achieve bold, captivating eyes with just a few strokes. This mascara is smudge-proof and long-lasting, ensuring your lashes look perfect from morning to night.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Instant volume and length.</li>
+                            <li>Clump-free and flake-free formula.</li>
+                            <li>Smudge-proof and long-wearing.</li>
+                            <li>Deep black pigment for intense definition.</li>
+                            <li>Easy to remove with makeup remover.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Wiggle the brush from the base of your lashes to the tip. Apply multiple coats for added volume and drama. For best results, allow each coat to dry slightly before applying the next.</p>
+                    `,
+                    imageUrl: 'imgs/m22.png'
                 },
-                'natural-ingredients': {
-                    title: 'The Power of Nature: Key Ingredients in Clean Beauty',
+                'eyeshadow-palette': {
+                    title: 'Nude Harmony Eyeshadow Palette: Endless Eye Looks',
                     fullDescription: `
-                        <p>Clean beauty is more than just a trend; it's a commitment to using ingredients that are safe, non-toxic, and beneficial for your skin and the environment. At Lunera Beauty, we harness the power of nature to create effective and luxurious formulations.</p>
-                        <p><strong>Hyaluronic Acid (Plant-Derived):</strong> A hydration powerhouse, plant-derived hyaluronic acid can hold up to 1,000 times its weight in water, plumping the skin and reducing the appearance of fine lines. It's essential for all skin types, especially dry or dehydrated skin.</p>
-                        <p><strong>Vitamin C (Ascorbic Acid & Derivatives):</strong> A potent antioxidant, Vitamin C brightens the complexion, evens skin tone, and protects against environmental damage. Look for stable forms like Magnesium Ascorbyl Phosphate or Tetrahexyldecyl Ascorbate for maximum efficacy.</p>
-                        <p><strong>Niacinamide (Vitamin B3):</strong> This versatile ingredient addresses multiple skin concerns. It helps minimize pores, improve uneven skin tone, soften fine lines, and strengthen the skin barrier. It's well-tolerated by most skin types, including sensitive and acne-prone.</p>
-                        <p><strong>Botanical Oils (Jojoba, Argan, Rosehip):</strong> These natural oils mimic the skin's sebum, providing deep nourishment without clogging pores. Jojoba is balancing, Argan is rich in antioxidants, and Rosehip is excellent for regeneration and scar healing.</p>
-                        <p><strong>Aloe Vera:</strong> Known for its soothing and healing properties, Aloe Vera is rich in vitamins, minerals, and amino acids. It calms irritated skin, reduces redness, and provides lightweight hydration.</p>
-                        <p>By focusing on these and other carefully selected natural ingredients, Lunera Beauty ensures that your skin receives the purest and most effective care.</p>
-                    `
+                        <p>Unleash your inner artist with the Nude Harmony Eyeshadow Palette. This versatile palette features 12 highly pigmented, blendable shades ranging from soft mattes to shimmering metallics, all in a harmonious array of nude and neutral tones.</p>
+                        <p>Create endless eye looks, from subtle daytime elegance to dramatic evening glam. The long-lasting formula ensures vibrant color that stays put without creasing.</p>
+                        <p><strong>Shade Range:</strong></p>
+                        <ul>
+                            <li>Matte Nudes: Cream, Taupe, Warm Brown, Deep Espresso</li>
+                            <li>Shimmers: Champagne, Rose Gold, Bronze, Copper</li>
+                            <li>Satin Finishes: Soft Peach, Dusty Rose, Cool Grey</li>
+                            <li>Deep Tones: Charcoal, Plum Brown</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Apply lighter shades all over the lid as a base. Use medium shades in the crease for definition. Apply deeper shades to the outer corner and lash line for intensity. Use shimmer shades on the center of the lid or inner corner for a pop of light. Blend well for a seamless finish.</p>
+                    `,
+                    imageUrl: 'imgs/m3.png'
                 },
-                'signature-scent': {
-                    title: 'Choosing Your Signature Scent: A Guide to Fragrances',
+                'satin-lipstick': {
+                    title: 'Satin Glide Lipstick: Vibrant Color & Comfort',
                     fullDescription: `
-                        <p>A signature scent is more than just a fragrance; it's an extension of your personality, a memory, and an invisible accessory. Finding "the one" can be a delightful journey. Here’s how to navigate the world of fragrances to discover your perfect match.</p>
-                        <p><strong>Understand Fragrance Families:</strong> Fragrances are typically categorized into families: Floral (romantic, powdery), Oriental (warm, spicy, vanilla), Woody (earthy, sophisticated, sandalwood, cedar), Fresh (citrus, green, aquatic), and Fougere (herbal, mossy, masculine but also in many unisex scents). Understanding these can help narrow down your preferences.</p>
-                        <p><strong>Consider Your Lifestyle:</strong> Do you need a scent for daily wear, special occasions, or both? Lighter, fresher scents are often better for daytime and warmer climates, while richer, heavier scents suit evenings and colder weather.</p>
-                        <p><strong>Test on Your Skin:</strong> Perfumes react uniquely with individual body chemistry. Always test a scent on your pulse points (wrists, neck) and wear it for a few hours. The "dry down" (the scent after the top notes evaporate) is crucial to how it will truly smell on you.</p>
-                        <p><strong>Don't Rush:</strong> Your nose can get fatigued. Limit yourself to testing 2-3 fragrances at a time. Take a break, perhaps by smelling coffee beans (often provided in perfume stores), before trying more.</p>
-                        <p><strong>Trust Your Instincts:</strong> Ultimately, your signature scent should make you feel confident, comfortable, and truly yourself. Don't be swayed by trends; choose what genuinely resonates with you.</p>
-                        <p>A well-chosen fragrance can leave a lasting impression, becoming a part of your personal brand. Enjoy the discovery!</p>
-                    `
+                        <p>Experience the perfect blend of rich pigment and comfortable wear with our Satin Glide Lipstick. This luxurious formula glides on smoothly, delivering vibrant, long-lasting color with a beautiful satin finish.</p>
+                        <p>Enriched with nourishing ingredients, it keeps your lips feeling soft and hydrated throughout the day, without feathering or drying. Available in a spectrum of stunning shades to complement every mood and occasion.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Smooth, effortless application.</li>
+                            <li>Vibrant, long-lasting color.</li>
+                            <li>Comfortable satin finish.</li>
+                            <li>Hydrating and non-drying formula.</li>
+                            <li>Wide range of flattering shades.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Apply directly to lips, starting from the center and moving outwards. For a more precise application, use a lip brush. Blot with a tissue and reapply for intensified color and wear.</p>
+                    `,
+                    imageUrl: 'imgs/m44.png'
                 },
-                'self-care': {
-                    title: 'Beyond Skincare: Incorporating Self-Care into Your Routine',
+                'radiant-concealer': {
+                    title: 'Radiant Concealer: Brighten & Perfect',
                     fullDescription: `
-                        <p>True beauty radiates from within, and a holistic approach to self-care is just as vital as your external skincare routine. Integrating mindful practices into your daily life can significantly enhance your well-being and, by extension, your glow.</p>
-                        <p><strong>Mindful Moments:</strong> Start your day with a few minutes of meditation or deep breathing. This can reduce stress, improve focus, and set a positive tone for your day. Even 5-10 minutes can make a difference.</p>
-                        <p><strong>Nourish from Within:</strong> Pay attention to your diet. Incorporate plenty of fruits, vegetables, healthy fats, and lean proteins. Hydration is also key – drink ample water throughout the day to support skin health and overall bodily functions.</p>
-                        <p><strong>Quality Sleep:</strong> Prioritize 7-9 hours of quality sleep each night. Sleep is when your body repairs and regenerates, including your skin cells. A consistent sleep schedule can dramatically improve your complexion and energy levels.</p>
-                        <p><strong>Movement and Exercise:</strong> Regular physical activity boosts circulation, which delivers oxygen and nutrients to your skin. It also helps reduce stress and promotes detoxification. Find an activity you enjoy, whether it's yoga, walking, or dancing.</p>
-                        <p><strong>Digital Detox:</strong> Take regular breaks from screens. Excessive screen time can contribute to eye strain and mental fatigue. Designate tech-free times or zones in your home to truly unwind.</p>
-                        <p>By nurturing your mind, body, and spirit, you'll find that your outer beauty naturally flourishes, reflecting a deeper sense of peace and vitality.</p>
-                    `
+                        <p>Brighten and perfect your complexion with our Radiant Concealer. This lightweight, creamy formula effortlessly conceals dark circles, blemishes, and imperfections, leaving a smooth, natural-looking finish.</p>
+                        <p>Its light-reflecting properties help to illuminate the under-eye area, reducing signs of fatigue. The long-wearing formula resists creasing and settling into fine lines, providing flawless coverage all day.</p>
+                        <p><strong>Key Benefits:</strong></p>
+                        <ul>
+                            <li>Lightweight, creamy texture.</li>
+                            <li>Medium to full buildable coverage.</li>
+                            <li>Brightens and illuminates.</li>
+                            <li>Resists creasing and settling.</li>
+                            <li>Long-wearing and comfortable.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Apply a small amount directly to desired areas (under eyes, blemishes, redness). Gently pat and blend with your fingertip, a brush, or a damp beauty sponge until seamless. Set with a light dusting of powder if desired.</p>
+                    `,
+                    imageUrl: 'imgs/m5.png'
                 },
-                'beauty-innovation': {
-                    title: 'The Future of Beauty: Innovations Shaping the Industry',
+                'setting-spray': {
+                    title: 'Long-Lasting Setting Spray: Lock in Your Look',
                     fullDescription: `
-                        <p>The beauty industry is constantly evolving, driven by groundbreaking innovations that promise more personalized, effective, and sustainable solutions. Here’s a glimpse into the exciting future of beauty.</p>
-                        <p><strong>Personalized Skincare:</strong> AI and data analytics are enabling hyper-personalized skincare. Brands are now offering custom-blended serums and moisturizers based on individual skin analysis, DNA, and environmental factors, ensuring products are perfectly matched to your unique needs.</p>
-                        <p><strong>Biotechnology and Fermented Ingredients:</strong> Advanced biotechnology is leading to the development of highly potent, bio-engineered ingredients. Fermented ingredients, for example, offer enhanced absorption and efficacy, delivering powerful benefits to the skin.</p>
-                        <p><strong>Sustainable and Ethical Practices:</strong> The demand for eco-conscious beauty is growing. Innovations include waterless formulations, refillable packaging, upcycled ingredients, and carbon-neutral production processes. Brands are increasingly focusing on their environmental footprint.</p>
-                        <p><strong>Wearable Tech for Beauty:</strong> Smart devices are emerging that can analyze skin conditions in real-time, recommend products, and even apply makeup with precision. These technologies offer unprecedented insights and convenience for beauty enthusiasts.</p>
-                        <p><strong>Microbiome-Friendly Products:</strong> Research into the skin's microbiome is leading to products that support a healthy balance of bacteria on the skin, crucial for barrier function and overall skin health. This new frontier promises solutions for sensitive and problematic skin conditions.</p>
-                        <p>The future of beauty is intelligent, sustainable, and deeply connected to individual well-being, promising a more effective and responsible approach to self-care.</p>
-                    `
+                        <p>Ensure your makeup stays flawless from dawn till dusk with our Long-Lasting Setting Spray. This lightweight, refreshing mist creates an invisible barrier that locks in your makeup, preventing fading, melting, and creasing.</p>
+                        <p>Infused with skin-loving ingredients, it also provides a subtle boost of hydration, leaving your skin feeling comfortable and looking fresh all day. Perfect for all skin types, it's the final step for a truly perfected look.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Extends makeup wear for hours.</li>
+                            <li>Prevents fading, melting, and creasing.</li>
+                            <li>Lightweight and non-sticky.</li>
+                            <li>Refreshing and hydrating.</li>
+                            <li>Creates a smooth, natural finish.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> After applying all your makeup, hold the bottle 8-10 inches away from your face. Close your eyes and mist evenly over your entire face in a "T" and "X" motion. Allow to air dry. Can also be used to refresh makeup throughout the day.</p>
+                    `,
+                    imageUrl: 'imgs/m6.png'
                 }
             };
 
-            const readMoreButtons = document.querySelectorAll('.read-more-btn');
-            const modalOverlay = document.getElementById('blogPostModal');
-            const closeModalBtn = document.getElementById('closeModalBtn');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.getElementById('modalBody');
+            const viewMakeupButtons = document.querySelectorAll('.view-makeup-btn');
+            const makeupProductModal = document.getElementById('makeupProductModal');
+            const closeMakeupModalBtn = document.getElementById('closeMakeupModalBtn');
+            const makeupModalTitle = document.getElementById('makeupModalTitle');
+            const makeupModalBody = document.getElementById('makeupModalBody');
 
-            readMoreButtons.forEach(button => {
+            // Function to open the modal with content
+            function openMakeupModal(product) {
+                makeupModalTitle.innerHTML = product.title;
+                // Clear previous content
+                makeupModalBody.innerHTML = '';
+
+                // Add image if available
+                if (product.imageUrl) {
+                    const img = document.createElement('img');
+                    img.src = product.imageUrl;
+                    img.alt = product.title;
+                    makeupModalBody.appendChild(img);
+                }
+                // Add description
+                makeupModalBody.innerHTML += product.fullDescription;
+
+                makeupProductModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            viewMakeupButtons.forEach(button => {
                 button.addEventListener('click', function(event) {
                     event.preventDefault(); // Prevent default link behavior
-                    const postId = this.dataset.postId;
-                    const post = blogPostData[postId];
+                    const makeupId = this.dataset.makeupId;
+                    const product = makeupProductsData[makeupId];
 
-                    if (post) {
-                        modalTitle.innerHTML = post.title;
-                        modalBody.innerHTML = post.fullDescription;
-                        modalOverlay.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    if (product) {
+                        openMakeupModal(product);
                     }
                 });
             });
 
-            closeModalBtn.addEventListener('click', function() {
-                modalOverlay.classList.remove('active');
+            closeMakeupModalBtn.addEventListener('click', function() {
+                makeupProductModal.classList.remove('active');
                 document.body.style.overflow = ''; // Restore background scrolling
             });
 
             // Close modal when clicking outside the content
-            modalOverlay.addEventListener('click', function(event) {
-                if (event.target === modalOverlay) {
-                    modalOverlay.classList.remove('active');
+            makeupProductModal.addEventListener('click', function(event) {
+                if (event.target === makeupProductModal) {
+                    makeupProductModal.classList.remove('active');
                     document.body.style.overflow = '';
                 }
             });

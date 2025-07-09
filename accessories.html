@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunera Beauty - Collections</title>
+    <title>Lunera Beauty - Accessories</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Google Fonts - Playfair Display for headings, Lato for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -325,15 +325,15 @@
             text-decoration: none;
         }
 
-        /* Collections Page Specific Styles */
-        #collections-hero {
+        /* Accessories Page Specific Styles */
+        #accessories-hero {
             background-color: #FDF9F6;
             padding: 80px 0;
             text-align: center;
             border-bottom: 1px solid #eee;
         }
 
-        #collections-hero h1 {
+        #accessories-hero h1 {
             color: #8B4513;
             font-size: 3em;
             margin-bottom: 20px;
@@ -342,7 +342,7 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        #collections-hero p {
+        #accessories-hero p {
             font-size: 1.1em;
             color: #555;
             max-width: 800px;
@@ -353,26 +353,26 @@
         }
 
         /* When visible, animate */
-        #collections-hero.is-visible h1,
-        #collections-hero.is-visible p {
+        #accessories-hero.is-visible h1,
+        #accessories-hero.is-visible p {
             opacity: 1;
             transform: translateY(0);
         }
 
-        #collection-grid-section {
+        #accessories-products {
             background-color: #fefefe;
             padding: 60px 0;
             text-align: center;
         }
 
-        .collection-grid {
+        .accessories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
             margin-top: 40px;
         }
 
-        .collection-item {
+        .accessories-item {
             background-color: #fff;
             border: 1px solid #eee;
             border-radius: 10px;
@@ -385,45 +385,46 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .collection-item:hover {
+        .accessories-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.12);
         }
 
-        /* Animation for collection items when visible */
-        .collection-item.is-visible {
+        /* Animation for accessories items when visible */
+        .accessories-item.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
         /* Staggered animation delays */
-        .collection-item:nth-child(1) { transition-delay: 0s; }
-        .collection-item:nth-child(2) { transition-delay: 0.1s; }
-        .collection-item:nth-child(3) { transition-delay: 0.2s; }
-        .collection-item:nth-child(4) { transition-delay: 0.3s; }
-        .collection-item:nth-child(5) { transition-delay: 0.4s; }
-        .collection-item:nth-child(6) { transition-delay: 0.5s; }
+        .accessories-item:nth-child(1) { transition-delay: 0s; }
+        .accessories-item:nth-child(2) { transition-delay: 0.1s; }
+        .accessories-item:nth-child(3) { transition-delay: 0.2s; }
 
-        /* New styles for collection icons */
-        .collection-icon-wrapper {
+        /* Styles for image containers in accessories products */
+        .accessories-image-wrapper {
             width: 100%;
-            height: 220px; /* Match old image height */
+            height: 250px; /* Fixed height for consistency */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #FDF9F6; /* Light background for the icon area */
+            background-color: #FDF9F6; /* Light background behind the image */
             border-bottom: 1px solid #eee;
+            overflow: hidden; /* Ensure image doesn't overflow its container */
         }
 
-        .collection-icon-wrapper i {
-            font-size: 5em; /* Large icon size */
-            color: #A0522D; /* Brand accent color for icons */
+        .accessories-image-wrapper img {
+            width: 100%; /* Make image fill the width of its wrapper */
+            height: 100%; /* Make image fill the height of its wrapper */
+            object-fit: cover; /* Crop image to cover the area without distortion */
+            display: block; /* Remove extra space below image */
+            border-radius: 0; /* No border radius here, it's on the item */
         }
 
-        .collection-content {
+        .accessories-content {
             padding: 25px;
         }
 
-        .collection-content h3 {
+        .accessories-content h3 {
             font-size: 1.6em;
             color: #A0522D;
             margin-top: 0;
@@ -431,7 +432,14 @@
             text-align: center;
         }
 
-        .collection-content p {
+        .accessories-content .price {
+            font-size: 1.3em;
+            color: #8B4513;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .accessories-content p {
             font-size: 0.95em;
             color: #666;
             margin-bottom: 20px;
@@ -512,6 +520,18 @@
             text-align: left;
         }
 
+        /* Style for image inside modal body */
+        .modal-body img {
+            max-width: 80%; /* Make the image smaller relative to the modal width */
+            max-height: 300px; /* Set a maximum height for the image */
+            height: auto;
+            display: block; /* Ensures image takes full width and is centered if needed */
+            margin: 20px auto; /* Add some margin above/below image and center it */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for the image */
+            object-fit: contain; /* Ensures the entire image is visible within its bounds */
+        }
+
 
         /* Responsiveness */
         @media (max-width: 992px) {
@@ -535,10 +555,10 @@
                 font-size: 1.3em;
             }
 
-            #collections-hero h1 {
+            #accessories-hero h1 {
                 font-size: 2.5em;
             }
-            #collections-hero p {
+            #accessories-hero p {
                 font-size: 1em;
             }
             .section-padding h2 {
@@ -556,6 +576,10 @@
             }
             .modal-close-button {
                 font-size: 1.5em;
+            }
+            .modal-body img {
+                max-width: 90%; /* Allow image to be slightly larger on smaller screens */
+                max-height: 250px; /* Adjust max height for smaller screens */
             }
         }
 
@@ -634,7 +658,7 @@
                 gap: 15px;
             }
 
-            .collection-grid {
+            .accessories-grid {
                 grid-template-columns: 1fr; /* Single column on mobile */
                 gap: 30px;
             }
@@ -663,11 +687,11 @@
                             <a href="makeup.html">Makeup</a>
                             <a href="fragrance.html">Fragrance</a>
                             <a href="body-hair.html">Body & Hair Care</a>
-                            <a href="accessories.html">Accessories</a>
+                            <a href="accessories.html" class="active">Accessories</a>
                         </div>
                     </li>
                     <li><a href="new-arrivals.html">New Arrivals</a></li>
-                    <li class="active"><a href="collections.html">Collections</a></li>
+                    <li><a href="collections.html">Collections</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -677,80 +701,50 @@
     </header>
 
     <main>
-        <section id="collections-hero">
+        <section id="accessories-hero">
             <div class="container">
-                <h1>Our Curated Collections</h1>
-                <p>Explore Lunera Beauty's exclusive collections, thoughtfully designed to address specific needs and enhance every aspect of your beauty ritual. Discover the perfect synergy of products for your unique glow.</p>
+                <h1>Enhance Your Routine with Beauty Accessories</h1>
+                <p>Complete your beauty ritual with Lunera Beauty's selection of essential accessories. From precision tools to luxurious application aids, discover the perfect complements for your skincare and makeup.</p>
             </div>
         </section>
 
-        <section id="collection-grid-section" class="section-padding">
+        <section id="accessories-products" class="section-padding">
             <div class="container">
-                <h2>Explore by Theme</h2>
-                <div class="collection-grid">
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-sun"></i> <!-- Icon for Radiance -->
+                <h2>Our Accessory Essentials</h2>
+                <div class="accessories-grid">
+                    <div class="accessories-item">
+                        <div class="accessories-image-wrapper">
+                            <img src="imgs/z1.png" alt="Essential Makeup Brush Set">
                         </div>
-                        <div class="collection-content">
-                            <h3>The Radiance Collection</h3>
-                            <p>Unlock your skin's natural luminosity with our brightening and revitalizing skincare essentials.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="radiance-collection">View Collection</a>
-                        </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-hourglass-half"></i> <!-- Icon for Timeless Beauty -->
-                        </div>
-                        <div class="collection-content">
-                            <h3>Timeless Beauty Collection</h3>
-                            <p>Embrace age-defying elegance with luxurious formulas designed to nourish and firm.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="timeless-beauty">View Collection</a>
+                        <div class="accessories-content">
+                            <h3>Essential Makeup Brush Set</h3>
+                            <p class="price">$49.00</p>
+                            <p>A complete set of soft, synthetic brushes for flawless makeup application.</p>
+                            <a href="#" class="button-small view-accessory-btn" data-accessory-id="brush-set">View Details</a>
                         </div>
                     </div>
 
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-seedling"></i> <!-- Icon for Pure Botanicals -->
+                    <div class="accessories-item">
+                        <div class="accessories-image-wrapper">
+                            <img src="imgs/z222.png" alt="Jade Facial Roller">
                         </div>
-                        <div class="collection-content">
-                            <h3>Pure Botanicals Collection</h3>
-                            <p>Experience the gentle power of nature with our ethically sourced, plant-based formulations.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="pure-botanicals">View Collection</a>
-                        </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-box-open"></i> <!-- Icon for Everyday Essentials -->
-                        </div>
-                        <div class="collection-content">
-                            <h3>Everyday Essentials Collection</h3>
-                            <p>Your go-to products for a simple yet effective daily beauty routine.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="everyday-essentials">View Collection</a>
+                        <div class="accessories-content">
+                            <h3>Revitalizing Jade Facial Roller</h3>
+                            <p class="price">$25.00</p>
+                            <p>Promote circulation and reduce puffiness with this cooling jade roller.</p>
+                            <a href="#" class="button-small view-accessory-btn" data-accessory-id="jade-roller">View Details</a>
                         </div>
                     </div>
 
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-cloud-sun"></i> <!-- Icon for Seasonal Glow -->
+                    <div class="accessories-item">
+                        <div class="accessories-image-wrapper">
+                            <img src="imgs/z3.png" alt="Precision Beauty Sponge">
                         </div>
-                        <div class="collection-content">
-                            <h3>Seasonal Glow Collection</h3>
-                            <p>Curated selections to adapt your beauty routine to changing seasons and climates.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="seasonal-glow">View Collection</a>
-                        </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <div class="collection-icon-wrapper">
-                            <i class="fas fa-spray-can"></i> <!-- Icon for Signature Scents -->
-                        </div>
-                        <div class="collection-content">
-                            <h3>Signature Scents Collection</h3>
-                            <p>Discover captivating fragrances that define your unique personality and leave a lasting impression.</p>
-                            <a href="#" class="button-small view-collection-btn" data-collection-id="signature-scents">View Collection</a>
+                        <div class="accessories-content">
+                            <h3>Precision Beauty Sponge</h3>
+                            <p class="price">$12.00</p>
+                            <p>Achieve seamless blending and an airbrushed finish with our soft beauty sponge.</p>
+                            <a href="#" class="button-small view-accessory-btn" data-accessory-id="beauty-sponge">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -771,12 +765,12 @@
         </div>
     </footer>
 
-    <!-- Modal Structure for Collection Details -->
-    <div class="modal-overlay" id="collectionDetailModal">
+    <!-- Modal Structure for Accessory Product Details -->
+    <div class="modal-overlay" id="accessoryProductModal">
         <div class="modal-content">
-            <button class="modal-close-button" id="closeCollectionModalBtn">&times;</button>
-            <h3 class="modal-title" id="collectionModalTitle"></h3>
-            <div class="modal-body" id="collectionModalBody"></div>
+            <button class="modal-close-button" id="closeAccessoryModalBtn">&times;</button>
+            <h3 class="modal-title" id="accessoryModalTitle"></h3>
+            <div class="modal-body" id="accessoryModalBody"></div>
         </div>
     </div>
 
@@ -844,133 +838,116 @@
             };
 
             // Apply animations to specific sections/elements
-            observeElements('#collections-hero', 'is-visible');
-            observeElements('.collection-item', 'is-visible');
+            observeElements('#accessories-hero', 'is-visible');
+            observeElements('.accessories-item', 'is-visible');
 
-            // Modal Functionality for Collection Details
-            const collectionData = {
-                'radiance-collection': {
-                    title: 'The Radiance Collection: Illuminate Your Skin',
+            // Modal Functionality for Accessory Products
+            const accessoryProductsData = {
+                'brush-set': {
+                    title: 'Essential Makeup Brush Set: Professional Application',
                     fullDescription: `
-                        <p>Discover the secret to a luminous complexion with our Radiance Collection. This curated set of skincare essentials is formulated to brighten, even skin tone, and enhance your natural glow.</p>
-                        <p>Featuring powerful antioxidants like Vitamin C and gentle exfoliants, these products work in harmony to reveal smoother, more vibrant skin. Say goodbye to dullness and hello to a radiant, healthy-looking complexion.</p>
-                        <p><strong>Includes:</strong></p>
+                        <p>Elevate your makeup routine with our Essential Makeup Brush Set. This comprehensive collection features 10 high-quality, soft synthetic brushes designed for flawless application of foundation, powder, blush, eyeshadow, and more.</p>
+                        <p>Each brush is expertly crafted for precision and comfort, making it easy to achieve a professional, airbrushed finish. Perfect for both beginners and experienced makeup enthusiasts.</p>
+                        <p><strong>Set Includes:</strong></p>
                         <ul>
-                            <li>Brightening Cleansing Foam</li>
-                            <li>Vitamin C Serum</li>
-                            <li>Luminous Day Cream with SPF</li>
-                            <li>Overnight Renewal Mask</li>
+                            <li>Powder Brush</li>
+                            <li>Foundation Brush</li>
+                            <li>Blush Brush</li>
+                            <li>Highlighting Brush</li>
+                            <li>Eyeshadow Blending Brush</li>
+                            <li>Crease Brush</li>
+                            <li>Flat Eyeshadow Brush</li>
+                            <li>Angled Eyebrow Brush</li>
+                            <li>Lip Brush</li>
+                            <li>Concealer Brush</li>
                         </ul>
-                        <p>Perfect for those seeking to revitalize tired skin and achieve an undeniable glow.</p>
-                    `
+                        <p><strong>Care Instructions:</strong> Clean brushes regularly with a mild soap or brush cleanser. Rinse thoroughly and lay flat to dry.</p>
+                    `,
+                    imageUrl: 'imgs/z1.png' // Placeholder
                 },
-                'timeless-beauty': {
-                    title: 'Timeless Beauty Collection: Age-Defying Elegance',
+                'jade-roller': {
+                    title: 'Revitalizing Jade Facial Roller: Soothe & Rejuvenate',
                     fullDescription: `
-                        <p>Embrace the art of graceful aging with our Timeless Beauty Collection. This luxurious line is dedicated to nourishing, firming, and restoring your skin's youthful vitality.</p>
-                        <p>Infused with potent peptides, hyaluronic acid, and rare botanical extracts, these formulas work to reduce the appearance of fine lines and wrinkles, improve elasticity, and provide deep hydration. Experience a visibly smoother, more supple, and rejuvenated complexion.</p>
-                        <p><strong>Includes:</strong></p>
+                        <p>Enhance your skincare ritual with our Revitalizing Jade Facial Roller. Crafted from natural jade stone, this cooling tool helps to promote circulation, reduce facial puffiness, and improve the absorption of serums and moisturizers.</p>
+                        <p>Regular use can help to soothe skin, reduce tension, and give your complexion a more toned and radiant appearance. Store in the refrigerator for an extra cooling and de-puffing effect.</p>
+                        <p><strong>Key Benefits:</strong></p>
                         <ul>
-                            <li>Age-Defying Cleansing Balm</li>
-                            <li>Peptide Renewal Serum</li>
-                            <li>Firming Eye Cream</li>
-                            <li>Rich Restorative Night Cream</li>
+                            <li>Reduces facial puffiness and inflammation.</li>
+                            <li>Promotes lymphatic drainage.</li>
+                            <li>Improves circulation for a healthy glow.</li>
+                            <li>Helps skincare products penetrate deeper.</li>
+                            <li>Soothes and calms the skin.</li>
                         </ul>
-                        <p>Designed for all skin types, especially those concerned with signs of aging.</p>
-                    `
+                        <p><strong>How to Use:</strong> After applying your serum or facial oil, gently roll the larger end over your face and neck in an upward and outward motion. Use the smaller end for delicate areas like under the eyes. Clean with a damp cloth after each use.</p>
+                    `,
+                    imageUrl: 'imgs/z222.png' // Placeholder
                 },
-                'pure-botanicals': {
-                    title: 'Pure Botanicals Collection: Nature\'s Gentle Touch',
+                'beauty-sponge': {
+                    title: 'Precision Beauty Sponge: Seamless Blending',
                     fullDescription: `
-                        <p>Experience the gentle yet effective power of nature with our Pure Botanicals Collection. This range is crafted with ethically sourced, plant-based ingredients, free from harsh chemicals and artificial fragrances.</p>
-                        <p>Each product harnesses the natural goodness of herbs, flowers, and plant oils to soothe, balance, and nourish your skin. Ideal for sensitive skin or anyone seeking a clean, natural approach to beauty.</p>
-                        <p><strong>Includes:</strong></p>
+                        <p>Achieve a seamless, airbrushed finish with our Precision Beauty Sponge. This soft, versatile sponge is designed for effortless blending of liquid and cream foundations, concealers, and contour products.</p>
+                        <p>Its unique shape allows for precise application in hard-to-reach areas, while its bouncy texture ensures a streak-free, natural look. Can be used damp for a dewy finish or dry for full coverage.</p>
+                        <p><strong>Key Features:</strong></p>
                         <ul>
-                            <li>Gentle Herbal Cleanser</li>
-                            <li>Calming Rosewater Toner</li>
-                            <li>Balancing Jojoba Facial Oil</li>
-                            <li>Soothing Aloe Vera Moisturizer</li>
+                            <li>Soft, latex-free material.</li>
+                            <li>Unique shape for versatile application.</li>
+                            <li>Achieves streak-free, airbrushed finish.</li>
+                            <li>Suitable for liquid, cream, and powder products.</li>
+                            <li>Easy to clean and maintain.</li>
                         </ul>
-                        <p>Embrace the purity of nature for a healthy, harmonious glow.</p>
-                    `
-                },
-                'everyday-essentials': {
-                    title: 'Everyday Essentials Collection: Your Daily Beauty Foundation',
-                    fullDescription: `
-                        <p>Simplify your beauty routine without compromising on quality with our Everyday Essentials Collection. This collection features fundamental products designed for a simple yet highly effective daily regimen.</p>
-                        <p>From cleansing to moisturizing, these versatile products provide the core elements for healthy, balanced skin, ensuring you look and feel your best every day.</p>
-                        <p><strong>Includes:</strong></p>
-                        <ul>
-                            <li>Daily Hydrating Cleanser</li>
-                            <li>Lightweight Moisturizer</li>
-                            <li>Broad-Spectrum SPF 30</li>
-                            <li>Nourishing Lip Balm</li>
-                        </ul>
-                        <p>The perfect starting point for anyone building their skincare routine or seeking reliable daily staples.</p>
-                    `
-                },
-                'seasonal-glow': {
-                    title: 'Seasonal Glow Collection: Adapt Your Beauty to the Seasons',
-                    fullDescription: `
-                        <p>Just as seasons change, so do your skin's needs. Our Seasonal Glow Collection offers curated selections to help you adapt your beauty routine to changing climates and environmental factors.</p>
-                        <p>From hydrating winter saviors to lightweight summer protectors, this collection ensures your skin remains balanced, protected, and radiant year-round. Discover the perfect products to transition your glow through every season.</p>
-                        <p><strong>Includes (example for Summer):</strong></p>
-                        <ul>
-                            <li>Refreshing Gel Cleanser</li>
-                            <li>Oil-Free Hydrating Serum</li>
-                            <li>Tinted Mineral SPF 50</li>
-                            <li>After-Sun Soothing Mist</li>
-                        </ul>
-                        <p>Check back seasonally for updated product selections!</p>
-                    `
-                },
-                'signature-scents': {
-                    title: 'Signature Scents Collection: Define Your Essence',
-                    fullDescription: `
-                        <p>Discover a world of captivating aromas with our Signature Scents Collection. Each fragrance is meticulously crafted to evoke a unique mood and define your personal essence, leaving a lasting impression wherever you go.</p>
-                        <p>From fresh and invigorating notes to warm and mysterious accords, find the perfect scent that resonates with your personality and complements your style.</p>
-                        <p><strong>Includes:</strong></p>
-                        <ul>
-                            <li>"Lunar Bloom" Eau de Parfum (Floral & Fresh)</li>
-                            <li>"Golden Hour" Eau de Parfum (Warm & Spicy)</li>
-                            <li>"Forest Whisper" Eau de Parfum (Earthy & Woody)</li>
-                            <li>"Ocean Breeze" Eau de Toilette (Aquatic & Clean)</li>
-                        </ul>
-                        <p>Explore the collection and find the fragrance that truly speaks to you.</p>
-                    `
+                        <p><strong>How to Use:</strong> For a dewy finish, dampen the sponge and squeeze out excess water. Apply liquid or cream product to the back of your hand or directly to your face, then bounce the sponge over your skin to blend. For full coverage, use dry. Clean after each use with mild soap and water.</p>
+                    `,
+                    imageUrl: 'imgs/z3.png' // Placeholder
                 }
             };
 
-            const viewCollectionButtons = document.querySelectorAll('.view-collection-btn');
-            const collectionDetailModal = document.getElementById('collectionDetailModal');
-            const closeCollectionModalBtn = document.getElementById('closeCollectionModalBtn');
-            const collectionModalTitle = document.getElementById('collectionModalTitle');
-            const collectionModalBody = document.getElementById('collectionModalBody');
+            const viewAccessoryButtons = document.querySelectorAll('.view-accessory-btn');
+            const accessoryProductModal = document.getElementById('accessoryProductModal');
+            const closeAccessoryModalBtn = document.getElementById('closeAccessoryModalBtn');
+            const accessoryModalTitle = document.getElementById('accessoryModalTitle');
+            const accessoryModalBody = document.getElementById('accessoryModalBody');
 
-            viewCollectionButtons.forEach(button => {
+            // Function to open the modal with content
+            function openAccessoryModal(product) {
+                accessoryModalTitle.innerHTML = product.title;
+                // Clear previous content
+                accessoryModalBody.innerHTML = '';
+
+                // Add image if available
+                if (product.imageUrl) {
+                    const img = document.createElement('img');
+                    img.src = product.imageUrl;
+                    img.alt = product.title;
+                    accessoryModalBody.appendChild(img);
+                }
+                // Add description
+                accessoryModalBody.innerHTML += product.fullDescription;
+
+                accessoryProductModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            viewAccessoryButtons.forEach(button => {
                 button.addEventListener('click', function(event) {
                     event.preventDefault(); // Prevent default link behavior
-                    const collectionId = this.dataset.collectionId;
-                    const collection = collectionData[collectionId];
+                    const accessoryId = this.dataset.accessoryId;
+                    const product = accessoryProductsData[accessoryId];
 
-                    if (collection) {
-                        collectionModalTitle.innerHTML = collection.title;
-                        collectionModalBody.innerHTML = collection.fullDescription;
-                        collectionDetailModal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    if (product) {
+                        openAccessoryModal(product);
                     }
                 });
             });
 
-            closeCollectionModalBtn.addEventListener('click', function() {
-                collectionDetailModal.classList.remove('active');
+            closeAccessoryModalBtn.addEventListener('click', function() {
+                accessoryProductModal.classList.remove('active');
                 document.body.style.overflow = ''; // Restore background scrolling
             });
 
             // Close modal when clicking outside the content
-            collectionDetailModal.addEventListener('click', function(event) {
-                if (event.target === collectionDetailModal) {
-                    collectionDetailModal.classList.remove('active');
+            accessoryProductModal.addEventListener('click', function(event) {
+                if (event.target === accessoryProductModal) {
+                    accessoryProductModal.classList.remove('active');
                     document.body.style.overflow = '';
                 }
             });

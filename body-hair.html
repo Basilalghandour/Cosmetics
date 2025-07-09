@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunera Beauty - About Us</title>
+    <title>Lunera Beauty - Body & Hair Care</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Google Fonts - Playfair Display for headings, Lato for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for social media icons and general icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Basic Reset & Typography */
         body {
@@ -243,9 +243,31 @@
             text-decoration: none;
         }
 
-        /* Section Padding (retained for consistency) */
+        /* Section Padding */
         .section-padding {
             padding: 60px 0;
+        }
+
+        /* General H2 styling for sections */
+        .section-padding h2 {
+            text-align: center;
+            color: #8B4513;
+            font-size: 2.5em;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .section-padding h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #A0522D, #CD853F);
+            border-radius: 2px;
         }
 
         /* Footer Styles */
@@ -303,15 +325,15 @@
             text-decoration: none;
         }
 
-        /* About Us Page Specific Styles */
-        #about-hero {
+        /* Body & Hair Care Page Specific Styles */
+        #body-hair-hero {
             background-color: #FDF9F6;
             padding: 80px 0;
             text-align: center;
             border-bottom: 1px solid #eee;
         }
 
-        #about-hero h1 {
+        #body-hair-hero h1 {
             color: #8B4513;
             font-size: 3em;
             margin-bottom: 20px;
@@ -320,7 +342,7 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        #about-hero p {
+        #body-hair-hero p {
             font-size: 1.1em;
             color: #555;
             max-width: 800px;
@@ -331,154 +353,184 @@
         }
 
         /* When visible, animate */
-        #about-hero.is-visible h1,
-        #about-hero.is-visible p {
+        #body-hair-hero.is-visible h1,
+        #body-hair-hero.is-visible p {
             opacity: 1;
             transform: translateY(0);
         }
 
-        #our-story {
+        #body-hair-products {
             background-color: #fefefe;
             padding: 60px 0;
             text-align: center;
-            border-bottom: 1px solid #eee;
         }
 
-        #our-story .story-content {
-            display: flex;
-            flex-wrap: wrap; /* Allows wrapping on smaller screens */
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-        }
-
-        #our-story .story-image-wrapper {
-            flex-shrink: 0;
-            width: 45%; /* Adjust width for image */
-            max-width: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            opacity: 0; /* Initial state for animation */
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        #our-story .story-image-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        #our-story .story-text {
-            flex-grow: 1;
-            width: 45%; /* Adjust width for text */
-            max-width: 600px;
-            text-align: left;
-            opacity: 0; /* Initial state for animation */
-            transform: translateX(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        /* Styling for H2 within sections like Our Story and Our Values */
-        #our-story .story-text h2,
-        #our-values h2 {
-            text-align: center; /* Center the heading */
-            color: #8B4513; /* Use brand color */
-            font-size: 2.5em; /* Make it prominent */
-            position: relative; /* For pseudo-element positioning */
-            padding-bottom: 20px; /* Space for the underline */
-            margin-bottom: 30px; /* Space below the heading and underline */
-        }
-
-        #our-story .story-text h2::after,
-        #our-values h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%; /* Center the underline */
-            transform: translateX(-50%); /* Adjust for centering */
-            width: 80px; /* Width of the underline */
-            height: 3px; /* Thickness of the underline */
-            background: linear-gradient(to right, #A0522D, #CD853F); /* Gradient color */
-            border-radius: 2px; /* Slightly rounded ends */
-        }
-
-        #our-story .story-text p {
-            font-size: 1em;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        /* Animation for story section when visible */
-        #our-story.is-visible .story-image-wrapper {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        #our-story.is-visible .story-text {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        #our-values {
-            background-color: #F8F4F1;
-            padding: 60px 0;
-            text-align: center;
-            border-top: 1px solid #eee;
-        }
-
-        /* H2 styling moved above for consistency */
-        /* #our-values h2 {
-            margin-bottom: 40px;
-            color: #8B4513;
-        } */
-
-        .values-grid {
+        .body-hair-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 40px;
             margin-top: 40px;
         }
 
-        .value-item {
+        .body-hair-item {
             background-color: #fff;
             border: 1px solid #eee;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             opacity: 0; /* Initial state for animation */
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .value-item i {
-            font-size: 3em;
-            color: #A0522D;
-            margin-bottom: 20px;
+        .body-hair-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
         }
 
-        .value-item h3 {
-            font-size: 1.5em;
-            color: #A0522D;
-            margin-bottom: 10px;
-        }
-
-        .value-item p {
-            font-size: 0.95em;
-            color: #666;
-        }
-
-        /* Animation for value items when visible */
-        .value-item.is-visible {
+        /* Animation for body & hair items when visible */
+        .body-hair-item.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        /* Add staggered animation delay for value items */
-        .value-item:nth-child(1) { transition-delay: 0s; }
-        .value-item:nth-child(2) { transition-delay: 0.1s; }
-        .value-item:nth-child(3) { transition-delay: 0.2s; }
+        /* Staggered animation delays */
+        .body-hair-item:nth-child(1) { transition-delay: 0s; }
+        .body-hair-item:nth-child(2) { transition-delay: 0.1s; }
+        .body-hair-item:nth-child(3) { transition-delay: 0.2s; }
+
+        /* Styles for image containers in body & hair products */
+        .body-hair-image-wrapper {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FDF9F6; /* Light background behind the image */
+            border-bottom: 1px solid #eee;
+            overflow: hidden; /* Ensure image doesn't overflow its container */
+        }
+
+        .body-hair-image-wrapper img {
+            width: 100%; /* Make image fill the width of its wrapper */
+            height: 100%; /* Make image fill the height of its wrapper */
+            object-fit: cover; /* Crop image to cover the area without distortion */
+            display: block; /* Remove extra space below image */
+            border-radius: 0; /* No border radius here, it's on the item */
+        }
+
+        .body-hair-content {
+            padding: 25px;
+        }
+
+        .body-hair-content h3 {
+            font-size: 1.6em;
+            color: #A0522D;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .body-hair-content .price {
+            font-size: 1.3em;
+            color: #8B4513;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .body-hair-content p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Modal Styles (copied for consistency across pages) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh; /* Limit height to prevent overflow */
+            overflow-y: auto; /* Enable scrolling for long content */
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-button:hover {
+            color: #A0522D;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #8B4513;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-body {
+            font-size: 1em;
+            color: #444;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        /* Style for image inside modal body */
+        .modal-body img {
+            max-width: 80%; /* Make the image smaller relative to the modal width */
+            max-height: 300px; /* Set a maximum height for the image */
+            height: auto;
+            display: block; /* Ensures image takes full width and is centered if needed */
+            margin: 20px auto; /* Add some margin above/below image and center it */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for the image */
+            object-fit: contain; /* Ensures the entire image is visible within its bounds */
+        }
 
 
         /* Responsiveness */
@@ -503,23 +555,31 @@
                 font-size: 1.3em;
             }
 
-            #about-hero h1 {
+            #body-hair-hero h1 {
                 font-size: 2.5em;
             }
-            #about-hero p {
+            #body-hair-hero p {
                 font-size: 1em;
             }
-            #our-story .story-image-wrapper,
-            #our-story .story-text {
-                width: 90%; /* Take more width on smaller screens */
-                max-width: 500px; /* Limit max width */
+            .section-padding h2 {
+                font-size: 2em; /* Adjust general h2 for smaller screens */
             }
-            #our-story .story-content {
-                gap: 30px;
+            .section-padding h2::after {
+                width: 60px; /* Adjust underline width */
             }
-            #our-story .story-text h2::after,
-            #our-values h2::after {
-                width: 60px; /* Adjust underline width for smaller screens */
+            .modal-content {
+                padding: 20px;
+                max-width: 95%; /* Wider on smaller screens */
+            }
+            .modal-title {
+                font-size: 1.8em;
+            }
+            .modal-close-button {
+                font-size: 1.5em;
+            }
+            .modal-body img {
+                max-width: 90%; /* Allow image to be slightly larger on smaller screens */
+                max-height: 250px; /* Adjust max height for smaller screens */
             }
         }
 
@@ -597,6 +657,11 @@
             footer .container {
                 gap: 15px;
             }
+
+            .body-hair-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+                gap: 30px;
+            }
         }
     </style>
 </head>
@@ -621,7 +686,7 @@
                             <a href="skincare.html">Skincare</a>
                             <a href="makeup.html">Makeup</a>
                             <a href="fragrance.html">Fragrance</a>
-                            <a href="body-hair.html">Body & Hair Care</a>
+                            <a href="body-hair.html" class="active">Body & Hair Care</a>
                             <a href="accessories.html">Accessories</a>
                         </div>
                     </li>
@@ -636,49 +701,52 @@
     </header>
 
     <main>
-        <section id="about-hero">
+        <section id="body-hair-hero">
             <div class="container">
-                <h1>Discover the Essence of Lunera Beauty</h1>
-                <p>At Lunera Beauty, we believe in empowering individuals through the art of self-expression. Our journey began with a passion for creating high-quality, ethically sourced cosmetics that celebrate diversity and enhance natural radiance.</p>
+                <h1>Nourish Your Body & Hair</h1>
+                <p>Extend the Lunera Beauty experience beyond your face with our luxurious body and hair care essentials. Indulge in products designed to cleanse, hydrate, and revitalize from head to toe.</p>
             </div>
         </section>
 
-        <section id="our-story" class="section-padding">
+        <section id="body-hair-products" class="section-padding">
             <div class="container">
-                <div class="story-content">
-                    <div class="story-image-wrapper">
-                        <!-- Placeholder image for your brand's story. Replace with a relevant image. -->
-                        <img src="imgs/model1.png" alt="Lunera Beauty Story">
+                <h2>Our Body & Hair Care Essentials</h2>
+                <div class="body-hair-grid">
+                    <div class="body-hair-item">
+                        <div class="body-hair-image-wrapper">
+                            <img src="imgs/h1.png" alt="Hydrating Body Wash">
+                        </div>
+                        <div class="body-hair-content">
+                            <h3>Silken Touch Body Wash</h3>
+                            <p class="price">$20.00</p>
+                            <p>A luxurious, hydrating body wash that leaves skin soft, clean, and delicately scented.</p>
+                            <a href="#" class="button-small view-body-hair-btn" data-body-hair-id="body-wash">View Details</a>
+                        </div>
                     </div>
-                    <div class="story-text">
-                        <h2>Our Journey to Elegance</h2>
-                        <p>Lunera Beauty was born from a singular vision: to redefine beauty through conscious craftsmanship and unwavering dedication to natural radiance. Our journey began in 20XX, rooted in a deep appreciation for the earth's finest botanicals and a commitment to ethical practices.</p>
-                        <p>We meticulously blend time-honored traditions with cutting-edge science, creating luxurious formulations that not only enhance your natural beauty but also nourish your skin and soul. Every product is a testament to our belief that true elegance lies in harmony with nature, empowering you to glow with confidence, inside and out.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section id="our-values" class="section-padding">
-            <div class="container">
-                <h2>Our Core Values</h2>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <i class="fas fa-gem"></i>
-                        <h3>Quality Craftsmanship</h3>
-                        <p>We use only premium, ethically sourced ingredients to create products that meet the highest standards of excellence.</p>
+                    <div class="body-hair-item">
+                        <div class="body-hair-image-wrapper">
+                            <img src="imgs/h2.png" alt="Repairing Shampoo">
+                        </div>
+                        <div class="body-hair-content">
+                            <h3>Botanical Repair Shampoo</h3>
+                            <p class="price">$28.00</p>
+                            <p>Gently cleanses and strengthens damaged hair, restoring its natural vitality.</p>
+                            <a href="#" class="button-small view-body-hair-btn" data-body-hair-id="repair-shampoo">View Details</a>
+                        </div>
                     </div>
-                    <div class="value-item">
-                        <i class="fas fa-leaf"></i>
-                        <h3>Natural & Sustainable</h3>
-                        <p>Committed to eco-friendly practices, we prioritize natural formulations and sustainable packaging.</p>
+
+                    <div class="body-hair-item">
+                        <div class="body-hair-image-wrapper">
+                            <img src="imgs/h3.png" alt="Nourishing Conditioner">
+                        </div>
+                        <div class="body-hair-content">
+                            <h3>Deep Nourish Conditioner</h3>
+                            <p class="price">$28.00</p>
+                            <p>Intensely conditions and detangles, leaving hair smooth, shiny, and manageable.</p>
+                            <a href="#" class="button-small view-body-hair-btn" data-body-hair-id="nourish-conditioner">View Details</a>
+                        </div>
                     </div>
-                    <div class="value-item">
-                        <i class="fas fa-heart"></i>
-                        <h3>Empowering Beauty</h3>
-                        <p>Our mission is to empower every individual to embrace their unique beauty and express themselves confidently.</p>
-                    </div>
-                    <!-- Removed the fourth value item as requested -->
                 </div>
             </div>
         </section>
@@ -691,11 +759,20 @@
             </div>
             <p class="footer-rights">&copy; 2025 Lunera Beauty. All rights reserved.</p>
             <div class="social-icons">
-                <a href="https://facebook.com/lunerabeauty" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com/lunerabeauty" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/yourbrand" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/yourbrand" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
+
+    <!-- Modal Structure for Body & Hair Care Product Details -->
+    <div class="modal-overlay" id="bodyHairProductModal">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeBodyHairModalBtn">&times;</button>
+            <h3 class="modal-title" id="bodyHairModalTitle"></h3>
+            <div class="modal-body" id="bodyHairModalBody"></div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -761,9 +838,114 @@
             };
 
             // Apply animations to specific sections/elements
-            observeElements('#about-hero', 'is-visible');
-            observeElements('#our-story', 'is-visible');
-            observeElements('.value-item', 'is-visible');
+            observeElements('#body-hair-hero', 'is-visible');
+            observeElements('.body-hair-item', 'is-visible');
+
+            // Modal Functionality for Body & Hair Care Products
+            const bodyHairProductsData = {
+                'body-wash': {
+                    title: 'Silken Touch Body Wash: Luxurious Cleanse & Softness',
+                    fullDescription: `
+                        <p>Indulge in a luxurious shower experience with our Silken Touch Body Wash. This hydrating, soap-free formula creates a rich lather that gently cleanses your skin, leaving it feeling incredibly soft, smooth, and delicately scented.</p>
+                        <p>Enriched with nourishing botanical extracts, it helps to maintain your skin's natural moisture balance, making it perfect for daily use on all skin types, even sensitive.</p>
+                        <p><strong>Key Benefits:</strong></p>
+                        <ul>
+                            <li>Gentle, hydrating cleanse.</li>
+                            <li>Leaves skin soft and smooth.</li>
+                            <li>Delicate, refreshing fragrance.</li>
+                            <li>Maintains skin's moisture barrier.</li>
+                            <li>Suitable for daily use.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Apply a small amount to a wet washcloth or loofah. Lather and massage over your body. Rinse thoroughly. For a luxurious bath, pour a generous amount under running water.</p>
+                    `,
+                    imageUrl: 'imgs/h1.png' // Placeholder
+                },
+                'repair-shampoo': {
+                    title: 'Botanical Repair Shampoo: Restore & Strengthen Hair',
+                    fullDescription: `
+                        <p>Revitalize and strengthen damaged hair with our Botanical Repair Shampoo. This gentle yet effective formula cleanses away impurities while infusing your hair with a blend of nourishing plant extracts and proteins.</p>
+                        <p>It helps to repair breakage, reduce split ends, and restore your hair's natural vitality and shine. Leaves hair feeling soft, manageable, and visibly healthier with every wash.</p>
+                        <p><strong>Key Benefits:</strong></p>
+                        <ul>
+                            <li>Gently cleanses and removes impurities.</li>
+                            <li>Strengthens and repairs damaged hair.</li>
+                            <li>Reduces breakage and split ends.</li>
+                            <li>Restores natural shine and softness.</li>
+                            <li>Suitable for all hair types, especially damaged or weak.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Apply to wet hair and massage into a rich lather. Rinse thoroughly. For best results, follow with our Deep Nourish Conditioner.</p>
+                    `,
+                    imageUrl: 'imgs/h2.png' // Placeholder
+                },
+                'nourish-conditioner': {
+                    title: 'Deep Nourish Conditioner: Intense Hydration for Luscious Hair',
+                    fullDescription: `
+                        <p>Provide your hair with intense hydration and nourishment with our Deep Nourish Conditioner. This rich, creamy formula deeply conditions and detangles, transforming dry, frizzy, or unruly hair into soft, shiny, and manageable locks.</p>
+                        <p>Infused with a blend of natural oils and vitamins, it replenishes moisture, strengthens strands, and protects against environmental damage. Experience the difference of truly nourished and healthy-looking hair.</p>
+                        <p><strong>Key Benefits:</strong></p>
+                        <ul>
+                            <li>Intensely hydrates and nourishes hair.</li>
+                            <li>Detangles and improves manageability.</li>
+                            <li>Adds brilliant shine and softness.</li>
+                            <li>Strengthens hair and reduces frizz.</li>
+                            <li>Protects against damage.</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> After shampooing, apply a generous amount to wet hair, focusing on mid-lengths to ends. Leave on for 2-3 minutes, then rinse thoroughly. For a deeper treatment, leave on for 5-10 minutes before rinsing.</p>
+                    `,
+                    imageUrl: 'imgs/h3.png' // Placeholder
+                }
+            };
+
+            const viewBodyHairButtons = document.querySelectorAll('.view-body-hair-btn');
+            const bodyHairProductModal = document.getElementById('bodyHairProductModal');
+            const closeBodyHairModalBtn = document.getElementById('closeBodyHairModalBtn');
+            const bodyHairModalTitle = document.getElementById('bodyHairModalTitle');
+            const bodyHairModalBody = document.getElementById('bodyHairModalBody');
+
+            // Function to open the modal with content
+            function openBodyHairModal(product) {
+                bodyHairModalTitle.innerHTML = product.title;
+                // Clear previous content
+                bodyHairModalBody.innerHTML = '';
+
+                // Add image if available
+                if (product.imageUrl) {
+                    const img = document.createElement('img');
+                    img.src = product.imageUrl;
+                    img.alt = product.title;
+                    bodyHairModalBody.appendChild(img);
+                }
+                // Add description
+                bodyHairModalBody.innerHTML += product.fullDescription;
+
+                bodyHairProductModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            viewBodyHairButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const bodyHairId = this.dataset.bodyHairId;
+                    const product = bodyHairProductsData[bodyHairId];
+
+                    if (product) {
+                        openBodyHairModal(product);
+                    }
+                });
+            });
+
+            closeBodyHairModalBtn.addEventListener('click', function() {
+                bodyHairProductModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore background scrolling
+            });
+
+            // Close modal when clicking outside the content
+            bodyHairProductModal.addEventListener('click', function(event) {
+                if (event.target === bodyHairProductModal) {
+                    bodyHairProductModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
         });
     </script>
 </body>
