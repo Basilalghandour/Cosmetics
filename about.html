@@ -53,6 +53,7 @@
             padding: 12px 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             position: relative;
+            z-index: 999; /* Ensure header is above most content */
         }
 
         header .container {
@@ -191,7 +192,7 @@
             width: 30px;
             height: 21px;
             cursor: pointer;
-            z-index: 1000;
+            z-index: 1000; /* Ensure toggle is above header content */
         }
 
         .menu-toggle span {
@@ -541,12 +542,14 @@
                 opacity: 0;
                 visibility: hidden;
                 transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+                z-index: 990; /* Adjusted z-index for mobile nav to be above other content */
             }
 
             nav.active {
                 max-height: 400px;
                 opacity: 1;
                 visibility: visible;
+                z-index: 990; /* Ensure active nav is above other content */
             }
 
             nav ul {
@@ -604,7 +607,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Lunera Beauty</a>
+                <a href="index.html">Lunera Beauty">Lunera Beauty</a>
                 <span class="slogan">Elegance in Every Shade.</span>
             </div>
             <div class="menu-toggle" id="menu-toggle">
@@ -616,7 +619,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li class="dropdown">
-                        <a href="makeup.html" class="dropbtn">Shop <span class="dropdown-icon">&#9660;</span></a>
+                        <a href="products.html" class="dropbtn">Shop <span class="dropdown-icon">&#9660;</span></a>
                         <div class="dropdown-content">
                             <a href="skincare.html">Skincare</a>
                             <a href="makeup.html">Makeup</a>
@@ -628,7 +631,7 @@
                     <li><a href="new-arrivals.html">New Arrivals</a></li>
                     <li><a href="collections.html">Collections</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -678,7 +681,6 @@
                         <h3>Empowering Beauty</h3>
                         <p>Our mission is to empower every individual to embrace their unique beauty and express themselves confidently.</p>
                     </div>
-                    <!-- Removed the fourth value item as requested -->
                 </div>
             </div>
         </section>

@@ -52,7 +52,8 @@
             border-bottom: 1px solid #eee;
             padding: 12px 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            position: relative;
+            position: relative; /* Ensure position is set for z-index to work */
+    z-index: 999; /* Added or increased */
         }
 
         header .container {
@@ -589,6 +590,7 @@
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
+                z-index: 1000;
             }
 
             nav {
@@ -604,12 +606,14 @@
                 opacity: 0;
                 visibility: hidden;
                 transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+                z-index: 990;
             }
 
             nav.active {
                 max-height: 400px;
                 opacity: 1;
                 visibility: visible;
+                z-index: 990;
             }
 
             nav ul {
