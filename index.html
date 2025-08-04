@@ -913,14 +913,13 @@
                         <h2>Embrace Your Inner Radiance</h2>
                         <p>Discover our latest collection, designed to enhance your natural beauty. Our  Luminous Lip Gloss provides a flawless finish, leaving your lips feeling hydrated and looking vibrant all day long.</p>
                         <p>Perfect for achieving that fresh, illuminated look, whether for a casual day out or a special evening. Experience the difference of quality ingredients and ethical craftsmanship.</p>
-                        <!-- Changed href to # and added data-product-id for modal -->
                         <a href="#" class="button" id="viewFeaturedLookBtn" data-product-id="featured-look">Shop This Look</a>
                     </div>
                 </div>
             </div>
         </section>
 
-      
+
 
         <section id="product-showcase">
             <div class="container">
@@ -933,7 +932,7 @@
                         <div class="product-content">
                             <h3>Luminous Hydration Elixir</h3>
                             <p>Infused with rare botanical extracts, this lightweight facial oil deeply nourishes, leaving your skin supple and glowing. Perfect for an overnight repair or a radiant base.</p>
-                            <a href="product-detail-1.html" class="button-small">Buy Now</a>
+                            <a href="product-detail-1.html" class="button-small">Check it Out</a>
                         </div>
                     </div>
 
@@ -944,7 +943,7 @@
                         <div class="product-content">
                             <h3>Velvet Kiss Matte Lipstick</h3>
                             <p>Experience the perfect blend of rich pigment and comfortable wear. Our matte lipstick delivers a smooth, long-lasting finish without drying your lips.</p>
-                            <a href="product-detail-2.html" class="button-small">Buy Now</a>
+                            <a href="product-detail-2.html" class="button-small">Check it Out</a>
                         </div>
                     </div>
 
@@ -955,7 +954,7 @@
                         <div class="product-content">
                             <h3>Revitalizing Rose Quartz Roller</h3>
                             <p>Enhance your skincare routine with this exquisite rose quartz roller. It promotes circulation, reduces puffiness, and helps absorb serums for a truly revitalized complexion.</p>
-                            <a href="product-detail-3.html" class="button-small">Buy Now</a>
+                            <a href="product-detail-3.html" class="button-small">Check it Out</a>
                         </div>
                     </div>
 
@@ -1014,7 +1013,6 @@
         </div>
     </footer>
 
-    <!-- Modal Structure for Product Details (reused for featured look) -->
     <div class="modal-overlay" id="productDetailModal">
         <div class="modal-content">
             <button class="modal-close-button" id="closeProductModalBtn">&times;</button>
@@ -1065,7 +1063,7 @@
 
             // Intersection Observer for product fade-in animation
             const productItems = document.querySelectorAll('.product-item-ladder');
-            const bestSellerItems = document.querySelectorAll('#featured-products .product-item'); // Select bestsellers
+            const bestSellerItems = document.querySelectorAll('#featured-products .product-item');
 
             const observerOptions = {
                 root: null,
@@ -1087,11 +1085,11 @@
             });
 
             bestSellerItems.forEach(item => {
-                productObserver.observe(item); // Observe bestsellers too
+                productObserver.observe(item);
             });
 
 
-            // Product Data for Modals (including the new 'featured-look')
+            // Product Data for Modals
             const productData = {
                 'featured-look': {
                     title: 'The Luminous Look: Enhance Your Natural Radiance',
@@ -1106,7 +1104,61 @@
                         </ul>
                         <p>Experience the blend of quality ingredients and ethical craftsmanship that defines Lunera Beauty.</p>
                     `,
-                    imageUrl: 'imgs/model1.png' // Image for this specific modal
+                    imageUrl: 'imgs/model1.png'
+                },
+                'luminous-hydration-elixir': {
+                    title: 'Luminous Hydration Elixir',
+                    fullDescription: `
+                        <p>Our Luminous Hydration Elixir is a lightweight facial oil infused with rare botanical extracts. It is designed to deeply nourish your skin, leaving it supple and glowing. This product is perfect for overnight repair or as a radiant base for makeup.</p>
+                        <p><strong>Key Ingredients:</strong> Jojoba Oil, Rosehip Seed Oil, Marula Oil, and Vitamin E.</p>
+                        <p><strong>How to Use:</strong> Apply a few drops to your face and neck after cleansing. Use morning and night.</p>
+                    `,
+                    imageUrl: 'imgs/oil4.png'
+                },
+                'velvet-kiss-matte-lipstick': {
+                    title: 'Velvet Kiss Matte Lipstick',
+                    fullDescription: `
+                        <p>Experience the perfect blend of rich pigment and comfortable wear with our Velvet Kiss Matte Lipstick. It delivers a smooth, long-lasting finish without drying your lips, providing intense color in one swipe.</p>
+                        <p><strong>Available Shades:</strong> Ruby Red, Nude Blush, and Sunset Coral.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Highly pigmented</li>
+                            <li>Long-lasting formula</li>
+                            <li>Non-drying matte finish</li>
+                            <li>Cruelty-free</li>
+                        </ul>
+                    `,
+                    imageUrl: 'imgs/m44.png'
+                },
+                'revitalizing-rose-quartz-roller': {
+                    title: 'Revitalizing Rose Quartz Roller',
+                    fullDescription: `
+                        <p>Enhance your skincare routine with this exquisite rose quartz roller. It promotes circulation, reduces puffiness, and helps your skin absorb serums and moisturizers more effectively for a truly revitalized complexion.</p>
+                        <p><strong>Benefits:</strong></p>
+                        <ul>
+                            <li>Improves blood circulation and skin tone</li>
+                            <li>Promotes lymphatic drainage</li>
+                            <li>Reduces facial puffiness and wrinkles</li>
+                            <li>Helps products penetrate deeper into the skin</li>
+                        </ul>
+                        <p><strong>How to Use:</strong> Gently roll the larger stone over your forehead, cheeks, and neck. Use the smaller stone for the under-eye area and nose. For a cooling effect, store it in the refrigerator.</p>
+                    `,
+                    imageUrl: 'imgs/roller.png'
+                },
+                'silken-touch-body-lotion': {
+                    title: 'Silken Touch Body Lotion',
+                    fullDescription: `
+                        <p>Indulge your skin with our deeply moisturizing body lotion, enriched with natural shea butter and vitamin E. This luxurious formula leaves your skin feeling soft, smooth, and delicately fragranced all day long.</p>
+                        <p><strong>Key Ingredients:</strong> Shea Butter, Vitamin E, Aloe Vera.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Deeply hydrating formula</li>
+                            <li>Fast-absorbing and non-greasy</li>
+                            <li>Leaves a delicate, pleasant scent</li>
+                            <li>Suitable for all skin types</li>
+                        </ul>
+                    `,
+                    imageUrl: 'imgs/lotion.png'
                 },
                 'revitalizing-serum': {
                     title: 'Revitalizing Serum: Youthful Radiance in Every Drop',
@@ -1162,30 +1214,28 @@
             const closeProductModalBtn = document.getElementById('closeProductModalBtn');
             const productModalTitle = document.getElementById('productModalTitle');
             const productModalBody = document.getElementById('productModalBody');
+            const discoverButtons = document.querySelectorAll('#product-showcase .button-small');
 
-            // Function to open the modal with content
             function openProductModal(product) {
                 productModalTitle.innerHTML = product.title;
-                // Clear previous content
                 productModalBody.innerHTML = '';
 
-                // Add image if available
                 if (product.imageUrl) {
                     const img = document.createElement('img');
                     img.src = product.imageUrl;
                     img.alt = product.title;
                     productModalBody.appendChild(img);
                 }
-                // Add description
                 productModalBody.innerHTML += product.fullDescription;
 
                 productDetailModal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
             }
 
+            // Event listeners for the 'Our Bestsellers' section
             viewDetailsButtons.forEach(button => {
                 button.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevent default link behavior
+                    event.preventDefault();
                     const productId = this.dataset.productId;
                     const product = productData[productId];
                     if (product) {
@@ -1194,7 +1244,7 @@
                 });
             });
 
-            // Event listener for the "Shop This Look" button
+            // Event listener for the 'Shop This Look' button
             const viewFeaturedLookBtn = document.getElementById('viewFeaturedLookBtn');
             if (viewFeaturedLookBtn) {
                 viewFeaturedLookBtn.addEventListener('click', function(event) {
@@ -1206,12 +1256,48 @@
                 });
             }
 
-            closeProductModalBtn.addEventListener('click', function() {
-                productDetailModal.classList.remove('active');
-                document.body.style.overflow = ''; // Restore background scrolling
+            // Event listeners for the 'Discover Our Collections' section
+            discoverButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    // Get the product ID from the parent element's heading
+                    const parentElement = this.closest('.product-item-ladder');
+                    let productId = '';
+                    if (parentElement) {
+                        const h3Element = parentElement.querySelector('h3');
+                        if (h3Element) {
+                            const productTitle = h3Element.textContent.trim();
+                            // Map the title to a product ID
+                            switch (productTitle) {
+                                case 'Luminous Hydration Elixir':
+                                    productId = 'luminous-hydration-elixir';
+                                    break;
+                                case 'Velvet Kiss Matte Lipstick':
+                                    productId = 'velvet-kiss-matte-lipstick';
+                                    break;
+                                case 'Revitalizing Rose Quartz Roller':
+                                    productId = 'revitalizing-rose-quartz-roller';
+                                    break;
+                                case 'Silken Touch Body Lotion':
+                                    productId = 'silken-touch-body-lotion';
+                                    break;
+                            }
+                        }
+                    }
+
+                    const product = productData[productId];
+                    if (product) {
+                        openProductModal(product);
+                    }
+                });
             });
 
-            // Close modal when clicking outside the content
+
+            closeProductModalBtn.addEventListener('click', function() {
+                productDetailModal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
             productDetailModal.addEventListener('click', function(event) {
                 if (event.target === productDetailModal) {
                     productDetailModal.classList.remove('active');
